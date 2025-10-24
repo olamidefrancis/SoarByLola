@@ -1,0 +1,63 @@
+import React, { useState } from 'react'
+import './Navbar.css'
+import orderBasket from "../../assets/Images/icons8-order-cute-outline-96.png"
+import profile from "../../assets/Images/icons8-account-96.png"
+import wishlist from "../../assets/Images/icons8-love-96.png"
+
+const Navbar = () => {
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    const toggleMenu = () => setMenuOpen(!menuOpen);
+
+    return (
+        <nav className='flexy'>
+            <div className="companyName-personal flexy">
+                <div className="companyName-personal__companyName">
+                    <h1>SOAR_by_LOLA</h1>
+                </div>
+
+                {/* Hamburger icon for small screens */}
+                <div className="hamburger" onClick={toggleMenu}>
+                    {menuOpen ? (
+                        <span style={{ fontSize: "1.8rem", cursor: "pointer" }}>✕</span>
+                    ) : (
+                        <span style={{ fontSize: "1.8rem", cursor: "pointer" }}>☰</span>
+                    )}
+                </div>
+
+                <div className="companyName-personal__personal flexy">
+                    <div className="companyName-personal__personal__account flexyccgap">
+                        <img src={profile} alt="account" style={{ width: "20px", height: "20px" }} />
+                        <p>ACCOUNT</p>
+                    </div>
+
+                    <div className="companyName-personal__personal__wishlist flexyccgap">
+                        <img src={wishlist} alt="wishlist" style={{ width: "20px", height: "20px" }} />
+                        <p>WISHLIST</p>
+                    </div>
+
+                    <div className="companyName-personal__personal__order flexyccgap">
+                        <img src={orderBasket} alt="order" style={{ width: "20px", height: "20px" }} />
+                        <p>ORDER</p>
+                    </div>
+                </div>
+            </div>
+
+            <div className="categories flexy">
+                <p>WOMEN</p>
+                <p>MEN</p>
+            </div>
+
+            {/* Sidebar menu for mobile */}
+            <div className={`mobile-menu-sidebar ${menuOpen ? 'open' : ''}`}>
+                <div className="mobile-menu__item">ACCOUNT</div>
+                <div className="mobile-menu__item">WISHLIST</div>
+                <div className="mobile-menu__item">ORDER</div>
+                <div className="mobile-menu__item">WOMEN</div>
+                <div className="mobile-menu__item">MEN</div>
+            </div>
+        </nav>
+    )
+}
+
+export default Navbar
