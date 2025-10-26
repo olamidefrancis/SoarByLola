@@ -77,16 +77,16 @@ const Footer = () => {
     //     </div>
     // </footer>
 
-<footer id="frame-footer" className="bg-neutral-200 flex justify-center p-16">
+<footer id="frame-footer" className="bg-neutral-200 flex justify-center  pt-4">
   {/* Parent div = 60% width of footer */}
-  <div className="w-[80%] flex justify-center">
+  <div className="w-[80%] flex justify-center paddy">
     {/* Nav occupies full width of parent */}
     <nav className="grid grid-cols-4 gap-x-5 w-full">
       
       {/* Section 1 */}
       <section className="flex flex-col items-center">
-        <div className="flex flex-col items-start">
-          <h2 className="mb-2.5 font-rebrand-light text-sm uppercase text-rebrand-accent-100-contrast">
+        <div className="flex flex-col items-start gap-y-4">
+          <h2 className="mb-2.5 font-rebrand-light text-xl uppercase text-rebrand-accent-100-contrast">
             About Us
           </h2>
           <ul className="flex flex-col list-none gap-3 p-0 w-full">
@@ -101,8 +101,8 @@ const Footer = () => {
 
       {/* Section 2 */}
       <section className="flex flex-col items-center">
-        <div className="flex flex-col items-start">
-          <h2 className="mb-2.5 font-rebrand-light text-sm uppercase text-rebrand-accent-100-contrast">
+        <div className="flex flex-col items-start gap-y-4">
+          <h2 className="mb-2.5 font-rebrand-light text-xl uppercase text-rebrand-accent-100-contrast">
             Information
           </h2>
           <ul className="flex flex-col list-none gap-3 p-0 w-full">
@@ -116,8 +116,8 @@ const Footer = () => {
 
       {/* Section 3 */}
       <section className="flex flex-col items-center">
-        <div className="flex flex-col items-start">
-          <h2 className="mb-2.5 font-rebrand-light text-sm uppercase text-rebrand-accent-100-contrast">
+        <div className="flex flex-col items-start gap-y-4">
+          <h2 className="mb-2.5 font-rebrand-light text-xl uppercase text-rebrand-accent-100-contrast">
             My Account
           </h2>
           <ul className="flex flex-col list-none gap-3 p-0 w-full">
@@ -131,7 +131,7 @@ const Footer = () => {
 
       {/* Section 4 */}
       <section className="flex flex-col items-center">
-        <div className="flex flex-col items-start">
+        <div className="flex flex-col items-start gap-y-4">
           <h2 className="mb-2.5 font-rebrand-light text-xl uppercase text-rebrand-accent-100-contrast">
             Social
           </h2>

@@ -1,1 +1,5 @@
 @import "tailwindcss";
+
+.paddy{
+    padding-top: 2rem;
+}
