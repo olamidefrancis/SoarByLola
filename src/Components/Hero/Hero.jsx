@@ -1,4 +1,3 @@
-
 import './Hero.css'
 import video1 from '../../assets/Images/WhatsApp Video 2025-10-23 at 20.32.53.mp4'
 import video2 from '../../assets/Images/WhatsApp Video 2025-10-23 at 20.29.58.mp4'
