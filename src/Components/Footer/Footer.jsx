@@ -118,7 +118,7 @@ const Footer = () => {
       <section className="flex flex-col items-center">
         <div className="flex flex-col items-start gap-y-4">
           <h2 className="mb-2.5 font-rebrand-light text-xl uppercase text-rebrand-accent-100-contrast">
-            My Account
+            Account
           </h2>
           <ul className="flex flex-col list-none gap-3 p-0 w-full">
             <li><a href="/customer/order-history" className="font-rebrand-light text-xs capitalize text-rebrand-base-400 hover:underline">Order History</a></li>
