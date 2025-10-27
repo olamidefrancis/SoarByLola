@@ -6,7 +6,7 @@ const Footer = () => {
 
 <footer id="frame-footer" className="bg-neutral-200 flex justify-center pt-4">
  
-  <div className="w-[80%] flex flex-col gap-y-2 items-center paddy sm:w-[80%] w-full">
+  <div className="w-[80%] flex flex-col gap-y-8 items-center paddy sm:w-[80%] w-full">
     
     <nav className="grid grid-cols-4 gap-x-5 w-full">
       
