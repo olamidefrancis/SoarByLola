@@ -13,7 +13,7 @@ const Navbar = () => {
         <nav className='flexy'>
             <div className="companyName-personal flexy">
                 <div className="companyName-personal__companyName">
-                    <h1>SOAR_by_LOLA</h1>
+                    <h1 >SOAR_by_LOLA</h1>
                 </div>
 
                 {/* Hamburger icon for small screens */}

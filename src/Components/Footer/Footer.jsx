@@ -4,9 +4,9 @@ const Footer = () => {
   return (
 
 
-<footer id="frame-footer" className="bg-neutral-200 flex justify-center  pt-4">
+<footer id="frame-footer" className="bg-neutral-200 flex justify-center pt-4">
  
-  <div className="w-[80%] flex justify-center paddy sm:w-[80%] w-full">
+  <div className="w-[80%] flex flex-col gap-y-2 items-center paddy sm:w-[80%] w-full">
     
     <nav className="grid grid-cols-4 gap-x-5 w-full">
       
@@ -64,7 +64,15 @@ const Footer = () => {
       </section>
 
     </nav>
+
+      <div className="flex w-full justify-center text-[13px] font-normal text-gray-500  ">
+            <p>&copy; <span id="copyright-year">{ new Date().getFullYear()} </span ><span className='font-[Dancing_Script,cursive] text-xl'>Soar_by_Lola</span>.  All Rights Reserved.</p>
+      </div>
+
+ 
   </div>
+
+  
 </footer>
 
     
