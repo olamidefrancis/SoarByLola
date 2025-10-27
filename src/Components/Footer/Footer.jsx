@@ -54,11 +54,11 @@ const Footer = () => {
             Social
           </h2>
           <ul className="flex flex-col list-none gap-3 p-0 w-full">
-            <li><a href="" className="text-[13px] font-normal text-gray-500 hover:text-gray-800">Instagram</a></li>
-            <li><a href="" className="text-[13px] font-normal text-gray-500 hover:text-gray-800">Facebook</a></li>
-            <li><a href="" className="text-[13px] font-normal text-gray-500 hover:text-gray-800">X</a></li>
-            <li><a href="" className="text-[13px] font-normal text-gray-500 hover:text-gray-800">TikTok</a></li>
-            <li><a href="" className="text-[13px] font-normal text-gray-500 hover:text-gray-800">YouTube</a></li>
+            <li><a href="https://www.instagram.com/shopsoar.co?igsh=N2ZnenMzNW51N3Zw&utm_source=qr" className="text-[13px] font-normal text-gray-500 hover:text-gray-800">Instagram</a></li>
+            <li><a href="  https://www.facebook.com/share/1Eiie1KBvj/?mibextid=wwXIfr" className="text-[13px] font-normal text-gray-500 hover:text-gray-800">Facebook</a></li>
+            <li><a href="https://x.com/wearsoar?s=21" className="text-[13px] font-normal text-gray-500 hover:text-gray-800">X</a></li>
+            <li><a href="https://www.tiktok.com/@wear_soar?_t=ZS-90txfj9ddGS&_r=1" className="text-[13px] font-normal text-gray-500 hover:text-gray-800">TikTok</a></li>
+            <li><a href="https://pin.it/5PTT11Ph3" className="text-[13px] font-normal text-gray-500 hover:text-gray-800">PIntrest</a></li>
           </ul>
         </div>
       </section>
