@@ -13,7 +13,7 @@ const Navbar = () => {
     return (
         <nav className='flexy'>
             <div className="companyName-personal flexy">
-                <figure className='flex items-center justify-center'>
+                <figure className='flex items-center justify-center figcon'>
                             <img src={logo} alt="logo" className='lolalogo' />
                  </figure>
 
@@ -35,17 +35,17 @@ const Navbar = () => {
                 <div className="companyName-personal__personal flexy">
                     <div className="companyName-personal__personal__account flexyccgap">
                         <img src={profile} alt="account" style={{ width: "20px", height: "20px" }} />
-                        <p className="text-[13px] font-normal text-gray-500 hover:text-gray-800">ACCOUNT</p>
+                        <p className="text-[13px] font-normal text-gray-500 hover:text-red-600">ACCOUNT</p>
                     </div>
 
                     <div className="companyName-personal__personal__wishlist flexyccgap">
                         <img src={wishlist} alt="wishlist" style={{ width: "20px", height: "20px" }} />
-                        <p className="text-[13px] font-normal text-gray-500 hover:text-gray-800">WISHLIST</p>
+                        <p className="text-[13px] font-normal text-gray-500 hover:text-red-600">WISHLIST</p>
                     </div>
 
                     <div className="companyName-personal__personal__order flexyccgap">
                         <img src={orderBasket} alt="order" style={{ width: "20px", height: "20px" }} />
-                        <p className="text-[13px] font-normal text-gray-500 hover:text-gray-800">ORDER</p>
+                        <p className="text-[13px] font-normal text-gray-500 hover:text-red-600">ORDER</p>
                     </div>
                 </div>
             </div>
