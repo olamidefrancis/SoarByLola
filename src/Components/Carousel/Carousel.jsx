@@ -1,6 +1,8 @@
 import React from 'react'
 
 import three from '../../assets/Images/md_gru.jpeg'
+import one from '../../assets/Images/md1.jpeg'
+import two from '../../assets/Images/md2.jpeg'
 import Autoplay from 'embla-carousel-autoplay'
 import useEmblaCarousel from 'embla-carousel-react'
 import { useEffect } from 'react'
@@ -9,7 +11,7 @@ import './Carousel.css'
 
 
 const Carousel=()=> {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [Autoplay ({delay:8000})])
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
 
   useEffect(() => {
     if (emblaApi) {
@@ -32,12 +34,27 @@ const Carousel=()=> {
               <div className="embla__viewport" ref={emblaRef}>
                   <div className="embla__container">
 
-                          <div className="embla__slide"> 
+                          <div className="embla__slide h-[400px] "> 
+                                <figure >
+                                  <img src={one} alt="four"  className='object-cover '/>
+                                </figure> 
+
+                          </div>
+
+                            <div className="embla__slide"> 
+                                <figure>
+                                  <img src={two} alt="four" />
+                                </figure> 
+
+                          </div>
+
+                         <div className="embla__slide"> 
                                 <figure>
                                   <img src={three} alt="four" />
                                 </figure> 
 
-                          </div>
+                         </div>
+
 
                           
                   </div>
