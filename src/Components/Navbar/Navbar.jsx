@@ -3,6 +3,7 @@ import './Navbar.css'
 import orderBasket from "../../assets/Images/icons8-order-cute-outline-96.png"
 import profile from "../../assets/Images/icons8-account-96.png"
 import wishlist from "../../assets/Images/icons8-love-96.png"
+import logo from '../../assets/Images/logo1.jpeg'
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -12,6 +13,10 @@ const Navbar = () => {
     return (
         <nav className='flexy'>
             <div className="companyName-personal flexy">
+                <figure className='flex items-center justify-center'>
+                            <img src={logo} alt="logo" className='lolalogo' />
+                 </figure>
+
                 <div className="companyName-personal__companyName">
                     <h1 >SOAR_by_LOLA</h1>
                 </div>

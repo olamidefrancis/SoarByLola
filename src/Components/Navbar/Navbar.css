@@ -89,10 +89,10 @@ nav{
   position: fixed;
   top: 0;
   left: 0;
-  height: 77vh;
+  height: 76.8vh;
   width: 0;
   background-color: rgb(224, 36, 36);
-  opacity: 0.5;
+  opacity: 0.7;
   overflow-x: hidden;
   transition: width 0.3s ease;
   display: flex;
@@ -118,6 +118,13 @@ nav{
 .mobile-menu__item:last-child {
   border-bottom: none;
 }
+.lolalogo{
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 100%;
+  padding: 0.5rem;
+}
 
 
 @media screen and (max-width: 600px) {
@@ -140,5 +147,13 @@ nav{
 
   .companyName-personal__companyName h1 {
     font-size: 2rem;
+  }
+  .figcon{
+    position: relative;
+    padding: 1rem;
+  }
+  .lolalogo{
+     width: 40px;
+     height: 40px;
   }
 }
