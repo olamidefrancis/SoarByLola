@@ -89,7 +89,7 @@ nav{
   position: fixed;
   top: 0;
   left: 0;
-  height: 100vh;
+  height: 77vh;
   width: 0;
   background-color: rgb(224, 36, 36);
   opacity: 0.5;
@@ -99,7 +99,8 @@ nav{
   flex-direction: column;
   padding-top: 6rem; /* below navbar area */
   z-index: 1500;
-  color: rgba(255, 213, 0, 0.777);
+  color: white;
+  font-weight: bold;
 }
 
 .mobile-menu-sidebar.open {

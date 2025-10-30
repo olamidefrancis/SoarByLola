@@ -19,9 +19,11 @@ const Navbar = () => {
                 {/* Hamburger icon for small screens */}
                 <div className="hamburger" onClick={toggleMenu}>
                     {menuOpen ? (
-                        <span style={{ fontSize: "1.8rem", cursor: "pointer" }}>✕</span>
+                        <span style={{ fontSize: "1.8rem", cursor: "pointer" }}
+                            className='text-red-700'
+                        >✕</span>
                     ) : (
-                        <span style={{ fontSize: "1.8rem", cursor: "pointer" }}>☰</span>
+                        <span style={{ fontSize: "1.8rem", cursor: "pointer" }}className='text-red-700'>☰</span>
                     )}
                 </div>
 
