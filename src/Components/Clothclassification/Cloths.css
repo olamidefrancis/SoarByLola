@@ -6,3 +6,16 @@
     [container-start] repeat(2, minmax(min-content, 1fr))
     [container-end];
 }
+
+.clothdiscription{
+    position: relative;
+}
+
+.clothdiscription p{
+     position: absolute;
+     top:50%;
+     left: 50%;
+     right:50%;
+     color: red;
+     font-size: 1.7rem;
+}

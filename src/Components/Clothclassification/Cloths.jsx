@@ -33,7 +33,7 @@ function Cloths() {
             clothContent.map((item,i)=>{
               return(  
                     <div >
-                        <figure className='bg-yellow-200 w-full h-full flex flex-col' key={i} >
+                        <figure className='bg-yellow-200 w-full h-full flex flex-col clothdiscription' key={i} >
                             <img src={item.picture} alt="four"  className='object-cover '/>
                             <p>{item.discription}</p>
                         </figure> 
