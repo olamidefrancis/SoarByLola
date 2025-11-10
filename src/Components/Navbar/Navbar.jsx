@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router'
 import './Navbar.css'
 import orderBasket from "../../assets/Images/icons8-order-cute-outline-96.png"
 import profile from "../../assets/Images/icons8-account-96.png"
@@ -51,8 +52,8 @@ const Navbar = () => {
             </div>
 
             <div className="categories flexy">
-                <p>WOMEN</p>
-                <p>MEN</p>
+                <Link to='/Men'>WOMEN</Link>
+                <Link to='/Men'>MEN</Link>
             </div>
 
             {/* Sidebar menu for mobile */}
