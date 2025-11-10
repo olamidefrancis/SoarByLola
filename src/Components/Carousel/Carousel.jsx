@@ -63,7 +63,7 @@ const Carousel=()=> {
 
               
 
-              <div className="button__container arrows">
+              <div className="arrows">
                             <button className="embla__prev " onClick={scrollPrev}>
                                 {"<"}
                             </button>
