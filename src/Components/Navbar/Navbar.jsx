@@ -61,8 +61,8 @@ const Navbar = () => {
                 <div className="mobile-menu__item">ACCOUNT</div>
                 <div className="mobile-menu__item">WISHLIST</div>
                 <div className="mobile-menu__item">ORDER</div>
-                <div className="mobile-menu__item">WOMEN</div>
-                <div className="mobile-menu__item">MEN</div>
+                <Link to='/Men' className="mobile-menu__item">WOMEN</Link>
+                <Link to='/Men'  className="mobile-menu__item">MEN</Link>
             </div>
         </nav>
     )
