@@ -25,11 +25,13 @@ const sizes =[
 function Men() {
   return (
     <div className="h-full flex flex-col overflow-hidden">
-          <div className="flex  flex-col w-full gap-y-6 ">
+          
         
+     
+
             {catalog.map((items,i)=>(
-                <>
-                    <div className="flex  w-full" style={{ transform: 'translate3d(0px, 0px, 0px)' }} key={i}>
+                <div className="flex  flex-col w-full gap-y-6 ">
+                    {/* <div className="flex  w-full" style={{ transform: 'translate3d(0px, 0px, 0px)' }} key={i}>
                         
                             {
                                 items.Picture.map((items,ix)=>(
@@ -52,7 +54,27 @@ function Men() {
                                  </div>
                                 ))
                             }
-                    </div>
+                    </div> */}
+
+                    <div className="flex w-full overflow-x-auto gap-4 py-2"key={i}>
+                            {items.Picture.map((img, i) => (
+                            <div
+                                key={i}
+                                role="group"
+                                aria-roledescription="slide"
+                                aria-label={`Slide ${i + 1} of ${items.Picture.length}`}
+                                className="flex-shrink-0 w-[45%] sm:w-[30%] md:w-[23%] lg:w-[23%] flex-col"
+                                >
+                                <img
+                                    alt={`Men outfit image ${i + 1}`}
+                                    loading="eager"
+                                    decoding="async"
+                                    src={img}
+                                    className="w-full h-auto rounded-md object-cover"
+                                />
+                           </div>
+                                ))}
+                     </div>
 
                     <div className="pricecon flex bg-neutral-200 w-full p-y-4">
                         <div className="flex w-full justify-between  paddy">
@@ -97,10 +119,10 @@ function Men() {
                         </div >
 
                     </div>
-               </>
+               </div>
             )) }
        
-       </div>
+      
        
     </div>
   );
