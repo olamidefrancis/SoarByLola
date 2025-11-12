@@ -9,6 +9,10 @@ import one from '../../assets/Images/md1.jpeg';
 
 // ]
 
+const sizes =[
+    "XS","S", "M","L","XL"
+]
+
 function Men() {
   return (
     <div className="h-full flex flex-col overflow-hidden">
@@ -119,19 +123,18 @@ function Men() {
                         <div className=" flex w-[full] justify-center ">
                               <h1>SELECT YOUR SIZE</h1>
                         </div>
-                      
-                        <div className="standardprice flex w-[full] justify-center gap-x-10">
-                           <h2 className="flex items-center justify-center w-[20px] h-[20px]  rounded-[10%] text-[16px] hover:bg-white transition-colors">
-                                S
-                            </h2>
 
-                            <h2 className="flex items-center justify-center w-[20px] h-[20px] bg-gray-200 rounded-[10%]  text-[16px]">M</h2>
-
-                            <h2 className="flex items-center justify-center w-[20px] h-[20px] bg-gray-200 rounded-[10%]  text-[16px]">L</h2>
-
-                            <div className="flex items-center justify-center w-[20px] h-[20px] bg-gray-200 rounded-[10%] paddy text-[16px]"><h2>XL</h2></div>
-
+                        <div className="standardprice flex w-[full]      justify-center gap-x-10" >
+                            {
+                                sizes.map((sizes,i)=>(
+                                
+                                        <h2 className="flex items-center justify-center w-[20px] h-[20px]  rounded-[10%] text-[16px] hover:bg-white transition-colors" key={i}>
+                                                {sizes}
+                                            </h2>
+                                ))
+                            }
                         </div>
+                      
                     </div>
 
                     <div className="flex flex-col gap-y-2">
