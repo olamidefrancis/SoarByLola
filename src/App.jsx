@@ -19,22 +19,11 @@ const router = createBrowserRouter([
            </div>,
   errorElement: <div>404 Page not found</div>
  },
- {
-  path:'/',
-  element: <div>
-                <Navbar/>
-                <Hero/>
-                <Cloths/>
-                <Carousel/> 
-                <Footer/>
-           </div>,
-  errorElement: <div>404 Page not found</div>
- },
 
  {
   path:'/Men',
   element: <div>
-               
+                <Navbar/>
                 <Men/>
            </div>,
   errorElement: <div>404 Page not found</div>

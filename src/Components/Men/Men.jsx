@@ -2,6 +2,13 @@ import React from 'react';
 import './Men.css'
 import one from '../../assets/Images/md1.jpeg';
 
+// const catalog=[
+//     {
+
+//     }
+
+// ]
+
 function Men() {
   return (
     <div className="h-full flex flex-col overflow-hidden">
@@ -100,31 +107,53 @@ function Men() {
                 </div>
             </div>
 
-            <div className="pricecon flex    w-full p-y-4">
-                <div className="flex w-full  justify-between bg-red-500">
-                    <div className="flex flex-col">
+            <div className="pricecon flex bg-neutral-200 w-full p-y-4">
+                <div className="flex w-full justify-between  paddy">
+                    <div className="flex flex-col gap-y-2">
 
                         <p>Male JOGGERS</p>
                         <h1  className=" text-sm uppercase  mb-2">Black Double Layer Slinky Cowl Neck Long Sleeve Bodysuit </h1>
                     </div>
 
-                    <div className="sizes flex">
+                    <div className="sizes flex flex-col w-[33.3%] gap-y-6">
+                        <div className=" flex w-[full] justify-center ">
+                              <h1>SELECT YOUR SIZE</h1>
+                        </div>
+                      
+                        <div className="standardprice flex w-[full] justify-center gap-x-10">
+                           <h2 className="flex items-center justify-center w-[20px] h-[20px]  rounded-[10%] text-[16px] hover:bg-white transition-colors">
+                                S
+                            </h2>
 
-                        <p>s</p>
-                        <p>l</p>
-                        <p>xl</p>
+                            <h2 className="flex items-center justify-center w-[20px] h-[20px] bg-gray-200 rounded-[10%]  text-[16px]">M</h2>
+
+                            <h2 className="flex items-center justify-center w-[20px] h-[20px] bg-gray-200 rounded-[10%]  text-[16px]">L</h2>
+
+                            <div className="flex items-center justify-center w-[20px] h-[20px] bg-gray-200 rounded-[10%] paddy text-[16px]"><h2>XL</h2></div>
+
+                        </div>
                     </div>
 
-                    <div className="flex flex-col">
+                    <div className="flex flex-col gap-y-2">
+                        <h2>YOU CAN SPECIFY YOUR MEASUREMENT</h2>
 
-                        <p>Male JOGGERS</p>
-                        <h1  className=" text-sm uppercase  mb-2">Black Double Layer Slinky Cowl Neck Long Sleeve Bodysuit </h1>
+                        <textarea name="measurement" id="measurement"
+                            rows="4" cols="50" className="border focus:outline-none   rounded-[10px] paddy
+                            focus:ring-2 focus:ring-[gray-800 ] focus:border-transparent text-gray-800 resize-none shadow-sm
+                            "
+                            
+                        >
+                            
+                        </textarea>
+
                     </div>
 
                 </div >
 
             </div>
         </div>
+
+       
     </div>
   );
 }
