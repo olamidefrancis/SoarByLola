@@ -97,10 +97,10 @@ function Men() {
 
                     </div> */}
 
-                    <div className="pricecon flex flex-col md:flex-row bg-neutral-200 w-full p-4 gap-6 rounded-md">
+                    <div className="pricecon flex flex-col md:flex-row bg-neutral-200 w-full paddy gap-6 rounded-md ">
                     {/* Product Info */}
-                    <div className="flex flex-col gap-2 md:w-1/3">
-                        <p className="text-sm font-medium">Male JOGGERS</p>
+                    <div className="flex gap-2 md:w-1/3 sm: justify-center">
+                        
                         <h1 className="text-sm uppercase">{items.Tile}</h1>
                     </div>
 
@@ -120,13 +120,13 @@ function Men() {
                     </div>
 
                     {/* Measurement Textarea */}
-                    <div className="flex flex-col gap-2 md:w-1/3">
-                        <h2 className="text-sm font-medium">YOU CAN SPECIFY YOUR MEASUREMENT</h2>
+                    <div className="flex flex-col gap-2 md:w-1/3 sm:items-center max-[600px]:bg-red-500 padit">
+                        <h2 className="text-sm font-medium sm:text-center ">YOU CAN SPECIFY YOUR MEASUREMENT</h2>
                         <textarea
                         name="measurement"
                         id="measurement"
                         rows={4}
-                        className="border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-gray-800 focus:border-transparent text-gray-800 resize-none w-full shadow-sm"
+                        className="border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-gray-800 focus:border-transparent text-gray-800 resize-none w-full shadow-sm paddy"
                         placeholder="Enter your measurements here..."
                         />
                     </div>
@@ -142,28 +142,3 @@ function Men() {
 }
 
 export default Men;
-
-//   <div className="flex  w-full" style={{ transform: 'translate3d(0px, 0px, 0px)' }} key={i}>
-                        
-//                             {
-//                                 items.Picture.map((items,ix)=>(
-//                                  <div
-//                                     role="group"
-//                                     aria-roledescription="slide"
-//                                     aria-label="Slide 1 of 5"
-//                                     className="min-w-0 relative lg:flex-[0_0_25%] flex-[0_0_40%] flex-col"
-//                                     >
-//                                         <img
-//                                             alt="Men outfit image 1"
-//                                             loading="eager"
-//                                             width="740"
-//                                             height="1180"
-//                                             decoding="async"
-//                                             className="mx-auto"
-//                                             src={items}
-//                                             key={ix}
-//                                         />
-//                                  </div>
-//                                 ))
-//                             }
-//                     </div> 
