@@ -53,65 +53,22 @@ function Men() {
                                 ))}
                      </div>
 
-                    {/* <div className="pricecon flex bg-neutral-200 w-full p-y-4">
-                        <div className="flex w-full justify-between  paddy">
-                            <div className="flex flex-col gap-y-2">
-
-                                <p>Male JOGGERS</p>
-                                <h1  className=" text-sm uppercase  mb-2">{items.Tile} </h1>
-                            </div>
-
-                            <div className="sizes flex flex-col w-[33.3%] gap-y-6">
-                                <div className=" flex w-[full] justify-center ">
-                                    <h1>SELECT YOUR SIZE</h1>
-                                </div>
-
-                                <div className="standardprice flex w-[full]      justify-center gap-x-10" >
-                                    {
-                                        sizes.map((sizes,i)=>(
-                                        
-                                                <h2 className="flex items-center justify-center w-[20px] h-[20px]  rounded-[10%] text-[16px] hover:bg-white transition-colors" key={i}>
-                                                        {sizes}
-                                                    </h2>
-                                        ))
-                                    }
-                                </div>
-                            
-                            </div>
-
-                            <div className="flex flex-col gap-y-2">
-                                <h2>YOU CAN SPECIFY YOUR MEASUREMENT</h2>
-
-                                <textarea name="measurement" id="measurement"
-                                    rows="4" cols="50" className="border focus:outline-none   rounded-[10px] paddy
-                                    focus:ring-2 focus:ring-[gray-800 ] focus:border-transparent text-gray-800 resize-none shadow-sm
-                                    "
-                                    
-                                >
-                                    
-                                </textarea>
-
-                            </div>
-
-                        </div >
-
-                    </div> */}
-
-                    <div className="pricecon flex flex-col md:flex-row bg-neutral-200 w-full paddy gap-6 rounded-md ">
+                    
+                    <div className="pricecon flex flex-col md:flex-row bg-neutral-200 w-full paddy gap-6 rounded-md lato-thin">
                     {/* Product Info */}
                     <div className="flex gap-2 md:w-1/3 sm: justify-center">
                         
-                        <h1 className="text-sm uppercase">{items.Tile}</h1>
+                        <h1 className="text-sm uppercase lato-thin">{items.Tile}</h1>
                     </div>
 
                     {/* Size Selector */}
                     <div className="sizes flex flex-col gap-4 md:w-1/3 items-center">
-                        <h1 className="text-sm font-semibold text-center">SELECT YOUR SIZE</h1>
+                        <h1 className="text-sm  text-center lato-thin">SELECT YOUR SIZE</h1>
                         <div className="standardprice flex flex-wrap justify-center gap-3">
                         {sizes.map((size, idx) => (
                             <h2
                             key={idx}
-                            className="flex items-center justify-center w-8 h-8 rounded-[10%] text-[16px] font-bold hover:bg-white cursor-pointer transition-colors"
+                            className="flex items-center justify-center w-8 h-8 rounded-[10%] text-[16px]  hover:bg-white cursor-pointer transition-colors"
                             >
                             {size}
                             </h2>
@@ -120,14 +77,13 @@ function Men() {
                     </div>
 
                     {/* Measurement Textarea */}
-                    <div className="flex flex-col gap-2 md:w-1/3 sm:items-center max-[600px]:bg-red-500 padit">
-                        <h2 className="text-sm font-medium sm:text-center ">YOU CAN SPECIFY YOUR MEASUREMENT</h2>
+                    <div className="flex  gap-2 md:w-1/3   padit">
                         <textarea
                         name="measurement"
                         id="measurement"
                         rows={4}
-                        className="border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-gray-800 focus:border-transparent text-gray-800 resize-none w-full shadow-sm paddy"
-                        placeholder="Enter your measurements here..."
+                        className="lato-thin text-lg border border-gray-400 rounded-lg p-3 focus:outline-none focus:ring-1 focus:ring-gray-600 focus:border-transparent text-gray-800 resize-none w-full shadow-sm paddy "
+                        placeholder="You can also enter your measurements here..."
                         />
                     </div>
                     </div>
