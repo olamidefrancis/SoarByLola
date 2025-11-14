@@ -1,6 +1,7 @@
 import React from 'react';
 import './Men.css'
 import one from '../../assets/Images/md1.jpeg';
+import two from '../../assets/Images/md2.jpeg';
 
 
 const catalog=[
@@ -8,20 +9,17 @@ const catalog=[
     Tile: "Black Double Layer Slinky Cowl Neck Long Sleeve Bodysuit"
    },
 
-    {Picture:[one,one,one,one],
+    {Picture:[two,two,two,two],
     Tile: "Black Double Layer Slinky Cowl Neck Long Sleeve Bodysuit"
-   },
-
-    {Picture:[one,one,one,one],
-    Tile: "Black Double Layer Slinky Cowl Neck Long Sleeve Bodysuit"
-   },
-
+   }
 
 ]
 
 const sizes =[
     "XS","S", "M","L","XL"
 ]
+
+const orders =[ ]
 
 function Men() {
   return (
@@ -77,7 +75,7 @@ function Men() {
                     </div>
 
                     {/* Measurement Textarea */}
-                    <div className="flex  gap-2 md:w-1/3   padit">
+                    <div className="flex flex-col gap-2 md:w-1/3   padit">
                         <textarea
                         name="measurement"
                         id="measurement"
@@ -85,8 +83,37 @@ function Men() {
                         className="lato-thin text-lg border border-gray-400 rounded-lg p-3 focus:outline-none focus:ring-1 focus:ring-gray-600 focus:border-transparent text-gray-800 resize-none w-full shadow-sm paddy "
                         placeholder="You can also enter your measurements here..."
                         />
+
+                        <button className='submit bg-red-500'>
+                                Submit
+                        </button>
                     </div>
                     </div>
+
+                    {/* {
+                        orders.map((items,i)=>(
+                            <div className="flex w-full overflow-x-auto gap-4 py-2"key={i}>
+                            {items.Picture.map((img, i) => (
+                            <div
+                                key={i}
+                                role="group"
+                                aria-roledescription="slide"
+                                aria-label={`Slide ${i + 1} of ${items.Picture.length}`}
+                                className="flex-shrink-0 w-[45%] sm:w-[30%] md:w-[23%] lg:w-[23%] flex-col"
+                                >
+                                <img
+                                    alt={`Men outfit image ${i + 1}`}
+                                    loading="eager"
+                                    decoding="async"
+                                    src={img}
+                                    className="w-full h-auto rounded-md object-cover"
+                                />
+                           </div>
+                                ))}
+                     </div>
+                        )
+
+                    } */}
 
                </div>
             )) }
