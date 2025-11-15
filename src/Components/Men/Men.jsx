@@ -95,15 +95,19 @@ const handleLikes = (itemIndex, item) => {
           
           <div className="pricecon flex flex-col md:flex-row bg-neutral-200 w-full paddy gap-6 rounded-md lato-thin">
            
-            <div className="flex flex-col gap-2 md:w-1/3 justify-center">
+            <div className="flex flex-col gap-6 md:w-1/3 ">
               <h1 className="text-sm uppercase lato-thin">{item.Tile}</h1>
-              <button
-                    className={`border border-gray-600 w-[20px] h-[20px] inline-block rounded 
-                        ${likedItems[i] ? "bg-red-500" : "bg-white"}`}
+                 <i
+                    className={`
+                        ${likedItems[i] 
+                        ? "fa-solid fa-heart fa-2xl text-red-500"     
+                        : "fa-regular fa-heart fa-xl text-[#202122]"} 
+                        cursor-pointer
+                    `}
                     onClick={() => handleLikes(i, item)}
                     >
 
-                </button>
+                </i>
 
 
             </div>
