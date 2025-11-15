@@ -52,7 +52,7 @@ const Navbar = () => {
             </div>
 
             <div className="categories flexy">
-                <Link to='/Men'>WOMEN</Link>
+                <Link to='/Orders'>WOMEN</Link>
                 <Link to='/Men'>MEN</Link>
             </div>
 
@@ -61,7 +61,7 @@ const Navbar = () => {
                 <div className="mobile-menu__item">ACCOUNT</div>
                 <div className="mobile-menu__item">WISHLIST</div>
                 <div className="mobile-menu__item">ORDER</div>
-                <Link to='/Men' className="mobile-menu__item">WOMEN</Link>
+                <Link to='/Orders' className="mobile-menu__item">WOMEN</Link>
                 <Link to='/Men'  className="mobile-menu__item">MEN</Link>
             </div>
         </nav>

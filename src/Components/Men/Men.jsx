@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+
 import "./Men.css";
 import one from "../../assets/Images/md1.jpeg";
 import two from "../../assets/Images/md2.jpeg";
+import { useContext, useState } from "react";
+import { StoreContext } from "../../context/StoreContext";
+
 
 const catalog = [
   {
@@ -19,8 +22,8 @@ const sizes = ["XS", "S", "M", "L", "XL"];
 function Men() {
   const [selectedSize, setSelectedSize] = useState(null);
   const [measurement, setMeasurement] = useState("");
-  const [orders, setOrders] = useState([]);
-  const [likes, setLikes] = useState([]);
+  const { orders, setOrders, likes, setLikes } = useContext(StoreContext);
+
   const [likedItems, setLikedItems] = useState({});
 
 

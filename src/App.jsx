@@ -5,6 +5,7 @@ import Cloths from './Components/Clothclassification/Cloths'
 import Carousel from './Components/Carousel/Carousel'
 import Footer from './Components/Footer/Footer'
 import Men from './Components/Men/Men'
+import OrdersPage from './Components/OrdersPage/OrdersPage'
 import { createBrowserRouter, RouterProvider } from "react-router"
 
 const router = createBrowserRouter([
@@ -27,7 +28,17 @@ const router = createBrowserRouter([
                 <Men/>
            </div>,
   errorElement: <div>404 Page not found</div>
+ },
+
+ {
+  path:'/Orders',
+  element: <div>
+                <Navbar/>
+                <OrdersPage/>
+           </div>,
+  errorElement: <div>404 Page not found</div>
  }
+
  
  
 ])
