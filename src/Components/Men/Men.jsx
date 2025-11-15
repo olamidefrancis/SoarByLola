@@ -21,7 +21,8 @@ function Men() {
   const [measurement, setMeasurement] = useState("");
   const [orders, setOrders] = useState([]);
   const [likes, setLikes] = useState([]);
-  const [likecolor, setLikecolor] = useState(false);
+  const [likedItems, setLikedItems] = useState({});
+
 
   const handleSubmit = (item) => {
     if (!selectedSize && measurement.trim() === "") {
@@ -41,30 +42,31 @@ function Men() {
     setMeasurement("");
   };
 
- const handleLikes = (item) => {
-  setLikecolor((prevColor) => {
-    const newColor = !prevColor; 
+const handleLikes = (itemIndex, item) => {
+  setLikedItems((prev) => {
+    const isLiked = !prev[itemIndex];
 
-    const newLikes = {
-      Picture: item.Picture,
-      size: selectedSize || measurement,
-    };
+    // If liked → add to list
+    if (isLiked) {
+      const newLike = {
+        Picture: item.Picture,
+        size: selectedSize || measurement,
+      };
 
-    
-    if (newColor) {
-      setLikes((prev) => [...prev, newLikes]);
-    } 
-    
+      setLikes((prevLikes) => [...prevLikes, newLike]);
+    }
+    // If unliked → remove last like OR remove matching like
     else {
-      setLikes((prev) => prev.slice(0, -1)); 
+      setLikes((prevLikes) => prevLikes.slice(0, -1));
     }
 
-    return newColor;
+    return { ...prev, [itemIndex]: isLiked };
   });
 
   setSelectedSize(null);
   setMeasurement("");
 };
+
 
 
   return (
@@ -96,13 +98,13 @@ function Men() {
             <div className="flex flex-col gap-2 md:w-1/3 justify-center">
               <h1 className="text-sm uppercase lato-thin">{item.Tile}</h1>
               <button
-                    className={` border border-gray-600  ${
-                        likecolor
-                        ? "bg-red-500 w-[20px] h-[20px] inline-block rounded"
-                        : "bg-white-600 w-[20px] h-[20px] inline-block rounded"
-                    }`}
-                    onClick={() => handleLikes(item)}
-                    ></button>
+                    className={`border border-gray-600 w-[20px] h-[20px] inline-block rounded 
+                        ${likedItems[i] ? "bg-red-500" : "bg-white"}`}
+                    onClick={() => handleLikes(i, item)}
+                    >
+
+                </button>
+
 
             </div>
 
