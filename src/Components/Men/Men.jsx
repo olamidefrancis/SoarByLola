@@ -20,6 +20,8 @@ function Men() {
   const [selectedSize, setSelectedSize] = useState(null);
   const [measurement, setMeasurement] = useState("");
   const [orders, setOrders] = useState([]);
+  const [likes, setLikes] = useState([]);
+  const [likecolor, setLikecolor] = useState(false);
 
   const handleSubmit = (item) => {
     if (!selectedSize && measurement.trim() === "") {
@@ -38,6 +40,32 @@ function Men() {
     setSelectedSize(null);
     setMeasurement("");
   };
+
+ const handleLikes = (item) => {
+  setLikecolor((prevColor) => {
+    const newColor = !prevColor; 
+
+    const newLikes = {
+      Picture: item.Picture,
+      size: selectedSize || measurement,
+    };
+
+    
+    if (newColor) {
+      setLikes((prev) => [...prev, newLikes]);
+    } 
+    
+    else {
+      setLikes((prev) => prev.slice(0, -1)); 
+    }
+
+    return newColor;
+  });
+
+  setSelectedSize(null);
+  setMeasurement("");
+};
+
 
   return (
     <div className="h-full flex flex-col overflow-hidden">
@@ -65,8 +93,17 @@ function Men() {
           
           <div className="pricecon flex flex-col md:flex-row bg-neutral-200 w-full paddy gap-6 rounded-md lato-thin">
            
-            <div className="flex gap-2 md:w-1/3 justify-center">
+            <div className="flex flex-col gap-2 md:w-1/3 justify-center">
               <h1 className="text-sm uppercase lato-thin">{item.Tile}</h1>
+              <button
+                    className={` border border-gray-600  ${
+                        likecolor
+                        ? "bg-red-500 w-[20px] h-[20px] inline-block rounded"
+                        : "bg-white-600 w-[20px] h-[20px] inline-block rounded"
+                    }`}
+                    onClick={() => handleLikes(item)}
+                    ></button>
+
             </div>
 
           
@@ -103,10 +140,10 @@ function Men() {
               />
 
               <button
-                className="submit bg-red-500 text-white py-2 rounded-md"
+                className="submit bg-red-500 text-white py-2 text-lg lato-thin h-[20px]"
                 onClick={() => handleSubmit(item)}
               >
-                Submit
+                ADD TO BAG
               </button>
             </div>
           </div>
