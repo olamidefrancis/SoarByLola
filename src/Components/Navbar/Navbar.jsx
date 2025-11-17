@@ -108,8 +108,8 @@ const Navbar = () => {
 
             {/* Sidebar menu for mobile */}
             <div className={`mobile-menu-sidebar ${menuOpen ? 'open' : ''}`}>
-               <Link to='/Orders' className="mobile-menu__item">ACCOUNT</Link>
-               <div className="mobile-menu__item flexyccgap">
+                <Link to='/Orders' className="mobile-menu__item">ACCOUNT</Link>
+                <div className="mobile-menu__item flexyccgap">
     
                         {/* Wrap ONLY the image in a relative container */}
                         <div className="relative">
@@ -129,7 +129,7 @@ const Navbar = () => {
                         {/* The wishlist link stays normal */}
                         <Link 
                             to="/Wishlist"
-                            className="text-[13px] font-normal text-gray-500 hover:text-red-600"
+                            className="text-[13px] text-white"
                         >
                             WISHLIST
                         </Link>
@@ -155,7 +155,7 @@ const Navbar = () => {
                         {/* Link stays normal */}
                         <Link 
                             to="/Orders" 
-                            className="text-[13px] font-normal text-gray-500 hover:text-red-600"
+                            className="text-[13px] text-white "
                         >
                             ORDER
                         </Link>
