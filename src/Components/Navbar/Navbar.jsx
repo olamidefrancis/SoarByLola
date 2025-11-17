@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import { useContext, useState } from "react";
+import { StoreContext } from "../../context/StoreContext";
 import { Link } from 'react-router'
 import './Navbar.css'
 import orderBasket from "../../assets/Images/icons8-order-cute-outline-96.png"
@@ -8,6 +9,7 @@ import logo from '../../assets/Images/logo1.jpeg'
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
+    const { orders, setOrders, likes, setLikes } = useContext(StoreContext);
 
     const toggleMenu = () => setMenuOpen(!menuOpen);
 
@@ -42,9 +44,32 @@ const Navbar = () => {
                     </div>
 
                     <div className="companyName-personal__personal__wishlist flexyccgap">
-                        <img src={wishlist} alt="wishlist" style={{ width: "20px", height: "20px" }} />
-                        <Link to='/Wishlist'className="text-[13px] font-normal text-gray-500 hover:text-red-600">WISHLIST</Link>
+    
+                        {/* Wrap ONLY the image in a relative container */}
+                        <div className="relative">
+                            <img 
+                                src={wishlist} 
+                                alt="wishlist" 
+                                style={{ width: "20px", height: "20px" }} 
+                            />
+
+                            {likes.length >= 1 && (
+                                <span className="absolute -top-2 -right-2 bg-red-600 text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full">
+                                    {likes.length}
+                                </span>
+                            )}
+                        </div>
+
+                        {/* The wishlist link stays normal */}
+                        <Link 
+                            to="/Wishlist"
+                            className="text-[13px] font-normal text-gray-500 hover:text-red-600"
+                        >
+                            WISHLIST
+                        </Link>
+
                     </div>
+
 
                     <div className="companyName-personal__personal__order flexyccgap">
                         <img src={orderBasket} alt="order" style={{ width: "20px", height: "20px" }} />
