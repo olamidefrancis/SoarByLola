@@ -109,8 +109,58 @@ const Navbar = () => {
             {/* Sidebar menu for mobile */}
             <div className={`mobile-menu-sidebar ${menuOpen ? 'open' : ''}`}>
                <Link to='/Orders' className="mobile-menu__item">ACCOUNT</Link>
-               <Link to='/Wishlist'className="mobile-menu__item">WISHLIST</Link>
-                <Link to='/Orders'className="mobile-menu__item">ORDER</Link>
+               <div className="mobile-menu__item flexyccgap">
+    
+                        {/* Wrap ONLY the image in a relative container */}
+                        <div className="relative">
+                            <img 
+                                src={wishlist} 
+                                alt="wishlist" 
+                                style={{ width: "20px", height: "20px" }} 
+                            />
+
+                            {likes.length >= 1 && (
+                                <span className="absolute -top-2 -right-2 bg-red-600 text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full">
+                                    {likes.length}
+                                </span>
+                            )}
+                        </div>
+
+                        {/* The wishlist link stays normal */}
+                        <Link 
+                            to="/Wishlist"
+                            className="text-[13px] font-normal text-gray-500 hover:text-red-600"
+                        >
+                            WISHLIST
+                        </Link>
+
+                </div>
+                <div className="mobile-menu__item flexyccgap">
+
+                    {/* Basket icon with badge */}
+                    <div className="relative">
+                        <img 
+                            src={orderBasket} 
+                            alt="order" 
+                            style={{ width: "20px", height: "20px" }} 
+                        />
+
+                        {orders.length >= 1 && (
+                            <span className="absolute -top-2 -right-2 bg-red-600 text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full">
+                                {orders.length}
+                            </span>
+                        )}
+                    </div>
+
+                        {/* Link stays normal */}
+                        <Link 
+                            to="/Orders" 
+                            className="text-[13px] font-normal text-gray-500 hover:text-red-600"
+                        >
+                            ORDER
+                        </Link>
+
+                </div>
                 <Link to='/Men' className="mobile-menu__item">WOMEN</Link>
                 <Link to='/Men'  className="mobile-menu__item">MEN</Link>
             </div>
