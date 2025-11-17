@@ -12,7 +12,7 @@ const catalog = [
   },
   {
     Picture: [two, two, two, two],
-    Title: "Black Double Layer Slinky Cowl Neck Long Sleeve Bodysuit",
+    Title: "Men wears",
     Price: 200
   },
 ];
@@ -66,24 +66,32 @@ function Men() {
   };
 
   // Likes
-  const handleLikes = (itemIndex, item) => {
-    setLikedItems((prev) => {
-      const isLiked = !prev[itemIndex];
+ const handleLikes = (itemIndex, item) => {
+  setLikedItems((prev) => {
+    const isLiked = !prev[itemIndex];
 
+    setLikes((prevLikes) => {
       if (isLiked) {
-        const newLike = {
-          Picture: item.Picture,
-          size: selectedSizes[itemIndex] || measurements[itemIndex] || "",
-          Price: item.Price
-        };
-        setLikes((prevLikes) => [...prevLikes, newLike]);
+        // Only add if not already in likes
+        if (!prevLikes.some((like) => like.Title === item.Title)) {
+          return [...prevLikes, {
+            Picture: item.Picture,
+            size: selectedSizes[itemIndex] || measurements[itemIndex] || "",
+            Title: item.Title,
+            Price: item.Price
+          }];
+        }
+        return prevLikes;
       } else {
-        setLikes((prevLikes) => prevLikes.filter((_, idx) => idx !== itemIndex));
+        // Remove by unique Title
+        return prevLikes.filter((like) => like.Title !== item.Tile);
       }
-
-      return { ...prev, [itemIndex]: isLiked };
     });
-  };
+
+    return { ...prev, [itemIndex]: isLiked };
+  });
+};
+
 
   return (
     <div className="h-full flex flex-col overflow-hidden">

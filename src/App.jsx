@@ -6,6 +6,7 @@ import Carousel from './Components/Carousel/Carousel'
 import Footer from './Components/Footer/Footer'
 import Men from './Components/Men/Men'
 import OrdersPage from './Components/OrdersPage/OrdersPage'
+import Wishlist from './Components/Wishlist/Wishlist'
 import { createBrowserRouter, RouterProvider } from "react-router"
 
 const router = createBrowserRouter([
@@ -37,7 +38,17 @@ const router = createBrowserRouter([
                 <OrdersPage/>
            </div>,
   errorElement: <div>404 Page not found</div>
+ },
+ {
+  path:'/Wishlist',
+  element: <div>
+                <Navbar/>
+                <Wishlist/>
+           </div>,
+  errorElement: <div>404 Page not found</div>
  }
+
+
 
  
  

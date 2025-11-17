@@ -43,7 +43,7 @@ const Navbar = () => {
 
                     <div className="companyName-personal__personal__wishlist flexyccgap">
                         <img src={wishlist} alt="wishlist" style={{ width: "20px", height: "20px" }} />
-                        <p className="text-[13px] font-normal text-gray-500 hover:text-red-600">WISHLIST</p>
+                        <Link to='/Wishlist'className="text-[13px] font-normal text-gray-500 hover:text-red-600">WISHLIST</Link>
                     </div>
 
                     <div className="companyName-personal__personal__order flexyccgap">
@@ -61,7 +61,7 @@ const Navbar = () => {
             {/* Sidebar menu for mobile */}
             <div className={`mobile-menu-sidebar ${menuOpen ? 'open' : ''}`}>
                <Link to='/Orders' className="mobile-menu__item">ACCOUNT</Link>
-               <Link to='/Orders'className="mobile-menu__item">WISHLIST</Link>
+               <Link to='/Wishlist'className="mobile-menu__item">WISHLIST</Link>
                 <Link to='/Orders'className="mobile-menu__item">ORDER</Link>
                 <Link to='/Men' className="mobile-menu__item">WOMEN</Link>
                 <Link to='/Men'  className="mobile-menu__item">MEN</Link>
