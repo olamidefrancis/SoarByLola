@@ -116,7 +116,7 @@ function Men() {
 
               {/* PRICE */}
               <div className="price">
-                <h2 className="text-2xl"> {`$ ${item.Price}`}</h2>
+                <h2 className="text-2xl"> {`£ ${item.Price}`}</h2>
               </div>
             </div>
 
@@ -163,7 +163,7 @@ function Men() {
       ))}
 
       {/* ORDERS */}
-      {orders.length > 0 && (
+      {/* {orders.length > 0 && (
         <div className="flex flex-col gap-4 bg-white p-4 rounded-lg shadow">
           <h2 className="text-lg font-semibold">Your Orders</h2>
 
@@ -185,7 +185,7 @@ function Men() {
             </div>
           ))}
         </div>
-      )}
+      )} */}
     </div>
   );
 }

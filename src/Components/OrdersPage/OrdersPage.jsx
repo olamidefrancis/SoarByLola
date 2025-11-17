@@ -61,38 +61,38 @@ function OrdersPage() {
             </a>
 
             {/* PRODUCT INFO */}
-            <div className="w-full">
-              <p className="font-rebrand-light text-lg uppercase mb-2 text-rebrand-base-100-contrast">
-                {item.Title}
-              </p>
+            <div className="w-full  flex flex-col gap-y-1 padorder">
+                <p className="font-rebrand-light text-lg uppercase mb-2 text-rebrand-base-100-contrast">
+                  {item.Title}
+                </p>
 
-              <div className="flex gap-x-2 font-rebrand-light text-lg text-rebrand-base-100-contrast">
-                <span>Size: {item.size}</span>
+                <div className="flex gap-x-2 font-rebrand-light text-lg text-rebrand-base-100-contrast">
+                  <span>Size: {item.size}</span>
 
-                <span className="mx-1 border-l h-[20px] border-rebrand-base-200"></span>
+                  <span className="mx-1 border-l h-[20px] border-rebrand-base-200"></span>
 
-                <span>Qty: {selectedQuantity[i]}</span>
+                  <span>Qty: {selectedQuantity[i]}</span>
 
-                {/* QUANTITY ARROWS */}
-                <div className="qauntitysetter flex flex-col justify-center gap-1 p-4">
-                  <div className="arrow up" onClick={() => handleQuantityAdd(i)}></div>
-                  <div className="arrow down" onClick={() => handleQuantitySub(i)}></div>
+                  {/* QUANTITY ARROWS */}
+                  <div className="qauntitysetter flex flex-col justify-center gap-1 ">
+                    <div className="arrow up" onClick={() => handleQuantityAdd(i)}></div>
+                    <div className="arrow down" onClick={() => handleQuantitySub(i)}></div>
+                  </div>
                 </div>
-              </div>
-            </div>
+                {/* PRICE */}
+                {selectedQuantity[i] > 1 ?<div className="flex flex-col justify-between ">
+                  <span className="font-rebrand-regular text-lg tracking-normal text-rebrand-base-100-contrast">
+                    £ {item.Price * selectedQuantity[i] }
+                  </span>
+                </div>:
+                  <div className="flex flex-col justify-between">
+                    <span className="font-rebrand-regular text-lg tracking-normal text-rebrand-base-100-contrast">
+                      £ {item.Price}
+                    </span>
+                  </div>
+                  }
+             </div>
 
-            {/* PRICE */}
-            {selectedQuantity[i] > 1 ?<div className="flex flex-col items-end justify-between">
-              <span className="font-rebrand-regular text-xs tracking-normal text-rebrand-base-100-contrast">
-                £ {item.Price * selectedQuantity[i] }
-              </span>
-            </div>:
-              <div className="flex flex-col items-end justify-between">
-                <span className="font-rebrand-regular text-xs tracking-normal text-rebrand-base-100-contrast">
-                  £ {item.Price}
-                </span>
-              </div>
-              }
           </li>
         ))}
       </ul>
