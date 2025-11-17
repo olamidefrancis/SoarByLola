@@ -9,7 +9,7 @@ import logo from '../../assets/Images/logo1.jpeg'
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
-    const { orders, setOrders, likes, setLikes } = useContext(StoreContext);
+    const { orders, likes} = useContext(StoreContext);
 
     const toggleMenu = () => setMenuOpen(!menuOpen);
 

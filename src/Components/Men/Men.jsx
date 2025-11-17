@@ -66,29 +66,32 @@ function Men() {
   };
 
   // Likes
- const handleLikes = (itemIndex, item) => {
+const handleLikes = (itemIndex, item) => {
   setLikedItems((prev) => {
-    const isLiked = !prev[itemIndex];
+    const isLiked = !prev[itemIndex]; // toggle
 
     setLikes((prevLikes) => {
       if (isLiked) {
-        // Only add if not already in likes
+        // ADD like only if it doesn't exist already
         if (!prevLikes.some((like) => like.Title === item.Title)) {
-          return [...prevLikes, {
-            Picture: item.Picture,
-            size: selectedSizes[itemIndex] || measurements[itemIndex] || "",
-            Title: item.Title,
-            Price: item.Price
-          }];
+          return [
+            ...prevLikes,
+            {
+              Picture: item.Picture,
+              size: selectedSizes[itemIndex] || measurements[itemIndex] || "",
+              Title: item.Title,
+              Price: item.Price
+            }
+          ];
         }
         return prevLikes;
       } else {
-        // Remove by unique Title
-        return prevLikes.filter((like) => like.Title !== item.Tile);
+        // REMOVE correctly by Title
+        return prevLikes.filter((like) => like.Title !== item.Title);
       }
     });
 
-    return { ...prev, [itemIndex]: isLiked };
+    return { ...prev, [itemIndex]: isLiked }; // toggle icon state
   });
 };
 
