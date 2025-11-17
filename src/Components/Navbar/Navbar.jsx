@@ -14,13 +14,12 @@ const Navbar = () => {
     return (
         <nav className='flexy'>
             <div className="companyName-personal flexy">
-                <Link to='/'> 
-                    <figure className='flex items-center justify-center figcon'>
-                        
-                    
+                <figure className='flex items-center justify-center figcon'>
+                     <Link to='/'>     
                                 <img src={logo} alt="logo" className='lolalogo' />
-                    </figure>
-                 </Link>
+                     </Link>
+                </figure>
+                 
                 <div className="companyName-personal__companyName">
                     <h1 >SOAR_by_LOLA</h1>
                 </div>
