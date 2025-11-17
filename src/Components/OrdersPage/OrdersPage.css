@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+.arrow {
+  width: 0;
+  height: 0;
+  margin: auto;
+  cursor: pointer;
+}
+
+/* ▲ Thick Up Arrow */
+.arrow.up {
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid black;
+}
+
+/* ▼ Thick Down Arrow */
+.arrow.down {
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid black;
+}

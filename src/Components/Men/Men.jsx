@@ -1,33 +1,51 @@
-
 import "./Men.css";
 import one from "../../assets/Images/md1.jpeg";
 import two from "../../assets/Images/md2.jpeg";
 import { useContext, useState } from "react";
 import { StoreContext } from "../../context/StoreContext";
 
-
 const catalog = [
   {
     Picture: [one, one, one, one],
-    Tile: "Black Double Layer Slinky Cowl Neck Long Sleeve Bodysuit",
+    Title: "Black Double Layer Slinky Cowl Neck Long Sleeve Bodysuit",
+    Price: 123
   },
   {
     Picture: [two, two, two, two],
-    Tile: "Black Double Layer Slinky Cowl Neck Long Sleeve Bodysuit",
+    Title: "Black Double Layer Slinky Cowl Neck Long Sleeve Bodysuit",
+    Price: 200
   },
 ];
 
 const sizes = ["XS", "S", "M", "L", "XL"];
 
 function Men() {
-  const [selectedSize, setSelectedSize] = useState(null);
-  const [measurement, setMeasurement] = useState("");
+  const [selectedSizes, setSelectedSizes] = useState({});
+  const [measurements, setMeasurements] = useState({});
   const { orders, setOrders, likes, setLikes } = useContext(StoreContext);
-
   const [likedItems, setLikedItems] = useState({});
 
+  // Handle selecting size per item
+  const handleSize = (itemIndex, size) => {
+    setSelectedSizes((prev) => ({
+      ...prev,
+      [itemIndex]: size,
+    }));
+  };
 
-  const handleSubmit = (item) => {
+  // Handle measurement per item
+  const handleMeasurement = (itemIndex, value) => {
+    setMeasurements((prev) => ({
+      ...prev,
+      [itemIndex]: value,
+    }));
+  };
+
+  // Submit order
+  const handleSubmit = (item, itemIndex) => {
+    const selectedSize = selectedSizes[itemIndex];
+    const measurement = measurements[itemIndex] || "";
+
     if (!selectedSize && measurement.trim() === "") {
       alert("Please select a size or enter your measurements.");
       return;
@@ -36,96 +54,83 @@ function Men() {
     const newOrder = {
       Picture: item.Picture,
       size: selectedSize || measurement,
+      Price: item.Price,
+      Title: item.Title
     };
 
     setOrders((prev) => [...prev, newOrder]);
 
-    
-    setSelectedSize(null);
-    setMeasurement("");
+    // Reset only this item’s selections
+    setSelectedSizes((prev) => ({ ...prev, [itemIndex]: null }));
+    setMeasurements((prev) => ({ ...prev, [itemIndex]: "" }));
   };
 
-const handleLikes = (itemIndex, item) => {
-  setLikedItems((prev) => {
-    const isLiked = !prev[itemIndex];
+  // Likes
+  const handleLikes = (itemIndex, item) => {
+    setLikedItems((prev) => {
+      const isLiked = !prev[itemIndex];
 
-    // If liked → add to list
-    if (isLiked) {
-      const newLike = {
-        Picture: item.Picture,
-        size: selectedSize || measurement,
-      };
+      if (isLiked) {
+        const newLike = {
+          Picture: item.Picture,
+          size: selectedSizes[itemIndex] || measurements[itemIndex] || "",
+          Price: item.Price
+        };
+        setLikes((prevLikes) => [...prevLikes, newLike]);
+      } else {
+        setLikes((prevLikes) => prevLikes.filter((_, idx) => idx !== itemIndex));
+      }
 
-      setLikes((prevLikes) => [...prevLikes, newLike]);
-    }
-    // If unliked → remove last like OR remove matching like
-    else {
-      setLikes((prevLikes) => prevLikes.slice(0, -1));
-    }
-
-    return { ...prev, [itemIndex]: isLiked };
-  });
-
-  setSelectedSize(null);
-  setMeasurement("");
-};
-
-
+      return { ...prev, [itemIndex]: isLiked };
+    });
+  };
 
   return (
     <div className="h-full flex flex-col overflow-hidden">
       {catalog.map((item, i) => (
         <div className="flex flex-col w-full gap-y-6" key={i}>
-         
+
+          {/* IMAGES */}
           <div className="flex w-full overflow-x-auto gap-4 py-2">
             {item.Picture.map((img, idx) => (
-              <div
-                key={idx}
-                role="group"
-                aria-roledescription="slide"
-                aria-label={`Slide ${idx + 1} of ${item.Picture.length}`}
-                className="flex-shrink-0 w-[45%] sm:w-[30%] md:w-[23%] lg:w-[23%] flex-col"
-              >
-                <img
-                  src={img}
-                  alt={`Men outfit image ${idx + 1}`}
-                  className="w-full h-auto rounded-md object-cover"
-                />
+              <div key={idx} className="flex-shrink-0 w-[45%] sm:w-[30%] md:w-[23%] lg:w-[23%] flex-col">
+                <img src={img} className="w-full h-auto rounded-md object-cover" />
               </div>
             ))}
           </div>
 
-          
+          {/* PRODUCT CARD */}
           <div className="pricecon flex flex-col md:flex-row bg-neutral-200 w-full paddy gap-6 rounded-md lato-thin">
-           
+
+            {/* TITLE + LIKE */}
             <div className="flex flex-col gap-6 md:w-1/3 ">
-              <h1 className="text-sm uppercase lato-thin">{item.Tile}</h1>
-                 <i
-                    className={`
-                        ${likedItems[i] 
-                        ? "fa-solid fa-heart fa-2xl text-red-500"     
-                        : "fa-regular fa-heart fa-xl text-[#202122]"} 
-                        cursor-pointer
-                    `}
-                    onClick={() => handleLikes(i, item)}
-                    >
+              <h1 className="text-sm uppercase lato-thin">{item.Title}</h1>
+              <i
+                className={`${
+                  likedItems[i]
+                    ? "fa-solid fa-heart fa-2xl text-red-500"
+                    : "fa-regular fa-heart fa-xl text-[#202122]"
+                } cursor-pointer`}
+                onClick={() => handleLikes(i, item)}
+              ></i>
 
-                </i>
-
-
+              {/* PRICE */}
+              <div className="price">
+                <h2 className="text-2xl"> {`$ ${item.Price}`}</h2>
+              </div>
             </div>
 
-          
+            {/* SIZES */}
             <div className="sizes flex flex-col gap-4 md:w-1/3 items-center">
               <h1 className="text-sm text-center lato-thin">SELECT YOUR SIZE</h1>
               <div className="standardprice flex flex-wrap justify-center gap-3">
                 {sizes.map((size, idx) => (
                   <h2
                     key={idx}
-                    onClick={() => setSelectedSize(size)}
+                    onClick={() => handleSize(i, size)}
                     className={`flex items-center justify-center w-8 h-8 rounded-[10%] text-[16px] 
                       cursor-pointer transition-colors ${
-                        selectedSize === size
+                        selectedSizes[i] === size
                           ? "bg-black text-white"
                           : "hover:bg-white"
                       }`}
@@ -136,63 +141,51 @@ const handleLikes = (itemIndex, item) => {
               </div>
             </div>
 
+            {/* MEASUREMENT + SUBMIT */}
             <div className="flex flex-col gap-2 md:w-1/3 padit">
               <textarea
-                name="measurement"
                 rows={4}
-                value={measurement}
-                onChange={(e) => setMeasurement(e.target.value)}
-                className="lato-thin text-lg border border-gray-400 rounded-lg p-3 
-                  focus:outline-none focus:ring-1 focus:ring-gray-600 focus:border-transparent 
-                  text-gray-800 resize-none w-full shadow-sm paddy "
+                value={measurements[i] || ""}
+                onChange={(e) => handleMeasurement(i, e.target.value)}
+                className="lato-thin text-lg border rounded-lg p-3"
                 placeholder="You can also enter your measurements here..."
               />
 
               <button
                 className="submit bg-red-500 text-white py-2 text-lg lato-thin h-[20px]"
-                onClick={() => handleSubmit(item)}
+                onClick={() => handleSubmit(item, i)}
               >
                 ADD TO BAG
               </button>
             </div>
           </div>
-
-         
         </div>
       ))}
 
+      {/* ORDERS */}
+      {orders.length > 0 && (
+        <div className="flex flex-col gap-4 bg-white p-4 rounded-lg shadow">
+          <h2 className="text-lg font-semibold">Your Orders</h2>
 
-
-         
-
-          {orders.length > 0 && (
-            <div className="flex flex-col gap-4 bg-white p-4 rounded-lg shadow">
-              <h2 className="text-lg font-semibold">Your Orders</h2>
-
-              {orders.map((order, index) => (
-                <div key={index} className="flex flex-col gap-2 border p-3 rounded-md">
-                 
-                  <div className="flex gap-3 overflow-x-auto">
-                    {order.Picture.map((img, id) => (
-                      <img
-                        key={id}
-                        src={img}
-                        alt={`order-img-${id}`}
-                        className="w-24 h-24 object-cover rounded"
-                      />
-                    ))}
-                  </div>
-
+          {orders.map((orders, index) => (
+            <div key={index} className="flex flex-col gap-2 border p-3 rounded-md">
+              <div className="flex gap-3 overflow-x-auto">
                 
-                  <p className="text-sm text-gray-700">
-                    <strong>Size/Measurement:</strong> {order.size}
-                  </p>
-                </div>
-              ))}
-            </div>
-          )}
+                  <img  src={orders.Picture[index]} className="w-24 h-24 object-cover rounded" />
+                
+              </div>
+              <div className="sizename flex gap-x-2">
 
-         
+                  <p className="text-sm text-gray-700">
+                    <strong>Size/Measurement:</strong> {orders.size}
+                  </p>
+                  <h2 className="text-2xl"> {`$ ${orders.Price}`}</h2>
+
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
