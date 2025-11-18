@@ -109,58 +109,38 @@ const Navbar = () => {
             {/* Sidebar menu for mobile */}
             <div className={`mobile-menu-sidebar ${menuOpen ? 'open' : ''}`}>
                 <Link to='/Orders' className="mobile-menu__item">ACCOUNT</Link>
-                <div className="mobile-menu__item flexyccgap">
-    
-                        {/* Wrap ONLY the image in a relative container */}
-                        <div className="relative">
-                            <img 
-                                src={wishlist} 
-                                alt="wishlist" 
-                                style={{ width: "20px", height: "20px" }} 
-                            />
+                 {/* wishlist */}
+                <div className="mobile-menu__item ">
+                    <Link 
+                        to="/Wishlist"
+                        className="text-[13px] text-white relative flex items-center gap-1"
+                    >
+                        WISHLIST
 
-                            {likes.length >= 1 && (
-                                <span className="absolute -top-2 -right-2 bg-red-600 text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full">
-                                    {likes.length}
-                                </span>
-                            )}
-                        </div>
-
-                        {/* The wishlist link stays normal */}
-                        <Link 
-                            to="/Wishlist"
-                            className="text-[13px] text-white"
-                        >
-                            WISHLIST
-                        </Link>
-
+                        {likes.length >= 1 && (
+                            <span className="bg-white text-black text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full">
+                                {likes.length}
+                            </span>
+                        )}
+                    </Link>
                 </div>
-                <div className="mobile-menu__item flexyccgap">
 
-                    {/* Basket icon with badge */}
-                    <div className="relative">
-                        <img 
-                            src={orderBasket} 
-                            alt="order" 
-                            style={{ width: "20px", height: "20px" }} 
-                        />
+                {/* order */}
+                <div className="mobile-menu__item ">
+                    <Link 
+                        to="/Orders" 
+                        className="text-[13px] text-white relative flex items-center gap-1"
+                    >
+                        ORDER
 
                         {orders.length >= 1 && (
-                            <span className="absolute -top-2 -right-2 bg-red-600 text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full">
+                            <span className="bg-white text-black text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full">
                                 {orders.length}
                             </span>
                         )}
-                    </div>
-
-                        {/* Link stays normal */}
-                        <Link 
-                            to="/Orders" 
-                            className="text-[13px] text-white "
-                        >
-                            ORDER
-                        </Link>
-
+                    </Link>
                 </div>
+
                 <Link to='/Men' className="mobile-menu__item">WOMEN</Link>
                 <Link to='/Men'  className="mobile-menu__item">MEN</Link>
             </div>
