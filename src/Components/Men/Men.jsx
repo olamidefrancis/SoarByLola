@@ -67,33 +67,37 @@ function Men() {
 
   // Likes
 const handleLikes = (itemIndex, item) => {
-  setLikedItems((prev) => {
-    const isLiked = !prev[itemIndex]; // toggle
+  const isLiked = !likedItems[itemIndex];
 
-    setLikes((prevLikes) => {
-      if (isLiked) {
-        // ADD like only if it doesn't exist already
-        if (!prevLikes.some((like) => like.Title === item.Title)) {
-          return [
-            ...prevLikes,
-            {
-              Picture: item.Picture,
-              size: selectedSizes[itemIndex] || measurements[itemIndex] || "",
-              Title: item.Title,
-              Price: item.Price
-            }
-          ];
-        }
-        return prevLikes;
-      } else {
-        // REMOVE correctly by Title
-        return prevLikes.filter((like) => like.Title !== item.Title);
+  // 1. update local liked state
+  setLikedItems((prev) => ({
+    ...prev,
+    [itemIndex]: isLiked,
+  }));
+
+  // 2. update global likes separately
+  setLikes((prevLikes) => {
+    if (isLiked) {
+      // ADD like only if it doesn't exist
+      if (!prevLikes.some((like) => like.Title === item.Title)) {
+        return [
+          ...prevLikes,
+          {
+            Picture: item.Picture,
+            size: selectedSizes[itemIndex] || measurements[itemIndex] || "",
+            Title: item.Title,
+            Price: item.Price,
+          },
+        ];
       }
-    });
-
-    return { ...prev, [itemIndex]: isLiked }; // toggle icon state
+      return prevLikes;
+    } 
+    
+    // REMOVE if unliked
+    return prevLikes.filter((like) => like.Title !== item.Title);
   });
 };
+
 
 
   return (

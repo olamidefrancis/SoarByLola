@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+.padwish{
+    padding:0.5rem;
+}
+
+.addtobag{
+    align-self: flex-end;
+}
