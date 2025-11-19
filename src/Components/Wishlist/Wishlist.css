@@ -7,3 +7,31 @@
 .addtobag{
     align-self: flex-end;
 }
+
+
+.arrowx {
+  width: 0;
+  height: 0;
+  margin: auto;
+  cursor: pointer;
+}
+.arrowx.upx {
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid black;
+   
+}
+
+/* ▼ Thick Down Arrow */
+.arrowx.downx {
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid black;
+ 
+}
+
+.lato-thin {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
