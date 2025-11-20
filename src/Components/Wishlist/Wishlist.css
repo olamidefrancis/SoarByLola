@@ -36,6 +36,8 @@
   font-style: normal;
 }
 
-@media screen and (max-width:500px) {
-    .padwishlistright{ padding-right: 0.5rem;}
-}
+
+.padwishlistright{
+     padding-right: 0.7rem;
+
+    }
