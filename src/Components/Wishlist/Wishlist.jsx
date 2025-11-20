@@ -82,8 +82,8 @@ function Wishlist() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f2e6c8] flex justify-center py-12 px-4">
-      <div className="w-full max-w-[900px] bg-[#f2e6c8] rounded-3xl shadow-2xl p-6 md:p-10">
+    <div className="min-h-screen bg-[#f2e6c8] flex justify-center py-12 px-4  ">
+      <div className="w-full max-w-[900px] bg-[#f2e6c8] rounded-3xl shadow-2xl p-6 md:p-10 gap-y-2">
 
         {/* HEADER */}
         <div className="mb-8 text-center">
