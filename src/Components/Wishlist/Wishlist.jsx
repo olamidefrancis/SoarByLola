@@ -12,9 +12,9 @@ function Wishlist() {
     Object.fromEntries(likes.map((_, i) => [i, 1]))
   );
 
-  // ================================
-  // UPDATED: SELECT SIZE + UPDATE likes[]
-  // ================================
+ 
+  //  SELECT SIZE + UPDATE likes[]
+  
   const handleSize = (itemIndex, size) => {
     // Update UI state
     setSelectedSizes((prev) => ({
@@ -30,9 +30,9 @@ function Wishlist() {
     );
   };
 
-  // ================================
-  // UPDATED: HANDLE MEASUREMENT + UPDATE likes[]
-  // ================================
+  
+  //  HANDLE MEASUREMENT + UPDATE likes[]
+
   const handleMeasurement = (itemIndex, value) => {
     // Update UI textarea state
     setMeasurements((prev) => ({
@@ -112,12 +112,12 @@ function Wishlist() {
 
               {/* PRODUCT INFO */}
               <div className="w-full relative flex flex-col gap-y-1 padorder ">
-                <div className='flex justify-between w-full padwish '>
+                <div className='flex justify-between w-full max-[500px]:gap-x-1 padwish '>
                   <p className="font-rebrand-light text-lg uppercase mb-2 text-rebrand-base-100-contrast">
                     {item.Title}
                   </p>
 
-                  <div className="bg-gray-300 rounded-full w-10 h-10 flex justify-center items-center">
+                  <div className="bg-gray-300 rounded-full w-10 h-10 flex justify-center max-[500px]:w-16 items-center">
                     <svg
                       onClick={() => removeFromWish(i)}
                       xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="18" height="18" viewBox="0 0 24 24">
@@ -126,17 +126,17 @@ function Wishlist() {
                   </div>
                 </div>
 
-                <div className="flex justify-between font-rebrand-light text-lg text-rebrand-base-100-contrast  w-[full]">
+                <div className="flex justify-between font-rebrand-light text-lg text-rebrand-base-100-contrast padwishlistright w-[full]">
                   {item.size ?
                     <span>Size: {item.size}</span>
                     :
                     <div className='flex flex-col gap-y-1'>
-                      <div className="flex justify-center gap-1" >
+                      <div className="flex justify-start gap-1" >
                         {sizes.map((size, idx) => (
                         
-                            <h3
+                            <h4
                               key={idx} onClick={() => handleSize(i, size)}
-                              className={`flex items-center justify-center w-8 h-8 rounded-[10%] text-[16px] 
+                              className={`flex items-center justify-center w-8 h-8 rounded-[10%] text-[12px] 
                                 cursor-pointer transition-colors ${
                                   selectedSizes[i] === size
                                     ? "bg-black text-white"
@@ -144,7 +144,7 @@ function Wishlist() {
                                 }`}
                             >
                               {size}
-                            </h3>
+                            </h4>
                        
                         ))}
                        </div>
@@ -152,8 +152,8 @@ function Wishlist() {
                               rows={2}
                               value={measurements[i] || ""}
                               onChange={(e) => handleMeasurement(i, e.target.value)}
-                              className="lato-thin text-lg border rounded-m p-3"
-                              placeholder="You can also enter your measurements here..."
+                              className="lato-thin text-lg border border-gray-400  rounded-lg paddy focus:outline-none focus:border-black "
+                              placeholder="Or specify measurements here..."
                             />
                     </div>
                   }
