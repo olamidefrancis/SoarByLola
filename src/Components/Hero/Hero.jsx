@@ -5,7 +5,7 @@ import video3 from '../../assets/Images/WhatsApp Video 2025-10-23 at 20.33.44.mp
 
 const Hero = () => {
   return (
-    <div className="relative w-full h-[80vh] overflow-hidden grid grid-cols-1 md:grid-cols-3">
+    <div className="relative w-full h-[80vh] overflow-hidden grid grid-cols-3 ">
 
       {/* VIDEO 1 */}
       <div className="relative overflow-hidden">
