@@ -118,44 +118,66 @@ const Navbar = () => {
         </Link>
       </div>
 
+      {/* DARK OVERLAY */}
+      {menuOpen && (
+        <div
+          onClick={() => setMenuOpen(false)}
+          className="fixed inset-0 bg-black/40 z-40"
+        ></div>
+      )}
+
       {/* MOBILE SIDEBAR */}
       <div
-        className={`fixed top-0 right-0 h-full w-[70%] max-w-[280px] transform transition-transform navpad duration-300 ${
-          menuOpen ? "translate-x-0 navpad" : "translate-x-full navpad"
+        className={`fixed top-0 right-0 h-full w-[70%] max-w-[280px] transform transition-transform duration-300 z-50 ${
+          menuOpen ? "translate-x-0" : "translate-x-full"
         }`}
         style={{
-          background: "#ffffff",
-          color: "#141414",
+          background: "rgba(214, 40, 40, 0.15)",  // red glass
+          backdropFilter: "blur(12px)",
+          WebkitBackdropFilter: "blur(12px)",
+          color: "#ffffff",
           padding: "24px",
-          boxShadow: "-10px 0 30px rgba(0, 0, 0, 0.15)",
+        
         }}
       >
-        <div className="flex flex-col gap-6 mt-10">
-          <Link to="/Orders" className="text-lg font-medium">
+
+        {/* CLOSE BUTTON INSIDE */}
+        <div className="flex justify-end">
+          <span
+            onClick={() => setMenuOpen(false)}
+            className="text-3xl font-bold text-white cursor-pointer hover:text-gray-200 transition"
+          >
+            ✕
+          </span>
+        </div>
+
+        <div className="flex flex-col gap-6 mt-8">
+
+          <Link to="/Orders" className="text-lg font-medium text-white">
             ACCOUNT
           </Link>
 
-          <Link to="/Wishlist" className="flex items-center gap-2 text-lg font-medium">
+          <Link to="/Wishlist" className="flex items-center gap-2 text-lg font-medium text-white">
             WISHLIST
             {likes.length >= 1 && (
-              <span className="bg-[#d62828] text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full">
+              <span className="bg-white text-[#d62828] text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full">
                 {likes.length}
               </span>
             )}
           </Link>
 
-          <Link to="/Orders" className="flex items-center gap-2 text-lg font-medium">
+          <Link to="/Orders" className="flex items-center gap-2 text-lg font-medium text-white">
             ORDER
             {orders.length >= 1 && (
-              <span className="bg-[#d62828] text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full">
+              <span className="bg-white text-[#d62828] text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full">
                 {orders.length}
               </span>
             )}
           </Link>
 
-          <div className="mt-6 border-t border-gray-200 pt-4 flex flex-col gap-4">
-            <Link to="/Men" className="text-lg">WOMEN</Link>
-            <Link to="/Men" className="text-lg">MEN</Link>
+          <div className="mt-6 border-t border-white/30 pt-4 flex flex-col gap-4">
+            <Link to="/Men" className="text-lg text-white">WOMEN</Link>
+            <Link to="/Men" className="text-lg text-white">MEN</Link>
           </div>
         </div>
       </div>
