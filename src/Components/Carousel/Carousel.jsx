@@ -7,6 +7,11 @@ import two from '../../assets/Images/md2.jpeg'
 import useEmblaCarousel from 'embla-carousel-react'
 import './Carousel.css'
 
+const collections= [
+  [one,one,one,one],
+  [two,two,two,two]
+]
+
 const Carousel = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
 
@@ -41,83 +46,68 @@ const Carousel = () => {
       </div>
 
       {/* CAROUSEL */}
-      <div className="embla relative w-full mx-auto px-4">
+    <div className="embla relative w-full mx-auto">
+  
+      <div className="embla__viewport overflow-hidden w-full" ref={emblaRef}>
         
-        <div className="embla__viewport" ref={emblaRef}>
-          <div className="embla__container w-full">
+        <div className="embla__container flex w-full">
+          
+          {collections.map((group, groupIndex) => (
+            <div 
+              key={`group-${groupIndex}`} 
+              className="embla__slide flex-[0_0_100%] w-full px-4"
+            >
 
-            {/* SLIDE 1 */}
-            <div className="embla__slide">
-              <div className="relative overflow-hidden rounded-xl shadow-lg group">
-
-                <img 
-                  src={one} 
-                  alt="look one" 
-                  className="w-full h-[420px] object-cover group-hover:scale-105 transition duration-700"
-                />
-
-                
-                <div className="absolute inset-0 bg-black/20"></div>
-              </div>
-
-               <div className="relative overflow-hidden rounded-xl shadow-lg group">
-                <img 
-                  src={two} 
-                  alt="look two" 
-                  className="w-full h-[420px] object-cover group-hover:scale-105 transition duration-700"
-                />
-                <div className="absolute inset-0 bg-black/20"></div>
+              <div className="flex w-full gap-4">
+                {group.slice(0, 4).map((pixs, pixInd) => (
+                  <div 
+                    key={`image-${groupIndex}-${pixInd}`} 
+                    className="relative overflow-hidden rounded-xl shadow-lg bg-[#fdfaf5] group flex-1"
+                  >
+                    <img 
+                      src={pixs}
+                      alt={`collection-${pixInd}`}
+                      className="w-full h-[300px] md:h-[400px] object-cover transition duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/10"></div>
+                  </div>
+                ))}
               </div>
 
             </div>
+          ))}
 
-            {/* SLIDE 2 */}
-            <div className="embla__slide">
-              <div className="relative overflow-hidden rounded-xl shadow-lg group">
-                <img 
-                  src={two} 
-                  alt="look two" 
-                  className="w-full h-[420px] object-cover group-hover:scale-105 transition duration-700"
-                />
-                <div className="absolute inset-0 bg-black/20"></div>
-              </div>
-            </div>
-
-            {/* SLIDE 3 */}
-            <div className="embla__slide">
-              <div className="relative overflow-hidden rounded-xl shadow-lg group">
-                <img 
-                  src={three} 
-                  alt="look three" 
-                  className="w-full h-[420px] object-cover group-hover:scale-105 transition duration-700"
-                />
-                <div className="absolute inset-0 bg-black/20"></div>
-              </div>
-            </div>
-
-          </div>
         </div>
+      </div>
 
-        {/* ARROWS */}
-        <div className="absolute top-1/2 left-0 right-0 flex justify-between -translate-y-1/2 px-4 pointer-events-none">
+       {/* ARROWS */}
+        <div className="absolute top-1/2 left-0 right-0 flex justify-between -translate-y-1/2 px-6 pointer-events-none">
           
           <button
             onClick={scrollPrev}
-            className="pointer-events-auto w-10 h-10 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center text-lg font-bold hover:bg-[#d62828] hover:text-white transition"
+            className="pointer-events-auto w-12 h-12 rounded-full bg-white/90 shadow-xl border border-gray-200 
+                      flex items-center justify-center text-xl font-bold 
+                      hover:bg-[#d62828] hover:text-white transition-all"
           >
             ❮
           </button>
 
           <button
             onClick={scrollNext}
-            className="pointer-events-auto w-10 h-10 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center text-lg font-bold hover:bg-[#d62828] hover:text-white transition"
+            className="pointer-events-auto w-12 h-12 rounded-full bg-white/90 shadow-xl border border-gray-200 
+                      flex items-center justify-center text-xl font-bold 
+                      hover:bg-[#d62828] hover:text-white transition-all"
           >
             ❯
           </button>
 
         </div>
 
-      </div>
+    </div>
+
+
+
+
     </div>
   )
 }
