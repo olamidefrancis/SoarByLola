@@ -96,8 +96,8 @@ const Navbar = () => {
 
         {/* MOBILE ICON */}
         <div className="md:hidden" onClick={toggleMenu}>
-          <span className="text-2xl font-bold text-[#d62828] cursor-pointer">
-            {menuOpen ? "✕" : "☰"}
+          <span className="text-3xl font-bold text-[#d62828] cursor-pointer">
+            {menuOpen ? <h2>X</h2> : <h2>☰</h2>}
           </span>
         </div>
       </div>
