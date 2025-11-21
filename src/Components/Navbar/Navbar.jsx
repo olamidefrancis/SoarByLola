@@ -1,151 +1,166 @@
 import { useContext, useState } from "react";
 import { StoreContext } from "../../context/StoreContext";
-import { Link } from 'react-router'
-import './Navbar.css'
-import orderBasket from "../../assets/Images/icons8-order-cute-outline-96.png"
-import profile from "../../assets/Images/icons8-account-96.png"
-import wishlist from "../../assets/Images/icons8-love-96.png"
-import logo from '../../assets/Images/logo1.jpeg'
+import { Link } from "react-router";
+import "./Navbar.css";
+import orderBasket from "../../assets/Images/icons8-order-cute-outline-96.png";
+import profile from "../../assets/Images/icons8-account-96.png";
+import wishlist from "../../assets/Images/icons8-love-96.png";
+import logo from "../../assets/Images/logo1.jpeg";
 
 const Navbar = () => {
-    const [menuOpen, setMenuOpen] = useState(false);
-    const { orders, likes} = useContext(StoreContext);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const { orders, likes } = useContext(StoreContext);
 
-    const toggleMenu = () => setMenuOpen(!menuOpen);
+  const toggleMenu = () => setMenuOpen(!menuOpen);
 
-    return (
-        <nav className='flexy'>
-            <div className="companyName-personal flexy">
-                <figure className='flex items-center justify-center figcon'>
-                     <Link to='/'>     
-                                <img src={logo} alt="logo" className='lolalogo' />
-                     </Link>
-                </figure>
-                 
-                <div className="companyName-personal__companyName">
-                    <h1 >SOAR_by_LOLA</h1>
-                </div>
+  return (
+    <nav className="w-full sticky top-0 z-50 bg-white shadow-sm border-b border-gray-200 ">
 
-                {/* Hamburger icon for small screens */}
-                <div className="hamburger" onClick={toggleMenu}>
-                    {menuOpen ? (
-                        <span style={{ fontSize: "1.8rem", cursor: "pointer" }}
-                            className='text-red-700'
-                        >✕</span>
-                    ) : (
-                        <span style={{ fontSize: "1.8rem", cursor: "pointer" }}className='text-red-700'>☰</span>
-                    )}
-                </div>
+      {/* MAIN HEADER */}
+      <div className="flex items-center justify-between px-4 py-3 md:px-10 bg-[#f2e6c8] navpad">
 
-                <div className="companyName-personal__personal flexy">
-                    <div className="companyName-personal__personal__account flexyccgap">
-                        <img src={profile} alt="account" style={{ width: "20px", height: "20px" }} />
-                        <p className="text-[13px] font-normal text-gray-500 hover:text-red-600">ACCOUNT</p>
-                    </div>
+        {/* LEFT: LOGO */}
+        <div className="flex items-center gap-3">
+          <figure>
+            <Link to="/">
+              <img
+                src={logo}
+                alt="logo"
+                className="h-[50px] w-[50px] rounded-full object-cover shadow"
+              />
+            </Link>
+          </figure>
 
-                    <div className="companyName-personal__personal__wishlist flexyccgap">
-    
-                        {/* Wrap ONLY the image in a relative container */}
-                        <div className="relative">
-                            <img 
-                                src={wishlist} 
-                                alt="wishlist" 
-                                style={{ width: "20px", height: "20px" }} 
-                            />
+          <h1
+            className="text-sm md:text-lg tracking-[3px]"
+            style={{
+              fontFamily: "Playfair Display, serif",
+              color: "#141414",
+            }}
+          >
+            SOAR_BY_LOLA
+          </h1>
+        </div>
 
-                            {likes.length >= 1 && (
-                                <span className="absolute -top-2 -right-2 bg-red-600 text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full">
-                                    {likes.length}
-                                </span>
-                            )}
-                        </div>
+        {/* ICON BAR */}
+        <div className="hidden md:flex items-center gap-6">
 
-                        {/* The wishlist link stays normal */}
-                        <Link 
-                            to="/Wishlist"
-                            className="text-[13px] font-normal text-gray-500 hover:text-red-600"
-                        >
-                            WISHLIST
-                        </Link>
+          {/* ACCOUNT */}
+          <div className="flex items-center gap-2 cursor-pointer">
+            <img src={profile} alt="account" className="w-[20px] h-[20px]" />
+            <p className="text-[13px] font-medium text-[#141414] hover:text-[#d62828] transition">
+              ACCOUNT
+            </p>
+          </div>
 
-                    </div>
+          {/* WISHLIST */}
+          <div className="flex items-center gap-2">
+            <div className="relative">
+              <img src={wishlist} alt="wishlist" className="w-[20px] h-[20px]" />
 
+              {likes.length >= 1 && (
+                <span className="absolute -top-2 -right-2 bg-[#d62828] text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full">
+                  {likes.length}
+                </span>
+              )}
+            </div>
 
-                    <div className="companyName-personal__personal__order flexyccgap">
+            <Link
+              to="/Wishlist"
+              className="text-[13px] font-medium text-[#141414] hover:text-[#d62828] transition"
+            >
+              WISHLIST
+            </Link>
+          </div>
 
-    {/* Basket icon with badge */}
-    <div className="relative">
-        <img 
-            src={orderBasket} 
-            alt="order" 
-            style={{ width: "20px", height: "20px" }} 
-        />
+          {/* ORDERS */}
+          <div className="flex items-center gap-2">
+            <div className="relative">
+              <img src={orderBasket} alt="order" className="w-[20px] h-[20px]" />
 
-        {orders.length >= 1 && (
-            <span className="absolute -top-2 -right-2 bg-red-600 text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full">
+              {orders.length >= 1 && (
+                <span className="absolute -top-2 -right-2 bg-[#d62828] text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full">
+                  {orders.length}
+                </span>
+              )}
+            </div>
+
+            <Link
+              to="/Orders"
+              className="text-[13px] font-medium text-[#141414] hover:text-[#d62828] transition"
+            >
+              ORDER
+            </Link>
+          </div>
+        </div>
+
+        {/* MOBILE ICON */}
+        <div className="md:hidden" onClick={toggleMenu}>
+          <span className="text-2xl font-bold text-[#d62828] cursor-pointer">
+            {menuOpen ? "✕" : "☰"}
+          </span>
+        </div>
+      </div>
+
+      {/* CATEGORY BAR */}
+      <div className="bg-[#fdfaf5] border-t border-gray-200 py-2 flex justify-center gap-10 h-[30px] navpad">
+        <Link
+          to="/Men"
+          className="text-lg tracking-[2px] font-medium text-[#141414] hover:text-[#d62828] transition"
+        >
+          WOMEN
+        </Link>
+        <Link
+          to="/Men"
+          className="text-lg tracking-[2px] font-medium text-[#141414] hover:text-[#d62828] transition "
+        >
+          MEN
+        </Link>
+      </div>
+
+      {/* MOBILE SIDEBAR */}
+      <div
+        className={`fixed top-0 right-0 h-full w-[70%] max-w-[280px] transform transition-transform navpad duration-300 ${
+          menuOpen ? "translate-x-0 navpad" : "translate-x-full navpad"
+        }`}
+        style={{
+          background: "#ffffff",
+          color: "#141414",
+          padding: "24px",
+          boxShadow: "-10px 0 30px rgba(0, 0, 0, 0.15)",
+        }}
+      >
+        <div className="flex flex-col gap-6 mt-10">
+          <Link to="/Orders" className="text-lg font-medium">
+            ACCOUNT
+          </Link>
+
+          <Link to="/Wishlist" className="flex items-center gap-2 text-lg font-medium">
+            WISHLIST
+            {likes.length >= 1 && (
+              <span className="bg-[#d62828] text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full">
+                {likes.length}
+              </span>
+            )}
+          </Link>
+
+          <Link to="/Orders" className="flex items-center gap-2 text-lg font-medium">
+            ORDER
+            {orders.length >= 1 && (
+              <span className="bg-[#d62828] text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full">
                 {orders.length}
-            </span>
-        )}
-    </div>
+              </span>
+            )}
+          </Link>
 
-    {/* Link stays normal */}
-    <Link 
-        to="/Orders" 
-        className="text-[13px] font-normal text-gray-500 hover:text-red-600"
-    >
-        ORDER
-    </Link>
+          <div className="mt-6 border-t border-gray-200 pt-4 flex flex-col gap-4">
+            <Link to="/Men" className="text-lg">WOMEN</Link>
+            <Link to="/Men" className="text-lg">MEN</Link>
+          </div>
+        </div>
+      </div>
+    </nav>
+  );
+};
 
-                   </div>
-
-                </div>
-            </div>
-
-            <div className="categories flexy">
-                <Link to='/Men'>WOMEN</Link>
-                <Link to='/Men'>MEN</Link>
-            </div>
-
-            {/* Sidebar menu for mobile */}
-            <div className={`mobile-menu-sidebar ${menuOpen ? 'open' : ''}`}>
-                <Link to='/Orders' className="mobile-menu__item">ACCOUNT</Link>
-                 {/* wishlist */}
-                <div className="mobile-menu__item ">
-                    <Link 
-                        to="/Wishlist"
-                        className="text-[13px] text-white relative flex items-center gap-1"
-                    >
-                        WISHLIST
-
-                        {likes.length >= 1 && (
-                            <span className="bg-white text-black text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full">
-                                {likes.length}
-                            </span>
-                        )}
-                    </Link>
-                </div>
-
-                {/* order */}
-                <div className="mobile-menu__item ">
-                    <Link 
-                        to="/Orders" 
-                        className="text-[13px] text-white relative flex items-center gap-1"
-                    >
-                        ORDER
-
-                        {orders.length >= 1 && (
-                            <span className="bg-white text-black text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full">
-                                {orders.length}
-                            </span>
-                        )}
-                    </Link>
-                </div>
-
-                <Link to='/Men' className="mobile-menu__item">WOMEN</Link>
-                <Link to='/Men'  className="mobile-menu__item">MEN</Link>
-            </div>
-        </nav>
-    )
-}
-
-export default Navbar
+export default Navbar;

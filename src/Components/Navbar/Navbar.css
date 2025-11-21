@@ -125,7 +125,9 @@ nav{
   border-radius: 100%;
   padding: 0.5rem;
 }
-
+.navpad{
+  padding:0.5rem;
+}
 
 @media screen and (max-width: 600px) {
   .hamburger {

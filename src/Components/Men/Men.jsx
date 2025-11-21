@@ -115,11 +115,11 @@ const handleLikes = (itemIndex, item) => {
           </div>
 
           {/* PRODUCT CARD */}
-          <div className="pricecon flex flex-col md:flex-row bg-neutral-200 w-full paddy gap-6 rounded-md lato-thin">
+          <div className="pricecon flex flex-col md:flex-row bg-neutral-200 w-full paddy gap-6 rounded-md lato-thin bg-[#f2e6c8]">
 
             {/* TITLE + LIKE */}
             <div className="flex flex-col gap-6 md:w-1/3 ">
-              <h1 className="text-sm uppercase lato-thin">{item.Title}</h1>
+              <h1 className="text-sm  uppercase lato-thin">{item.Title}</h1>
               <i
                 className={`${
                   likedItems[i]
