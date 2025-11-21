@@ -121,3 +121,129 @@ const Footer = () => {
 
 export default Footer
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import React, { useState, useEffect } from "react"
+// import logo from "../../assets/Images/logo1.jpeg"
+
+// export default function Footer() {
+//   const [isMobile, setIsMobile] = useState(window.innerWidth <= 500)
+
+//   useEffect(() => {
+//     const resize = () => setIsMobile(window.innerWidth <= 500)
+//     window.addEventListener("resize", resize)
+//     return () => window.removeEventListener("resize", resize)
+//   }, [])
+
+//   return (
+//     <footer className="w-full bg-[#fdfaf5] border-t border-[#e5e2dc]">
+
+//       {/* ================= MOBILE VIEW ================= */}
+//       {isMobile ? (
+//         <div className="flex flex-col items-center justify-center py-14 gap-6 px-4">
+
+//           <img
+//             src={logo}
+//             alt="Soar by Lola"
+//             className="w-28 h-28 rounded-full object-cover shadow-lg border border-[#e5e2dc]"
+//           />
+
+//           <h1 className="text-lg tracking-[3px] font-semibold text-[#141414]">
+//             SOAR BY LOLA
+//           </h1>
+
+//           <div className="flex gap-6 text-sm text-[#5a5a5a]">
+//             <a href="#" className="hover:text-[#b8903e] transition">Instagram</a>
+//             <a href="#" className="hover:text-[#b8903e] transition">Facebook</a>
+//             <a href="#" className="hover:text-[#b8903e] transition">X</a>
+//           </div>
+
+//           <p className="text-xs text-[#5a5a5a] mt-3">
+//             © {new Date().getFullYear()} Soar by Lola
+//           </p>
+//         </div>
+//       ) : (
+
+//       /* ================= DESKTOP VIEW ================= */
+//       <div className="w-full px-4 md:px-16 lg:px-32 py-16">
+
+//         {/* Logo Section */}
+//         <div className="flex flex-col items-center mb-16">
+//           <img
+//             src={logo}
+//             alt="Soar by Lola"
+//             className="w-24 h-24 rounded-full shadow-md border border-[#e5e2dc]"
+//           />
+
+//           <h2 className="mt-4 text-xl tracking-[4px] text-[#141414]">
+//             SOAR BY LOLA
+//           </h2>
+//         </div>
+
+//         {/* Main Grid */}
+//         <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-sm text-[#5a5a5a]">
+
+//           {/* About */}
+//           <div>
+//             <h3 className="text-[#141414] font-semibold tracking-wider mb-5">ABOUT</h3>
+//             <ul className="space-y-3">
+//               <li><a className="hover:text-[#b8903e]" href="#">Our Story</a></li>
+//             </ul>
+//           </div>
+
+//           {/* Info */}
+//           <div>
+//             <h3 className="text-[#141414] font-semibold tracking-wider mb-5">INFO</h3>
+//             <ul className="space-y-3">
+//               <li><a className="hover:text-[#b8903e]" href="#">Terms & Conditions</a></li>
+//             </ul>
+//           </div>
+
+//           {/* Account */}
+//           <div>
+//             <h3 className="text-[#141414] font-semibold tracking-wider mb-5">ACCOUNT</h3>
+//             <ul className="space-y-3">
+//               <li><a className="hover:text-[#b8903e]" href="#">Order History</a></li>
+//             </ul>
+//           </div>
+
+//           {/* Social */}
+//           <div>
+//             <h3 className="text-[#141414] font-semibold tracking-wider mb-5">SOCIAL</h3>
+//             <ul className="space-y-3">
+//               <li><a className="hover:text-[#b8903e]" href="#">Instagram</a></li>
+//               <li><a className="hover:text-[#b8903e]" href="#">Facebook</a></li>
+//               <li><a className="hover:text-[#b8903e]" href="#">X</a></li>
+//               <li><a className="hover:text-[#b8903e]" href="#">TikTok</a></li>
+//             </ul>
+//           </div>
+
+//         </div>
+
+//         {/* Bottom Area */}
+//         <div className="mt-14 border-t border-[#e5e2dc] pt-6 text-center text-xs text-[#5a5a5a]">
+//           © {new Date().getFullYear()}  
+//           <span className="text-[#141414] ml-1">Soar by Lola</span>. All rights reserved.
+//         </div>
+
+//       </div>
+//       )}
+
+//     </footer>
+//   )
+// }
+

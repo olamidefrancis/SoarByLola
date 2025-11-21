@@ -58,7 +58,7 @@ const Carousel = () => {
               className="embla__slide flex-[0_0_100%] w-full px-4"
             >
 
-              <div className="flex w-full gap-4">
+              <div className="flex w-full ">
                 {group.slice(0, 4).map((pixs, pixInd) => (
                   <div 
                     key={`image-${groupIndex}-${pixInd}`} 
