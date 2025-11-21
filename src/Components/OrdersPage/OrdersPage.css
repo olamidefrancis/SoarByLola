@@ -5,6 +5,10 @@
     padding-left:5px;
 }
 
+.padorder{
+  padding: 0.5rem;
+}
+
 .arrow {
   width: 0;
   height: 0;

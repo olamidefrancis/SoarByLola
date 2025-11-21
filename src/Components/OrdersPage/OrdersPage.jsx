@@ -41,11 +41,11 @@ function OrdersPage() {
         </div>
 
         {/* ORDER LIST */}
-        <ul className="space-y-6">
+        <ul className="space-y-6 ">
           {orders?.map((item, i) => (
             <li
               key={i}
-              className="flex flex-col md:flex-row gap-6 p-5 rounded-2xl bg-white shadow-md border border-[#141414]/10"
+              className="flex flex-col md:flex-row gap-6 p-5 rounded-2xl bg-white shadow-md border border-[#141414]/10 padorder"
             >
               {/* IMAGE */}
               <div className="w-[130px] mx-auto md:mx-0">
@@ -57,47 +57,50 @@ function OrdersPage() {
               </div>
 
               {/* CONTENT */}
-              <div className="flex-1 flex flex-col justify-between">
+              <div className="flex-1 flex flex-col justify-between gap-y-1">
 
-                {/* TITLE */}
-                <h2
-                  className="text-xl tracking-wide text-[#141414] uppercase"
-                  style={{ fontFamily: "'Playfair Display', serif" }}
-                >
-                  {item.Title}
-                </h2>
+                {/* TITLE  AND REMOVE FROM BAG*/}
+                <div className="flex justify-spacebetween">
+                  <h2
+                    className="text-xl tracking-wide text-[#141414] uppercase text-semibold"
+                    style={{ fontFamily: "'Playfair Display', serif" }}
+                  >
+                    {item.Title}
+                  </h2>
+
+                </div>
 
                 {/* SIZE + QTY */}
-                <div className="flex flex-wrap items-center gap-6 mt-4 text-[#141414] text-sm">
+                <div className="flex flex-wrap items-center gap-6 mt-4 text-[#141414] font-semibold">
 
-                  <span>
-                    Size: <span className="font-semibold">{item.size}</span>
+                  <span className="text-xl">
+                    Size: <span className="font-semibold ">{item.size}</span>
                   </span>
 
                   <div className="flex items-center gap-3">
                     <button
                       onClick={() => handleQuantitySub(i)}
-                      className="w-8 h-8 flex items-center justify-center rounded-full border border-[#141414] hover:bg-[#141414] hover:text-[#f2e6c8] transition"
+                      className="w-8 h-8 flex items-center justify-center rounded-full border border-[#141414] hover:bg-[#141414] hover:text-[#f2e6c8] transition text-xl"
                     >
-                      −
+                        <p className="text-2xl">-</p>
                     </button>
 
-                    <span className="font-medium min-w-[24px] text-center">
+                    <span className="font-medium min-w-[24px] text-center text-2xl">
                       {selectedQuantity[i]}
                     </span>
 
                     <button
                       onClick={() => handleQuantityAdd(i)}
-                      className="w-8 h-8 flex items-center justify-center rounded-full border border-[#141414] hover:bg-[#141414] hover:text-[#f2e6c8] transition"
+                      className="w-8 h-8 flex items-center justify-center rounded-full border border-[#141414] hover:bg-[#141414] hover:text-[#f2e6c8] transition "
                     >
-                      +
+                      <p className="text-2xl">+</p>
                     </button>
                   </div>
                 </div>
 
                 {/* PRICE */}
-                <div className="mt-4 text-right">
-                  <span className="text-lg font-semibold text-[#141414]">
+                <div className="mt-4 flex justify-start">
+                  <span className="text-xl font-semibold text-[#141414]">
                     £ {item.Price * selectedQuantity[i]}
                   </span>
                 </div>

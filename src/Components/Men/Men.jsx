@@ -162,7 +162,7 @@ const handleLikes = (itemIndex, item) => {
                 rows={4}
                 value={measurements[i] || ""}
                 onChange={(e) => handleMeasurement(i, e.target.value)}
-                className="lato-thin text-lg border border-gray-400  rounded-lg paddy focus:outline-none focus:border-black focus:ring-1 "
+                className="lato-thin text-lg border border-gray-500  rounded-lg p-3 focus:outline-none focus:border-black focus:ring-1 "
                 placeholder="You can also enter your measurements here..."
               />
 
