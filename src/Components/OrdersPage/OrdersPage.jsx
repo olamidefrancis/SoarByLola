@@ -73,7 +73,7 @@ function OrdersPage() {
                     {item.Title}
                   </h2>
                   
-                  <div className="w-8 h-8 flex items-center justify-center rounded-full border border-[#141414] hover:bg-[#d62828] hover:text-[#f2e6c8]  hover:border-[#d62828]  transition text-xl max-[500px]:w-10" onClick={()=>{handleOrderRemoval(i)}}><p>X</p></div>
+                  <div className="w-8 h-8 flex items-center justify-center rounded-full border border-[#141414] hover:bg-[#d62828] hover:text-[#f2e6c8]  hover:border-[#d62828]  transition text-xl max-[500px]:w-10 max-[500px]:bg-[#d62828] max-[500px]:text-white max-[500px]:border-[#d62828]" onClick={()=>{handleOrderRemoval(i)}}><p>X</p></div>
                 </div>
 
                 {/* SIZE + QTY */}
