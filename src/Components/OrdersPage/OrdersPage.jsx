@@ -3,7 +3,7 @@ import { StoreContext } from "../../context/StoreContext";
 import "./OrdersPage.css";
 
 function OrdersPage() {
-  const { orders } = useContext(StoreContext);
+  const { orders,setOrders } = useContext(StoreContext);
 
   const [selectedQuantity, setSelectedQuantity] = useState(
     Object.fromEntries(orders.map((_, i) => [i, 1]))
@@ -22,6 +22,11 @@ function OrdersPage() {
       [index]: Math.max(1, prev[index] - 1),
     }));
   };
+
+  const handleOrderRemoval =(itemIndex)=>{
+    setOrders((prevorders) => prevorders.filter((_, i) => i !== itemIndex));
+  }
+
 
   return (
     <div className="min-h-screen bg-[#f2e6c8] flex justify-center py-12 px-4">
@@ -60,14 +65,15 @@ function OrdersPage() {
               <div className="flex-1 flex flex-col justify-between gap-y-1">
 
                 {/* TITLE  AND REMOVE FROM BAG*/}
-                <div className="flex justify-spacebetween">
+                <div className="flex justify-between ">
                   <h2
                     className="text-xl tracking-wide text-[#141414] uppercase text-semibold"
                     style={{ fontFamily: "'Playfair Display', serif" }}
                   >
                     {item.Title}
                   </h2>
-
+                  
+                  <div className="w-8 h-8 flex items-center justify-center rounded-full border border-[#141414] hover:bg-[#d62828] hover:text-[#f2e6c8]  hover:border-[#d62828]  transition text-xl" onClick={()=>{handleOrderRemoval(i)}}><p>X</p></div>
                 </div>
 
                 {/* SIZE + QTY */}
