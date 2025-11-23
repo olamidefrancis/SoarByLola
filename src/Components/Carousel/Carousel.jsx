@@ -33,14 +33,14 @@ const Carousel = () => {
     <div className="w-full bg-[#fdfaf5] py-16">
 
       {/* TITLE */}
-      <div className="text-center mb-8">
+      <div className=" flex flex-col justify-center mb-8 h-[100px] ">
         <h2
           className="text-2xl md:text-4xl tracking-[4px]"
           style={{ fontFamily: "Playfair Display, serif" }}
         >
           FEATURED COLLECTION
         </h2>
-        <p className="text-sm text-gray-500 mt-2 tracking-wide">
+        <p className="text-m text-gray-500 mt-2 tracking-wide">
           Carefully selected with love
         </p>
       </div>
