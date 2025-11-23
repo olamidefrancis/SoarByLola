@@ -2,10 +2,8 @@ import { useContext, useState } from "react";
 import { StoreContext } from "../../context/StoreContext";
 import { Link } from "react-router";
 import "./Navbar.css";
-import orderBasket from "../../assets/Images/icons8-order-cute-outline-96.png";
-import profile from "../../assets/Images/icons8-account-96.png";
-import wishlist from "../../assets/Images/icons8-love-96.png";
 import logo from "../../assets/Images/logo1.jpeg";
+import { FiUser, FiHeart, FiShoppingBag } from "react-icons/fi";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -14,7 +12,7 @@ const Navbar = () => {
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
   return (
-    <nav className="w-full sticky top-0 z-50 bg-white shadow-sm border-b border-gray-200 ">
+    <nav className="w-full sticky top-0 z-50 bg-white shadow-sm border-b border-gray-200">
 
       {/* MAIN HEADER */}
       <div className="flex items-center justify-between px-4 py-3 md:px-10 bg-[#f2e6c8] navpad">
@@ -47,7 +45,10 @@ const Navbar = () => {
 
           {/* ACCOUNT */}
           <div className="flex items-center gap-2 cursor-pointer">
-            <img src={profile} alt="account" className="w-[20px] h-[20px]" />
+            <div className="w-8 h-8 rounded-full bg-[#e6d2ad] flex items-center justify-center">
+              <FiUser className="text-[#141414] text-[15px]" />
+            </div>
+
             <p className="text-[13px] font-medium text-[#141414] hover:text-[#d62828] transition">
               ACCOUNT
             </p>
@@ -56,7 +57,9 @@ const Navbar = () => {
           {/* WISHLIST */}
           <div className="flex items-center gap-2">
             <div className="relative">
-              <img src={wishlist} alt="wishlist" className="w-[20px] h-[20px]" />
+              <div className="w-8 h-8 rounded-full bg-[#e6d2ad] flex items-center justify-center">
+                <FiHeart className="text-[#141414] text-[15px]" />
+              </div>
 
               {likes.length >= 1 && (
                 <span className="absolute -top-2 -right-2 bg-[#d62828] text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full">
@@ -76,7 +79,9 @@ const Navbar = () => {
           {/* ORDERS */}
           <div className="flex items-center gap-2">
             <div className="relative">
-              <img src={orderBasket} alt="order" className="w-[20px] h-[20px]" />
+              <div className="w-8 h-8 rounded-full bg-[#e6d2ad] flex items-center justify-center">
+                <FiShoppingBag className="text-[#141414] text-[15px]" />
+              </div>
 
               {orders.length >= 1 && (
                 <span className="absolute -top-2 -right-2 bg-[#d62828] text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full">
@@ -132,16 +137,15 @@ const Navbar = () => {
           menuOpen ? "translate-x-0" : "translate-x-full"
         }`}
         style={{
-          background: "rgba(214, 40, 40, 0.15)",  // red glass
+          background: "rgba(214, 40, 40, 0.15)",
           backdropFilter: "blur(12px)",
           WebkitBackdropFilter: "blur(12px)",
           color: "#ffffff",
           padding: "24px",
-        
         }}
       >
 
-        {/* CLOSE BUTTON INSIDE */}
+        {/* CLOSE BUTTON */}
         <div className="flex justify-end">
           <span
             onClick={() => setMenuOpen(false)}
@@ -153,11 +157,13 @@ const Navbar = () => {
 
         <div className="flex flex-col gap-6 mt-8">
 
-          <Link to="/Orders" className="text-lg font-medium text-white">
+          <Link to="/Orders" className="flex items-center gap-2 text-lg font-medium text-white">
+            <FiUser className="text-xl" />
             ACCOUNT
           </Link>
 
           <Link to="/Wishlist" className="flex items-center gap-2 text-lg font-medium text-white">
+            <FiHeart className="text-xl" />
             WISHLIST
             {likes.length >= 1 && (
               <span className="bg-white text-[#d62828] text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full">
@@ -167,6 +173,7 @@ const Navbar = () => {
           </Link>
 
           <Link to="/Orders" className="flex items-center gap-2 text-lg font-medium text-white">
+            <FiShoppingBag className="text-xl" />
             ORDER
             {orders.length >= 1 && (
               <span className="bg-white text-[#d62828] text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full">
