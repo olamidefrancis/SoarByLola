@@ -30,10 +30,10 @@ const Footer = () => {
             <img src={logo} alt="logo" className='w-[80px] h-[80px] rounded-full object-cover ' />
         </figure>
 
-        <div className='flex justify-center w-full gap-4'>
+        <div className='flex justify-center w-full gap-4 hover:text-gray-800'>
           <Link to="/Men" className="text-[13px] font-normal text-gray-500 hover:text-gray-800">About Us</Link>
           
-          <ul className="flex  list-none gap-2 p-0 ">
+          <ul className="flex  list-none gap-4 p-0 ">
                     <li><a href="https://www.instagram.com/shopsoar.co?igsh=N2ZnenMzNW51N3Zw&utm_source=qr" className="text-[13px] font-normal text-gray-500 hover:text-gray-800">Instagram</a></li>
                     <li><a href="  https://www.facebook.com/share/1Eiie1KBvj/?mibextid=wwXIfr" className="text-[13px] font-normal text-gray-500 hover:text-gray-800">Facebook</a></li>
                     <li><a href="https://x.com/wearsoar?s=21" className="text-[13px] font-normal text-gray-500 hover:text-gray-800">X</a></li>
@@ -51,7 +51,7 @@ const Footer = () => {
 
      :
 
-        <footer id="frame-footer" className="bg-[#fdfaf5] flex justify-center pt-4">
+        <footer id="frame-footer" className="bg-[#fdfaf5] flex justify-center paddyx2">
         
           <div className="w-[80%] flex flex-col gap-y-8 items-center paddy sm:w-[80%] w-full bg-[#fdfaf5]">
 
