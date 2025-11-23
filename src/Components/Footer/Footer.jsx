@@ -1,6 +1,7 @@
 import './Footer.css'
 import React, { useState, useEffect } from "react";
-import logo from '../../assets/Images/logo1.jpeg'
+import logo from '../../assets/Images/logo1.jpeg';
+import { Link } from "react-router";
 
 const Footer = () => {
 
@@ -24,10 +25,23 @@ const Footer = () => {
   return (
 <div>
     {logoOpen ? 
-      <div className='flex flex-col'>
-        <figure className='w-[full] h-[200px] flex items-center justify-center'>
-            <img src={logo} alt="logo" className='w-[100px] h-[100px] rounded-full object-cover ' />
+      <div className='flex flex-col bg-[#fdfaf5] gap-2'>
+        <figure className='w-[full] h-[150px] flex items-center justify-center'>
+            <img src={logo} alt="logo" className='w-[80px] h-[80px] rounded-full object-cover ' />
         </figure>
+
+        <div className='flex justify-center w-full gap-4'>
+          <Link to="/Men" className="text-[13px] font-normal text-gray-500 hover:text-gray-800">About Us</Link>
+          
+          <ul className="flex  list-none gap-2 p-0 ">
+                    <li><a href="https://www.instagram.com/shopsoar.co?igsh=N2ZnenMzNW51N3Zw&utm_source=qr" className="text-[13px] font-normal text-gray-500 hover:text-gray-800">Instagram</a></li>
+                    <li><a href="  https://www.facebook.com/share/1Eiie1KBvj/?mibextid=wwXIfr" className="text-[13px] font-normal text-gray-500 hover:text-gray-800">Facebook</a></li>
+                    <li><a href="https://x.com/wearsoar?s=21" className="text-[13px] font-normal text-gray-500 hover:text-gray-800">X</a></li>
+                    <li><a href="https://www.tiktok.com/@wear_soar?_t=ZS-90txfj9ddGS&_r=1" className="text-[13px] font-normal text-gray-500 hover:text-gray-800">TikTok</a></li>
+                    <li><a href="https://pin.it/5PTT11Ph3" className="text-[13px] font-normal text-gray-500 hover:text-gray-800">PIntrest</a></li>
+          </ul>
+
+        </div>
 
         <div className="flex w-full justify-center text-[13px] font-normal text-gray-500  ">
                         <p>&copy; <span id="copyright-year">{ new Date().getFullYear()} </span ><span className='font-[Dancing_Script,cursive] text-xl'>Soar_by_Lola</span>.  All Rights Reserved.</p>
@@ -37,12 +51,12 @@ const Footer = () => {
 
      :
 
-        <footer id="frame-footer" className="bg-neutral-200 flex justify-center pt-4">
+        <footer id="frame-footer" className="bg-[#fdfaf5] flex justify-center pt-4">
         
-          <div className="w-[80%] flex flex-col gap-y-8 items-center paddy sm:w-[80%] w-full">
+          <div className="w-[80%] flex flex-col gap-y-8 items-center paddy sm:w-[80%] w-full bg-[#fdfaf5]">
 
             
-            <nav className="grid grid-cols-4 gap-x-5 w-full">
+            <div className="grid grid-cols-4 gap-x-5 w-full bg-[#fdfaf5]">
               
             
               <section className="flex flex-col items-center">
@@ -97,7 +111,7 @@ const Footer = () => {
                 </div>
               </section>
 
-            </nav>
+            </div>
 
             <div className="flex w-full justify-center text-[13px] font-normal text-gray-500  ">
                     <p>&copy; <span id="copyright-year">{ new Date().getFullYear()} </span ><span className='font-[Dancing_Script,cursive] text-xl'>Soar_by_Lola</span>.  All Rights Reserved.</p>

@@ -62,7 +62,7 @@ const Carousel = () => {
                 {group.slice(0, 4).map((pixs, pixInd) => (
                   <div 
                     key={`image-${groupIndex}-${pixInd}`} 
-                    className="relative overflow-hidden rounded-xl shadow-lg bg-[#fdfaf5] group flex-1"
+                    className="relative overflow-hidden rounded-m shadow-lg bg-[#fdfaf5] group flex-1"
                   >
                     <img 
                       src={pixs}
