@@ -115,7 +115,7 @@ function Wishlist() {
               </div>
 
               {/* CONTENT */}
-              <div className="flex-1 flex flex-col justify-between padwish">
+              <div className="flex-1  bg-red-500 flex flex-col justify-between padwish">
 
                 {/* TITLE + REMOVE */}
                 <div className="flex justify-between items-start padwishlistright">
