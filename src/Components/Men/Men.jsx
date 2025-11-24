@@ -79,7 +79,6 @@ function Men() {
     <div className="bg-[#faf8f3] min-h-screen px-4 md:px-16 py-16 space-y-24">
 
       {products.map((item, i) => (
-
         <div key={i} className="flex flex-col gap-8">
 
           {/* IMAGE STRIP */}
@@ -99,22 +98,22 @@ function Men() {
             </div>
 
             {/* PREMIUM GLASS PANEL */}
-            <div className="absolute bottom-0 left-0 w-full bg-black/40 backdrop-blur-md text-white px-6 py-5 space-y-4">
+            <div className="absolute bottom-0 left-0 w-full bg-black/45 backdrop-blur-md text-white px-7 py-6 paddy  space-y-5">
 
-              {/* TOP BAR */}
-              <div className="flex justify-between items-center">
+              {/* TITLE + PRICE + LIKE */}
+              <div className="flex justify-between items-start">
                 <div>
                   <h2 className="text-sm tracking-widest uppercase font-light">
                     {item.Title}
                   </h2>
-                  <p className="text-lg font-light mt-1">
+                  <p className="text-xl font-light mt-1">
                     £{item.Price}
                   </p>
                 </div>
 
                 <FiHeart
                   onClick={() => handleLike(i, item)}
-                  className={`text-2xl cursor-pointer transition ${
+                  className={`text-3xl cursor-pointer transition ${
                     productData[i].liked
                       ? "text-red-500 fill-red-500 scale-110"
                       : "text-white"
@@ -122,41 +121,43 @@ function Men() {
                 />
               </div>
 
-              {/* CONTROLS BAR */}
-              <div className="flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
+              {/* CONTROLS */}
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 md:gap-10 ">
 
-                {/* SIZE SELECT */}
-                <div className="flex flex-wrap gap-2">
+                {/* SIZE SELECTION */}
+                <div className="flex flex-wrap gap-3">
                   {sizes.map((size) => (
                     <button
                       key={size}
                       onClick={() => handleSizeChange(i, size)}
-                      className={`px-3 py-1 text-xs border rounded-sm transition ${
-                        productData[i].size === size
-                          ? "bg-white text-black"
-                          : "border-white/40 hover:bg-white hover:text-black"
-                      }`}
+                      className={`px-4 py-2 text-xs border rounded-lg tracking-wide transition w-[20px] h-[20px]
+                        ${
+                          productData[i].size === size
+                            ? "bg-white text-black"
+                            : "border-white/40 text-white hover:bg-white hover:text-black"
+                        }
+                      `}
                     >
                       {size}
                     </button>
                   ))}
                 </div>
 
-                {/* MEASUREMENTS */}
-                <div className="w-full md:w-[40%]">
+                {/* MEASUREMENT INPUT */}
+                <div className="w-full md:w-[40%] ">
                   <input
                     type="text"
-                    placeholder="Custom measurements..."
+                    placeholder="Enter measurement (optional)…"
                     value={productData[i].measurement}
                     onChange={(e) => handleMeasurement(i, e.target.value)}
-                    className="w-full bg-black/40 text-white placeholder-white/60 border border-white/30 p-2 text-sm focus:outline-none focus:border-white"
+                    className="w-full bg-black/35 border border-white/30 p-3 rounded-md text-sm placeholder-white/60 focus:outline-none focus:border-white h-[50px] paddy "
                   />
                 </div>
 
                 {/* ADD TO BAG */}
                 <button
                   onClick={() => handleAddToBag(i, item)}
-                  className="px-6 py-2 text-sm uppercase tracking-widest border border-white/40 hover:bg-white hover:text-black transition"
+                  className="px-7 py-3 text-sm uppercase tracking-widest border border-white/40 rounded-md hover:bg-white hover:text-black transition paddy "
                 >
                   Add to Bag
                 </button>
@@ -167,6 +168,7 @@ function Men() {
           </div>
         </div>
       ))}
+
     </div>
   );
 }
