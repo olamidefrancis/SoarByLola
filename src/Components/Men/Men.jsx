@@ -76,7 +76,7 @@ function Men() {
   };
 
   return (
-    <div className="bg-[#faf8f3] min-h-screen px-4 md:px-16 py-16 space-y-24">
+    <div className="bg-[#faf8f3] min-h-screen px-3 md:px-16 py-16 space-y-24">
 
       {products.map((item, i) => (
         <div key={i} className="flex flex-col gap-8">
@@ -84,21 +84,24 @@ function Men() {
           {/* IMAGE STRIP */}
           <div className="relative w-full rounded-2xl overflow-hidden">
 
-            {/* IMAGE ROW */}
+            {/* ALWAYS 4 IMAGES IN A ROW — RESPONSIVE SHRINKING */}
             <div className="grid grid-cols-4 w-full">
               {item.Picture.map((img, index) => (
-                <div key={index} className="w-full h-[450px]">
+                <div
+                  key={index}
+                  className="w-full h-[250px] sm:h-[300px] md:h-[400px] lg:h-[450px]"
+                >
                   <img
                     src={img}
                     alt={item.Title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover shadow-xl"
                   />
                 </div>
               ))}
             </div>
 
             {/* PREMIUM GLASS PANEL */}
-            <div className="absolute bottom-0 left-0 w-full bg-black/45 backdrop-blur-md text-white px-7 py-6 paddy  space-y-5">
+            <div className="  w-full bg-black/60 backdrop-blur-md text-white px-6 sm:px-7 py-6 paddy space-y-5">
 
               {/* TITLE + PRICE + LIKE */}
               <div className="flex justify-between items-start">
@@ -122,7 +125,7 @@ function Men() {
               </div>
 
               {/* CONTROLS */}
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 md:gap-10 ">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 md:gap-10">
 
                 {/* SIZE SELECTION */}
                 <div className="flex flex-wrap gap-3">
@@ -130,10 +133,10 @@ function Men() {
                     <button
                       key={size}
                       onClick={() => handleSizeChange(i, size)}
-                      className={`px-4 py-2 text-xs border rounded-lg tracking-wide transition w-[20px] h-[20px]
+                      className={`px-4 py-2 text-xs border rounded-full tracking-wide transition paddy
                         ${
                           productData[i].size === size
-                            ? "bg-white text-black"
+                            ? "bg-white text-black "
                             : "border-white/40 text-white hover:bg-white hover:text-black"
                         }
                       `}
@@ -143,28 +146,27 @@ function Men() {
                   ))}
                 </div>
 
-                {/* MEASUREMENT INPUT */}
-                <div className="w-full md:w-[40%] ">
+                {/* MEASUREMENTS */}
+                <div className="w-full md:w-[40%]">
                   <input
                     type="text"
                     placeholder="Enter measurement (optional)…"
                     value={productData[i].measurement}
                     onChange={(e) => handleMeasurement(i, e.target.value)}
-                    className="w-full bg-black/35 border border-white/30 p-3 rounded-md text-sm placeholder-white/60 focus:outline-none focus:border-white h-[50px] paddy "
+                    className="w-full bg-black/35 border border-white/30 p-3 rounded-md text-sm placeholder-white/60 focus:outline-none focus:border-white h-[50px] paddy"
                   />
                 </div>
 
                 {/* ADD TO BAG */}
                 <button
                   onClick={() => handleAddToBag(i, item)}
-                  className="px-7 py-3 text-sm uppercase tracking-widest border border-white/40 rounded-md hover:bg-white hover:text-black transition paddy "
+                  className="px-7 py-3 text-sm uppercase tracking-widest border border-white/40 rounded-md hover:bg-white hover:text-black transition paddy"
                 >
                   Add to Bag
                 </button>
 
               </div>
             </div>
-
           </div>
         </div>
       ))}
