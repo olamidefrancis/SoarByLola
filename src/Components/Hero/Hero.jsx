@@ -55,13 +55,13 @@ const Hero = () => {
           SOAR BY LOLA
         </h1>
 
-        <p className="text-gray-200 text-sm md:text-lg tracking-widest max-w-md">
+        <p className="text-white text-md md:text-lg tracking-widest max-w-md font-semibold">
           Luxury. Simplicity. Confidence.
         </p>
 
-        <button className="mt-8 px-6 py-2 border border-white text-white tracking-[3px] text-xs hover:bg-white hover:text-black transition">
+        {/* <button className="mt-8 px-6 py-2 border border-white text-white tracking-[3px] text-xs hover:bg-white hover:text-black transition">
           SHOP COLLECTION
-        </button>
+        </button> */}
       </div>
 
     </div>

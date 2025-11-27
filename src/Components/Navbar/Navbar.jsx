@@ -94,7 +94,7 @@ const Navbar = () => {
               to="/Orders"
               className="text-[13px] font-medium text-[#141414] hover:text-[#d62828] transition"
             >
-              ORDER
+              BAG
             </Link>
           </div>
         </div>
@@ -174,7 +174,7 @@ const Navbar = () => {
 
           <Link to="/Orders" className="flex items-center gap-2 text-lg font-medium text-white">
             <FiShoppingBag className="text-xl" />
-            ORDER
+            BAG
             {orders.length >= 1 && (
               <span className="bg-white text-[#d62828] text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full">
                 {orders.length}

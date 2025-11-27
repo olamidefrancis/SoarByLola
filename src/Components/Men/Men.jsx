@@ -31,7 +31,7 @@ function Men() {
 
   const [productData, setProductData] = useState(
     products.map(() => ({
-      size: "M",
+      size: null,
       measurement: "",
       liked: false,
     }))

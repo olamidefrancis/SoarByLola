@@ -140,7 +140,7 @@ function Wishlist() {
                   {/* SIZE */}
                   <div>
                     {item.size ? (
-                      <p className="text-sm text-[#141414]">
+                      <p className="text-lg font-bold text-[#141414]">
                         Size: <span className="font-semibold">{item.size}</span>
                       </p>
                     ) : (

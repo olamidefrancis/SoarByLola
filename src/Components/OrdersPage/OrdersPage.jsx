@@ -80,7 +80,11 @@ function OrdersPage() {
                 <div className="flex flex-wrap items-center gap-6 mt-4 text-[#141414] font-semibold">
 
                   <span className="text-xl">
-                    Size: <span className="font-semibold ">{item.size}</span>
+                        Size:
+                        <span className="font-semibold padorder">{item.size &&  item.measurement
+                        ? item.measurement
+                        : (item.size || item.measurement)}
+                        </span>
                   </span>
 
                   <div className="flex items-center gap-3">
