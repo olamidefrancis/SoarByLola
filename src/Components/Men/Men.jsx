@@ -133,7 +133,7 @@ function Men() {
                     <button
                       key={size}
                       onClick={() => handleSizeChange(i, size)}
-                      className={`px-4 py-2 text-xs border rounded-full tracking-wide transition paddy
+                      className={`px-4 py-2 w-9 h-9 text-xs border rounded-full tracking-wide transition paddy
                         ${
                           productData[i].size === size
                             ? "bg-white text-black "
