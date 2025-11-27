@@ -82,7 +82,7 @@ function Men() {
         <div key={i} className="flex flex-col gap-8">
 
           {/* IMAGE STRIP */}
-          <div className="relative w-full rounded-2xl overflow-hidden">
+          <div className="relative w-full  overflow-hidden">
 
             {/* ALWAYS 4 IMAGES IN A ROW — RESPONSIVE SHRINKING */}
             <div className="grid grid-cols-4 w-full">
@@ -106,10 +106,10 @@ function Men() {
               {/* TITLE + PRICE + LIKE */}
               <div className="flex justify-between items-start">
                 <div>
-                  <h2 className="text-sm tracking-widest uppercase font-light">
+                  <h2 className="text-sm font-semibold tracking-widest uppercase font-light">
                     {item.Title}
                   </h2>
-                  <p className="text-xl font-light mt-1">
+                  <p className="text-xl font-light mt-1 font-semibold">
                     £{item.Price}
                   </p>
                 </div>
@@ -153,7 +153,7 @@ function Men() {
                     placeholder="Enter measurement (optional)…"
                     value={productData[i].measurement}
                     onChange={(e) => handleMeasurement(i, e.target.value)}
-                    className="w-full bg-black/35 border border-white/30 p-3 rounded-md text-sm placeholder-white/60 focus:outline-none focus:border-white h-[50px] paddy"
+                    className="w-full bg-black/35 border border-white/30 p-3 rounded-md text-md  md:text-lg placeholder-white/60 focus:outline-none focus:border-white h-[50px] paddy"
                   />
                 </div>
 
