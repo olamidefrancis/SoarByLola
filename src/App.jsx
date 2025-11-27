@@ -8,6 +8,7 @@ import Men from './Components/Men/Men'
 import OrdersPage from './Components/OrdersPage/OrdersPage'
 import Wishlist from './Components/Wishlist/Wishlist'
 import { createBrowserRouter, RouterProvider } from "react-router"
+import Checkout from './Components/Checkout/Checkout'
 
 const router = createBrowserRouter([
   {
@@ -46,8 +47,15 @@ const router = createBrowserRouter([
                 <Wishlist/>
            </div>,
   errorElement: <div>404 Page not found</div>
+ },
+  {
+  path:'/Checkout',
+  element: <div>
+                <Navbar/>
+                <Checkout/>
+           </div>,
+  errorElement: <div>404 Page not found</div>
  }
-
 
 
  

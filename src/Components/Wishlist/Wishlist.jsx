@@ -6,7 +6,7 @@ import { Link } from "react-router";
 const sizes = ["XS", "S", "M", "L", "XL"];
 
 function Wishlist() {
-  const { likes, setLikes, selectedSizes, setSelectedSizes, measurements, setMeasurements } =
+  const { likes, setLikes, selectedSizes, setSelectedSizes, measurements, setMeasurements, orders, setOrders } =
     useContext(StoreContext);
 
   const handleSize = (itemIndex, size) => {
@@ -64,6 +64,28 @@ function Wishlist() {
     setLikes((prevLikes) => prevLikes.filter((_, i) => i !== index));
   };
 
+  // ✅ CHECK IF ITEM IS ALREADY IN ORDERS
+  const isInBag = (itemTitle) => {
+    return orders.some((orderItem) => orderItem.Title === itemTitle);
+  };
+
+  const handleAddToBag = (item) => {
+    const alreadyInBag = isInBag(item.Title);
+
+    if (alreadyInBag) {
+      alert("Item already in Bag");
+      return;
+    }
+
+    setOrders((prev) => [
+      ...prev,
+      {
+        ...item,
+        quantity: 1,
+      },
+    ]);
+  };
+
   return (
     <div className="min-h-screen bg-[#f2e6c8] flex justify-center py-12 px-4">
       <div className="w-full max-w-[900px] bg-[#f2e6c8] rounded-3xl shadow-2xl p-6 md:p-10 gap-y-2">
@@ -83,100 +105,112 @@ function Wishlist() {
 
         {/* LIST */}
         <ul className="space-y-6">
-          {likes.map((item, i) => (
-            <li
-              key={i}
-              className="flex flex-col md:flex-row gap-6 p-5 rounded-2xl bg-white shadow-md border border-[#141414]/10 "
-            >
-              {/* IMAGE */}
-              <div className="w-[140px] mx-auto md:mx-0">
-                <img
-                  src={item.Picture[0]}
-                  alt={item.Title}
-                  className="w-full h-auto rounded-lg object-cover shadow-sm"
-                />
-              </div>
+          {likes.map((item, i) => {
+            const alreadyInBag = isInBag(item.Title);
 
-              {/* CONTENT */}
-              <div className="flex-1 flex flex-col justify-between padwish">
-
-                {/* TITLE + REMOVE */}
-                <div className="flex justify-between items-start padwishlistright">
-                  <h2
-                    className="text-xl tracking-wide text-[#141414] uppercase"
-                    style={{ fontFamily: "'Playfair Display', serif" }}
-                  >
-                    {item.Title}
-                  </h2>
-
-                  <button
-                    onClick={() => removeFromWish(i)}
-                    className="text-xl text-[#d62828] hover:scale-110 transition"
-                  >
-                    ✕
-                  </button>
+            return (
+              <li
+                key={i}
+                className="flex flex-col md:flex-row gap-6 p-5 rounded-2xl bg-white shadow-md border border-[#141414]/10 "
+              >
+                {/* IMAGE */}
+                <div className="w-[140px] mx-auto md:mx-0">
+                  <img
+                    src={item.Picture[0]}
+                    alt={item.Title}
+                    className="w-full h-auto rounded-lg object-cover shadow-sm"
+                  />
                 </div>
 
-                {/* SIZE SECTION */}
-                <div className="mt-4">
+                {/* CONTENT */}
+                <div className="flex-1 flex flex-col justify-between padwish">
 
-                  {item.size ? (
-                    <p className="text-lg font-bold text-[#141414]">
-                      Size: <span className="font-semibold">{item.size}</span>
-                    </p>
-                  ) : (
-                    <div className="space-y-2 flex flex-col gap-y-2">
+                  {/* TITLE + REMOVE */}
+                  <div className="flex justify-between items-start padwishlistright">
+                    <h2
+                      className="text-xl tracking-wide text-[#141414] uppercase"
+                      style={{ fontFamily: "'Playfair Display', serif" }}
+                    >
+                      {item.Title}
+                    </h2>
 
-                      {/* SIZE BUTTONS */}
-                      <div className="flex gap-3 flex-wrap">
-                        {sizes.map((size, idx) => (
-                          <button
-                            key={idx}
-                            onClick={() => handleSize(i, size)}
-                            className={`w-9 h-9 rounded-full border text-sm transition-all
-                              ${selectedSizes[i] === size
-                                ? "bg-[#141414] text-[#f2e6c8]"
-                                : "border-[#141414] text-[#141414] hover:bg-[#141414] hover:text-[#f2e6c8]"
-                              }`}
-                          >
-                            {size}
-                          </button>
-                        ))}
+                    <button
+                      onClick={() => removeFromWish(i)}
+                      className="text-xl text-[#d62828] hover:scale-110 transition"
+                    >
+                      ✕
+                    </button>
+                  </div>
+
+                  {/* SIZE SECTION */}
+                  <div className="mt-4">
+                    {item.size ? (
+                      <p className="text-lg font-bold text-[#141414]">
+                        Size: <span className="font-semibold">{item.size}</span>
+                      </p>
+                    ) : (
+                      <div className="space-y-2 flex flex-col gap-y-2">
+
+                        {/* SIZE BUTTONS */}
+                        <div className="flex gap-3 flex-wrap">
+                          {sizes.map((size, idx) => (
+                            <button
+                              key={idx}
+                              onClick={() => handleSize(i, size)}
+                              className={`w-9 h-9 rounded-full border text-sm transition-all
+                                ${selectedSizes[i] === size
+                                  ? "bg-[#141414] text-[#f2e6c8]"
+                                  : "border-[#141414] text-[#141414] hover:bg-[#141414] hover:text-[#f2e6c8]"
+                                }`}
+                            >
+                              {size}
+                            </button>
+                          ))}
+                        </div>
+
+                        {/* MEASUREMENTS */}
+                        <textarea
+                          rows={2}
+                          value={measurements[i] || ""}
+                          onChange={(e) => handleMeasurement(i, e.target.value)}
+                          className="w-full border border-[#141414]/30 rounded-lg p-2 text-sm focus:outline-none focus:border-[#141414] padwish"
+                          placeholder="Custom measurements..."
+                        />
+
+                        <button
+                          onClick={() => addSpecifiedmeasurement(i)}
+                          className="text-lg bg-[#141414] text-[#f2e6c8] px-3 py-1 rounded-full hover:opacity-90 padwish"
+                        >
+                          Apply Measurement
+                        </button>
                       </div>
+                    )}
+                  </div>
 
-                      {/* MEASUREMENTS */}
-                      <textarea
-                        rows={2}
-                        value={measurements[i] || ""}
-                        onChange={(e) => handleMeasurement(i, e.target.value)}
-                        className="w-full border border-[#141414]/30 rounded-lg p-2 text-sm focus:outline-none focus:border-[#141414] padwish"
-                        placeholder="Custom measurements..."
-                      />
+                  {/* PRICE + CTA */}
+                  <div className="flex gap-y-2 padwish justify-between items-center mt-6">
+                    <p className="text-lg font-semibold text-[#141414]">
+                      £ {item.Price}
+                    </p>
 
-                      <button
-                        onClick={() => addSpecifiedmeasurement(i)}
-                        className="text-lg bg-[#141414] text-[#f2e6c8] px-3 py-1 rounded-full hover:opacity-90 padwish"
-                      >
-                        Apply Measurement
-                      </button>
-                    </div>
-                  )}
+                    <Link
+                      onClick={() => !alreadyInBag && handleAddToBag(item)}
+                      className={`px-5 py-2 rounded-full text-sm tracking-wide transition padwish
+                        ${alreadyInBag
+                          ? "bg-gray-400 cursor-not-allowed text-white"
+                          : "bg-[#d62828] text-[#f2e6c8] hover:scale-[1.02] cursor-pointer"
+                        }`}
+                    >
+                      {alreadyInBag ? "Already in Bag" : "Add to Bag"}
+                    </Link>
+                  </div>
+
                 </div>
-
-                {/* PRICE + CTA */}
-                <div className="flex gap-y-2 padwish justify-between items-center mt-6">
-                  <p className="text-lg font-semibold text-[#141414]">
-                    £ {item.Price}
-                  </p>
-
-                  <Link className="bg-[#d62828] text-[#f2e6c8] px-5 py-2 rounded-full text-sm tracking-wide hover:scale-[1.02] transition padwish">
-                    ADD TO BAG
-                  </Link>
-                </div>
-              </div>
-            </li>
-          ))}
+              </li>
+            );
+          })}
         </ul>
+
       </div>
     </div>
   );
