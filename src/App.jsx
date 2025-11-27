@@ -9,6 +9,7 @@ import OrdersPage from './Components/OrdersPage/OrdersPage'
 import Wishlist from './Components/Wishlist/Wishlist'
 import { createBrowserRouter, RouterProvider } from "react-router"
 import Checkout from './Components/Checkout/Checkout'
+import { Toaster } from "react-hot-toast";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,7 @@ const router = createBrowserRouter([
   path:'/Men',
   element: <div>
                 <Navbar/>
+                <Toaster position="top-right" reverseOrder={false} />
                 <Men/>
            </div>,
   errorElement: <div>404 Page not found</div>

@@ -5,6 +5,7 @@ import two from "../../assets/Images/md2.jpeg";
 import { useState, useContext } from "react";
 import { StoreContext } from "../../context/StoreContext";
 import { FiHeart } from "react-icons/fi";
+import toast from "react-hot-toast";
 
 const products = [
   {
@@ -54,20 +55,25 @@ function Men() {
       (likedItem) => likedItem.Title === item.Title
     );
 
+    //  Toast 
     if (alreadyLiked && !productData[index].liked) {
-      alert(`${item.Title} is already in your wishlist.`);
+      toast("Already in your wishlist ❤️",{duration: 1500});
       return;
     }
 
     const updated = [...productData];
     const isLiked = !updated[index].liked;
-
     updated[index].liked = isLiked;
     setProductData(updated);
 
     setLikes((prev) => {
-      if (isLiked) return [...prev, item];
-      return prev.filter((like) => like.Title !== item.Title);
+      if (isLiked) {
+        toast.success("Added to wishlist 💖",{duration: 1500});
+        return [...prev, item];
+      } else {
+        toast("Removed from wishlist ❌",{duration: 1500});
+        return prev.filter((like) => like.Title !== item.Title);
+      }
     });
   };
 
@@ -78,7 +84,6 @@ function Men() {
       (orderItem) => orderItem.Title === item.Title
     );
 
-    // ❌ Removed alert logic — button now handles this visually
     if (alreadyInBag) return;
 
     setOrders((prev) => [
@@ -90,6 +95,9 @@ function Men() {
         quantity: 1,
       },
     ]);
+
+    // ✅ Toast when added to bag
+    toast.success("Item added to your bag 🛍️");
   };
 
   return (
@@ -106,7 +114,6 @@ function Men() {
             {/* IMAGE STRIP */}
             <div className="relative w-full overflow-hidden">
 
-              {/* ALWAYS 4 IMAGES IN A ROW */}
               <div className="grid grid-cols-4 w-full">
                 {item.Picture.map((img, index) => (
                   <div
@@ -122,8 +129,8 @@ function Men() {
                 ))}
               </div>
 
-              {/* PREMIUM GLASS PANEL */}
-              <div className="w-full bg-black/60 backdrop-blur-md text-white px-6 sm:px-7 py-6 paddy space-y-5">
+              {/* GLASS PANEL */}
+              <div className="w-full bg-black/60 backdrop-blur-md text-white px-6 sm:px-7 py-6 space-y-5">
 
                 {/* TITLE + PRICE + LIKE */}
                 <div className="flex justify-between items-start">
@@ -155,13 +162,12 @@ function Men() {
                       <button
                         key={size}
                         onClick={() => handleSizeChange(i, size)}
-                        className={`w-9 h-9 text-xs border rounded-full tracking-wide transition paddy
+                        className={`w-9 h-9 text-xs border rounded-full tracking-wide transition
                           ${
                             productData[i].size === size
                               ? "bg-white text-black"
                               : "border-white/40 text-white hover:bg-white hover:text-black"
-                          }
-                        `}
+                          }`}
                       >
                         {size}
                       </button>
@@ -175,7 +181,7 @@ function Men() {
                       placeholder="Enter measurement (optional)…"
                       value={productData[i].measurement}
                       onChange={(e) => handleMeasurement(i, e.target.value)}
-                      className="w-full bg-black/35 border border-white/30 p-3 rounded-md text-md md:text-lg placeholder-white/60 focus:outline-none focus:border-white h-[50px] paddy"
+                      className="w-full bg-black/35 border border-white/30 p-3 rounded-md text-md md:text-lg placeholder-white/60 focus:outline-none focus:border-white h-[50px]"
                     />
                   </div>
 
@@ -183,13 +189,12 @@ function Men() {
                   <button
                     onClick={() => handleAddToBag(i, item)}
                     disabled={isInBag}
-                    className={`px-7 py-3 text-sm uppercase tracking-widest border rounded-md transition paddy
+                    className={`px-7 py-3 text-sm uppercase tracking-widest border rounded-md transition
                       ${
                         isInBag
                           ? "border-white/20 text-white/50 cursor-not-allowed bg-black/40"
                           : "border-white/40 hover:bg-white hover:text-black text-white"
-                      }
-                    `}
+                      }`}
                   >
                     {isInBag ? "Already in Bag" : "Add to Bag"}
                   </button>
