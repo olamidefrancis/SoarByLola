@@ -118,7 +118,7 @@ function Men() {
                 {item.Picture.map((img, index) => (
                   <div
                     key={index}
-                    className="w-full h-[250px] sm:h-[300px] md:h-[400px] lg:h-[450px]"
+                    className="w-full h-[350px] sm:h-[350px] md:h-[400px] lg:h-[450px]"
                   >
                     <img
                       src={img}
@@ -130,10 +130,10 @@ function Men() {
               </div>
 
               {/* GLASS PANEL */}
-              <div className="w-full bg-black/60 backdrop-blur-md text-white px-6 sm:px-7 py-6 space-y-5">
+              <div className=" flex flex-col w-full bg-black/60 backdrop-blur-md text-white  space-y-5 paddycon">
 
                 {/* TITLE + PRICE + LIKE */}
-                <div className="flex justify-between items-start">
+                <div className="flex justify-between items-start ">
                   <div>
                     <h2 className="text-sm font-semibold tracking-widest uppercase">
                       {item.Title}
@@ -154,7 +154,7 @@ function Men() {
                 </div>
 
                 {/* CONTROLS */}
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 md:gap-10">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 md:gap-10 ">
 
                   {/* SIZE SELECTION */}
                   <div className="flex flex-wrap gap-3">
