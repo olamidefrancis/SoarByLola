@@ -1,4 +1,4 @@
-import { useContext, useState, useMemo } from "react";
+import { useContext, useMemo } from "react";
 import { StoreContext } from "../../context/StoreContext";
 import "./OrdersPage.css";
 import { Link } from "react-router";
@@ -6,38 +6,40 @@ import { Link } from "react-router";
 function OrdersPage() {
   const { orders, setOrders } = useContext(StoreContext);
 
-  const [selectedQuantity, setSelectedQuantity] = useState(
-    Object.fromEntries(orders.map((_, i) => [i, 1]))
-  );
-
+  // ✅ INCREASE QUANTITY
   const handleQuantityAdd = (index) => {
-    setSelectedQuantity((prev) => ({
-      ...prev,
-      [index]: prev[index] + 1,
-    }));
+    setOrders(prevOrders =>
+      prevOrders.map((item, i) =>
+        i === index ? { ...item, quantity: item.quantity + 1 } : item
+      )
+    );
   };
 
+  // ✅ DECREASE QUANTITY
   const handleQuantitySub = (index) => {
-    setSelectedQuantity((prev) => ({
-      ...prev,
-      [index]: Math.max(1, prev[index] - 1),
-    }));
+    setOrders(prevOrders =>
+      prevOrders.map((item, i) =>
+        i === index
+          ? { ...item, quantity: Math.max(1, item.quantity - 1) }
+          : item
+      )
+    );
   };
 
+  // ✅ REMOVE ITEM
   const handleOrderRemoval = (itemIndex) => {
-    setOrders((prevOrders) => prevOrders.filter((_, i) => i !== itemIndex));
+    setOrders(prevOrders => prevOrders.filter((_, i) => i !== itemIndex));
   };
 
-  // ✅ CALCULATE SUBTOTAL
+  // ✅ SUBTOTAL
   const subtotal = useMemo(() => {
-    return orders.reduce((total, item, i) => {
-      const qty = selectedQuantity[i] || 1;
-      return total + item.Price * qty;
+    return orders.reduce((total, item) => {
+      return total + item.Price * item.quantity;
     }, 0);
-  }, [orders, selectedQuantity]);
+  }, [orders]);
 
   return (
-    <div className="min-h-screen bg-[#f2e6c8] flex justify-center py-12 px-4">
+    <div className="min-h-screen bg-[#f2e6c8] flex justify-center py-12 px-4 checkpad">
       <div className="w-full max-w-[1000px] bg-[#f2e6c8] rounded-3xl shadow-2xl p-6 md:p-10">
 
         {/* HEADER */}
@@ -48,13 +50,15 @@ function OrdersPage() {
           >
             Your Bag
           </h1>
-          <p className="text-sm text-[#141414]/70 mt-1">Review your items before checkout.</p>
+          <p className="text-sm text-[#141414]/70 mt-1">
+            Review your items before checkout.
+          </p>
         </div>
 
-        {/* MAIN GRID — ITEMS LEFT, CHECKOUT RIGHT */}
+        {/* MAIN GRID */}
         <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-12">
 
-          {/* LEFT: ORDER LIST  */}
+          {/* LEFT: ORDER LIST */}
           <ul className="space-y-6">
             {orders?.map((item, i) => (
               <li
@@ -112,7 +116,7 @@ function OrdersPage() {
                       </button>
 
                       <span className="font-medium min-w-[24px] text-center text-2xl">
-                        {selectedQuantity[i]}
+                        {item.quantity}
                       </span>
 
                       <button
@@ -127,7 +131,7 @@ function OrdersPage() {
                   {/* PRICE */}
                   <div className="mt-4 flex justify-start">
                     <span className="text-xl font-semibold text-[#141414]">
-                      £ {item.Price * selectedQuantity[i]}
+                      £ {item.Price * item.quantity}
                     </span>
                   </div>
                 </div>
@@ -135,8 +139,9 @@ function OrdersPage() {
             ))}
           </ul>
 
-          {/*  RIGHT: CHECKOUT PANEL */}
-          <div className="bg-white shadow-xl border border-[#141414]/10 rounded-2xl p-6 h-[20vh] sticky top-10 padorder flex flex-col gap-4 justify-center ">
+          {/* RIGHT: CHECKOUT PANEL */}
+          <div className="bg-white shadow-xl border border-[#141414]/10 rounded-2xl p-6 h-[20vh] sticky top-10 padorder flex flex-col gap-4 justify-center">
+
             <h3 className="text-xl font-semibold text-[#141414] mb-4 tracking-wide">
               Order Details
             </h3>
@@ -155,15 +160,15 @@ function OrdersPage() {
               CHECKOUT
             </Link>
 
-            {/* PAYMENT ICONS (FAKE, UI ONLY) */}
+            {/* PAYMENT ICONS */}
             <div className="flex gap-3 justify-center mt-5 opacity-60 text-xs">
               <span>VISA</span>
               <span>MASTER</span>
               <span>PayPal</span>
               <span>Klarna</span>
             </div>
-          </div>
 
+          </div>
         </div>
       </div>
     </div>

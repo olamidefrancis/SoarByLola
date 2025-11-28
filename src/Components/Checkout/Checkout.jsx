@@ -10,11 +10,64 @@ function Checkout() {
   }, 0);
 
   return (
-    <div className="min-h-screen bg-[#f2e6c8] flex justify-center py-14 px-4">
-      <div className="w-full max-w-[1100px] grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-10">
+   
+      <div className="w-full flex flex-col md:flex-row gap-3 paddycheck bg-[#f2e6c8] min-h-screen md:justify-center flex-[1,1]">
 
-        {/* ================= LEFT SIDE - FORM ================= */}
-        <div className="bg-white rounded-3xl shadow-xl p-8 md:p-10">
+        {/* LEFT SIDE - ORDER SUMMARY */}
+        <div className="bg-white rounded-xl shadow-xl p-8  h-fit sticky top-10 paddycheck flex flex-col gap-8 flex-1">
+
+          <h3 className="text-xl font-semibold mb-6 text-[#141414]">
+            Order Summary
+          </h3>
+
+          <div className="space-y-6 border-b pb-6 mb-6">
+            {orders.map((item, index) => (
+              <div key={index} className="flex justify-between items-center">
+
+                <div className="flex items-center  gap-4">
+                  <img
+                    src={item.Picture[0]}
+                    alt={item.Title}
+                    className="w-40 h-40 object-cover rounded-md paddycheck "
+                  />
+                  <div>
+                    <h4 className="text-sm font-semibold uppercase">
+                      {item.Title}
+                    </h4>
+                    <p className="text-xs">
+                      {item.size 
+                        ? item.size 
+                        : item.measurement}
+                    </p>
+                  </div>
+                </div>
+
+                <span className="font-semibold">
+                  £ {item.Price * item.quantity}
+                </span>
+
+              </div>
+            ))}
+          </div>
+
+          {/* TOTAL */}
+          <div className="flex justify-between text-lg font-semibold mb-6">
+            <span>Total:</span>
+            <span>£ {subtotal.toFixed(2)}</span>
+          </div>
+
+          {/* PAYMENT METHODS UI */}
+          <div className="flex gap-3 justify-center mt-4 opacity-70 text-sm tracking-wide">
+            <span>VISA</span>
+            <span>MASTER</span>
+            <span>AMEX</span>
+            <span>PayPal</span>
+            <span>Klarna</span>
+          </div>
+        </div>
+
+        {/* RIGHT SIDE - FORM */}
+        <div className="bg-white rounded-3xl shadow-xl p-8 md:p-10 flex-1">
 
           <h2 className="text-3xl font-semibold tracking-wide mb-8 text-[#141414]">
             Checkout
@@ -87,60 +140,9 @@ function Checkout() {
           </button>
         </div>
 
-        {/* ================= RIGHT SIDE - ORDER SUMMARY ================= */}
-        <div className="bg-white rounded-3xl shadow-xl p-8 md:p-10 h-fit sticky top-10">
-
-          <h3 className="text-xl font-semibold mb-6 text-[#141414]">
-            Order Summary
-          </h3>
-
-          <div className="space-y-6 border-b pb-6 mb-6">
-            {orders.map((item, index) => (
-              <div key={index} className="flex justify-between items-center">
-
-                <div className="flex items-center gap-4">
-                  <img
-                    src={item.Picture[0]}
-                    alt={item.Title}
-                    className="w-16 h-16 object-cover rounded-md"
-                  />
-                  <div>
-                    <h4 className="text-sm font-semibold uppercase">
-                      {item.Title}
-                    </h4>
-                    <p className="text-xs">
-                      {item.size 
-                        ? item.size 
-                        : item.measurement}
-                    </p>
-                  </div>
-                </div>
-
-                <span className="font-semibold">
-                  £ {item.Price * item.quantity}
-                </span>
-
-              </div>
-            ))}
-          </div>
-
-          {/* TOTAL */}
-          <div className="flex justify-between text-lg font-semibold mb-6">
-            <span>Total:</span>
-            <span>£ {subtotal.toFixed(2)}</span>
-          </div>
-
-          {/* PAYMENT METHODS UI */}
-          <div className="flex gap-3 justify-center mt-4 opacity-70 text-sm tracking-wide">
-            <span>VISA</span>
-            <span>MASTER</span>
-            <span>AMEX</span>
-            <span>PayPal</span>
-            <span>Klarna</span>
-          </div>
-        </div>
+        
       </div>
-    </div>
+
   );
 }
 

@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+
+.pricecon h1{
+    font-family: Roboto-Light, Helvetica, Arial, sans-serif;
+    font-size: 1rem;
+}
+
+
+.paddycon{
+    padding: 1rem
+}
+
+.paddycheck{
+    padding: 0.5rem
+}
+
+
