@@ -55,9 +55,8 @@ function Men() {
       (likedItem) => likedItem.Title === item.Title
     );
 
-    //  Toast 
     if (alreadyLiked && !productData[index].liked) {
-      toast("Already in your wishlist ❤️",{duration: 1500});
+      toast("Already in your wishlist ❤️", { duration: 1500 });
       return;
     }
 
@@ -68,10 +67,10 @@ function Men() {
 
     setLikes((prev) => {
       if (isLiked) {
-        toast.success("Added to wishlist 💖",{duration: 1500});
+        toast.success("Added to wishlist 💖", { duration: 1500 });
         return [...prev, item];
       } else {
-        toast("Removed from wishlist ❌",{duration: 1500});
+        toast("Removed from wishlist ❌", { duration: 1500 });
         return prev.filter((like) => like.Title !== item.Title);
       }
     });
@@ -79,6 +78,14 @@ function Men() {
 
   const handleAddToBag = (index, item) => {
     const data = productData[index];
+
+    // ✅ NEW: Block if size not selected
+    if (!data.size) {
+      toast.error("Please select a size before adding to bag 👕", {
+        duration: 1800,
+      });
+      return;
+    }
 
     const alreadyInBag = orders.some(
       (orderItem) => orderItem.Title === item.Title
@@ -96,13 +103,11 @@ function Men() {
       },
     ]);
 
-    // ✅ Toast when added to bag
     toast.success("Item added to your bag 🛍️");
   };
 
   return (
     <div className="bg-[#faf8f3] min-h-screen px-3 md:px-16 py-16 space-y-24">
-
       {products.map((item, i) => {
         const isInBag = orders.some(
           (orderItem) => orderItem.Title === item.Title
@@ -110,10 +115,8 @@ function Men() {
 
         return (
           <div key={i} className="flex flex-col gap-8">
-
             {/* IMAGE STRIP */}
             <div className="relative w-full overflow-hidden">
-
               <div className="grid grid-cols-4 w-full">
                 {item.Picture.map((img, index) => (
                   <div
@@ -130,10 +133,9 @@ function Men() {
               </div>
 
               {/* GLASS PANEL */}
-              <div className=" flex flex-col w-full bg-black/60 backdrop-blur-md text-white  space-y-5 paddycon">
-
+              <div className="flex flex-col w-full bg-black/60 backdrop-blur-md text-white space-y-5 paddycon">
                 {/* TITLE + PRICE + LIKE */}
-                <div className="flex justify-between items-start ">
+                <div className="flex justify-between items-start">
                   <div>
                     <h2 className="text-sm font-semibold tracking-widest uppercase">
                       {item.Title}
@@ -154,8 +156,7 @@ function Men() {
                 </div>
 
                 {/* CONTROLS */}
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 md:gap-10 ">
-
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 md:gap-10">
                   {/* SIZE SELECTION */}
                   <div className="flex flex-wrap gap-3">
                     {sizes.map((size) => (
@@ -198,14 +199,12 @@ function Men() {
                   >
                     {isInBag ? "Already in Bag" : "Add to Bag"}
                   </button>
-
                 </div>
               </div>
             </div>
           </div>
         );
       })}
-
     </div>
   );
 }

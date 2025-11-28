@@ -15,7 +15,7 @@ function OrdersPage() {
     );
   };
 
-  // ✅ DECREASE QUANTITY
+  //  DECREASE QUANTITY
   const handleQuantitySub = (index) => {
     setOrders(prevOrders =>
       prevOrders.map((item, i) =>
@@ -26,12 +26,12 @@ function OrdersPage() {
     );
   };
 
-  // ✅ REMOVE ITEM
+  //  REMOVE ITEM
   const handleOrderRemoval = (itemIndex) => {
     setOrders(prevOrders => prevOrders.filter((_, i) => i !== itemIndex));
   };
 
-  // ✅ SUBTOTAL
+  //  SUBTOTAL
   const subtotal = useMemo(() => {
     return orders.reduce((total, item) => {
       return total + item.Price * item.quantity;
