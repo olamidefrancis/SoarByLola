@@ -14,7 +14,7 @@ function Checkout() {
       <div className="w-full flex flex-col md:flex-row gap-3 paddycheck bg-[#f2e6c8] min-h-screen md:justify-center flex-[1,1]">
 
         {/* LEFT SIDE - ORDER SUMMARY */}
-        <div className="bg-white rounded-xl shadow-xl p-8  h-fit sticky top-10 paddycheck flex flex-col gap-8 flex-1">
+        <div className="bg-white rounded-xl shadow-xl p-8  h-fit paddycheck flex flex-col gap-8 flex-1">
 
           <h3 className="text-xl font-semibold mb-6 text-[#141414]">
             Order Summary
@@ -67,17 +67,17 @@ function Checkout() {
         </div>
 
         {/* RIGHT SIDE - FORM */}
-        <div className="bg-white rounded-3xl shadow-xl p-8 md:p-10 flex-1">
+        <div className=" relative flex flex-col gap-6 rounded-xl shadow-xl paddycheck flex-1 bg-white">
 
           <h2 className="text-3xl font-semibold tracking-wide mb-8 text-[#141414]">
             Checkout
           </h2>
 
           {/* BILLING DETAILS */}
-          <div className="space-y-6">
+          <div className="flex flex-col gap-6">
             <h3 className="text-xl font-semibold text-[#141414]">Billing Details</h3>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="flex flex-col md:flex-row gap-16">
               <input type="text" placeholder="First Name"
                 className="checkout-input" />
               <input type="text" placeholder="Last Name"
@@ -91,7 +91,7 @@ function Checkout() {
           </div>
 
           {/* DELIVERY */}
-          <div className="space-y-6 mt-10">
+          <div className="flex flex-col gap-6">
             <h3 className="text-xl font-semibold text-[#141414]">Delivery Address</h3>
 
             <input type="text" placeholder="Street Address"
@@ -109,7 +109,7 @@ function Checkout() {
           </div>
 
           {/* PAYMENT */}
-          <div className="space-y-6 mt-10">
+          <div className="flex flex-col gap-6">
             <h3 className="text-xl font-semibold text-[#141414]">Payment</h3>
 
             <div className="grid grid-cols-1 gap-6">
@@ -135,7 +135,8 @@ function Checkout() {
           </div>
 
           {/* PLACE ORDER */}
-          <button className="mt-10 w-full bg-[#141414] text-[#f2e6c8] py-4 rounded-xl tracking-widest text-lg uppercase hover:opacity-90 transition">
+          <button className="absolute mt-10 w-full max-w-sm bg-[#141414] text-[#f2e6c8] py-4 rounded-xl tracking-widest text-lg uppercase hover:opacity-90 transition paddycheck md:bottom-10 left-1/2 -translate-x-1/2 bottom-0">
+
             Place Order
           </button>
         </div>
