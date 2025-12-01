@@ -28,13 +28,13 @@ function Checkout() {
                   <img
                     src={item.Picture[0]}
                     alt={item.Title}
-                    className="w-40 h-40 object-cover rounded-md paddycheck "
+                    className="w-[130px]  h-auto rounded-lg object-cover shadow-sm rounded-lg paddycheck "
                   />
                   <div>
-                    <h4 className="text-sm font-semibold uppercase">
+                    <h4 className="text-lg font-semibold uppercase">
                       {item.Title}
                     </h4>
-                    <p className="text-xs">
+                    <p className="text-md">
                       {item.size 
                         ? item.size 
                         : item.measurement}
@@ -42,8 +42,8 @@ function Checkout() {
                   </div>
                 </div>
 
-                <span className="font-semibold">
-                  £ {item.Price * item.quantity}
+                <span className="text-lg font-semibold">
+                  <h2>£ {item.Price * item.quantity}</h2>
                 </span>
 
               </div>
@@ -135,12 +135,12 @@ function Checkout() {
                 </div>
               </div>
           </div>
-          <div className="flex w-full justify-center align-center  paddycheck margincheck">
+            <div className="flex w-full justify-center align-center  paddycheck margincheck">
 
                 <button className=" mt-10  max-w-sm bg-[#141414] text-[#f2e6c8] py-4 rounded-xl tracking-widest text-lg uppercase hover:opacity-90 transition paddycheck w-[70%]">
                 Place Order
                 </button>
-          </div>
+            </div>
          
         </div>
 
