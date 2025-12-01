@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { StoreContext } from "../../context/StoreContext";
 import "./Wishlist.css";
 import { Link } from "react-router";
+import toast from "react-hot-toast";
 
 const sizes = ["XS", "S", "M", "L", "XL"];
 
@@ -39,7 +40,7 @@ function Wishlist() {
     const customSize = measurements[itemIndex];
 
     if (!customSize || customSize.trim() === "") {
-      alert("Please enter your measurements first.");
+      toast.error("Please enter your measurements first.");
       return;
     }
 
@@ -64,16 +65,21 @@ function Wishlist() {
     setLikes((prevLikes) => prevLikes.filter((_, i) => i !== index));
   };
 
-  // ✅ CHECK IF ITEM IS ALREADY IN ORDERS
   const isInBag = (itemTitle) => {
     return orders.some((orderItem) => orderItem.Title === itemTitle);
   };
 
-  const handleAddToBag = (item) => {
+  // ✅ UPDATED: Prevent adding to cart if size is missing
+  const handleAddToBag = (item, index) => {
+    if (!selectedSizes[index] && !item.size) {
+      toast.error("Please select or specify a size before adding to your bag!");
+      return;
+    }
+
     const alreadyInBag = isInBag(item.Title);
 
     if (alreadyInBag) {
-      alert("Item already in Bag");
+      toast.error("Item already in Bag");
       return;
     }
 
@@ -84,13 +90,14 @@ function Wishlist() {
         quantity: 1,
       },
     ]);
+
+    toast.success("Added to bag!");
   };
 
   return (
     <div className="min-h-screen bg-[#f2e6c8] flex justify-center py-12 px-4">
       <div className="w-full max-w-[900px] bg-[#f2e6c8] rounded-3xl shadow-2xl p-6 md:p-10 gap-y-2">
 
-        {/* HEADER */}
         <div className="mb-8 text-center">
           <h1
             className="text-3xl md:text-4xl tracking-wide text-[#141414]"
@@ -103,7 +110,6 @@ function Wishlist() {
           </p>
         </div>
 
-        {/* LIST */}
         <ul className="space-y-6">
           {likes.map((item, i) => {
             const alreadyInBag = isInBag(item.Title);
@@ -113,7 +119,6 @@ function Wishlist() {
                 key={i}
                 className="flex flex-col md:flex-row gap-6 p-5 rounded-2xl bg-white shadow-md border border-[#141414]/10 "
               >
-                {/* IMAGE */}
                 <div className="w-[140px] mx-auto md:mx-0">
                   <img
                     src={item.Picture[0]}
@@ -122,10 +127,7 @@ function Wishlist() {
                   />
                 </div>
 
-                {/* CONTENT */}
                 <div className="flex-1 flex flex-col justify-between padwish">
-
-                  {/* TITLE + REMOVE */}
                   <div className="flex justify-between items-start padwishlistright">
                     <h2
                       className="text-xl tracking-wide text-[#141414] uppercase"
@@ -142,7 +144,6 @@ function Wishlist() {
                     </button>
                   </div>
 
-                  {/* SIZE SECTION */}
                   <div className="mt-4">
                     {item.size ? (
                       <p className="text-lg font-bold text-[#141414]">
@@ -150,8 +151,6 @@ function Wishlist() {
                       </p>
                     ) : (
                       <div className="space-y-2 flex flex-col gap-y-2">
-
-                        {/* SIZE BUTTONS */}
                         <div className="flex gap-3 flex-wrap">
                           {sizes.map((size, idx) => (
                             <button
@@ -168,7 +167,6 @@ function Wishlist() {
                           ))}
                         </div>
 
-                        {/* MEASUREMENTS */}
                         <textarea
                           rows={2}
                           value={measurements[i] || ""}
@@ -187,14 +185,13 @@ function Wishlist() {
                     )}
                   </div>
 
-                  {/* PRICE + CTA */}
                   <div className="flex gap-y-2 padwish justify-between items-center mt-6">
                     <p className="text-lg font-semibold text-[#141414]">
                       £ {item.Price}
                     </p>
 
                     <Link
-                      onClick={() => !alreadyInBag && handleAddToBag(item)}
+                      onClick={() => !alreadyInBag && handleAddToBag(item, i)}
                       className={`px-5 py-2 rounded-full text-sm tracking-wide transition padwish
                         ${alreadyInBag
                           ? "bg-gray-400 cursor-not-allowed text-white"

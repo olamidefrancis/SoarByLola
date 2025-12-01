@@ -67,7 +67,7 @@ function Checkout() {
         </div>
 
         {/* RIGHT SIDE - FORM */}
-        <div className=" relative flex flex-col gap-2 rounded-xl shadow-xl paddycheck flex-1 bg-white">
+        <div className="  flex flex-col gap-2 rounded-xl shadow-xl paddycheck flex-1 bg-white">
           <div className="flex flex-col gap-10 ">
 
               <h2 className="text-3xl font-semibold tracking-wide mb-8 text-[#141414]">
@@ -135,10 +135,12 @@ function Checkout() {
                 </div>
               </div>
           </div>
+          <div className="flex w-full justify-center align-center  paddycheck margincheck">
 
-          <button class="absolute mt-10 w-full max-w-sm bg-[#141414] text-[#f2e6c8] py-4 rounded-xl tracking-widest text-lg uppercase hover:opacity-90 transition paddycheck md:bottom-10 left-1/2 -translate-x-1/2 bottom-0">
-          Place Order
-          </button>
+                <button className=" mt-10  max-w-sm bg-[#141414] text-[#f2e6c8] py-4 rounded-xl tracking-widest text-lg uppercase hover:opacity-90 transition paddycheck w-[70%]">
+                Place Order
+                </button>
+          </div>
          
         </div>
 

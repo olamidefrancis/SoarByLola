@@ -46,6 +46,7 @@ const router = createBrowserRouter([
   path:'/Wishlist',
   element: <div>
                 <Navbar/>
+                <Toaster position="top-right" reverseOrder={false} />
                 <Wishlist/>
            </div>,
   errorElement: <div>404 Page not found</div>
