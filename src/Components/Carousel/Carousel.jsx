@@ -1,6 +1,5 @@
 import React, { useEffect, useCallback } from 'react'
 
-import three from '../../assets/Images/md_gru.jpeg'
 import one from '../../assets/Images/md1.jpeg'
 import two from '../../assets/Images/md2.jpeg'
 
@@ -33,9 +32,9 @@ const Carousel = () => {
     <div className="w-full bg-[#fdfaf5] py-16">
 
       {/* TITLE */}
-      <div className=" flex flex-col justify-center mb-8 h-[100px] ">
+      <div className=" flex flex-col justify-center mb-8 h-[100px] featuredpad">
         <h2
-          className="text-2xl md:text-4xl tracking-[4px]"
+          className="text-2xl md:text-4xl tracking-[4px] "
           style={{ fontFamily: "Playfair Display, serif" }}
         >
           FEATURED COLLECTION

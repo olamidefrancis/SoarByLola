@@ -182,7 +182,7 @@ function Men() {
                       placeholder="Enter measurement (optional)…"
                       value={productData[i].measurement}
                       onChange={(e) => handleMeasurement(i, e.target.value)}
-                      className="w-full bg-black/35 border border-white/30 p-3 rounded-md text-md md:text-lg placeholder-white/60 focus:outline-none focus:border-white h-[50px]"
+                      className="w-full bg-black/35 border border-white/30 p-3 rounded-md text-md md:text-lg placeholder-white/60 focus:outline-none focus:border-white h-[50px] paddy"
                     />
                   </div>
 
@@ -190,7 +190,7 @@ function Men() {
                   <button
                     onClick={() => handleAddToBag(i, item)}
                     disabled={isInBag}
-                    className={`px-7 py-3 text-sm uppercase tracking-widest border rounded-md transition
+                    className={`px-7 py-3 text-sm uppercase tracking-widest border rounded-md transition paddy
                       ${
                         isInBag
                           ? "border-white/20 text-white/50 cursor-not-allowed bg-black/40"

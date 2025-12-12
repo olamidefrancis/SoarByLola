@@ -69,7 +69,6 @@ function Wishlist() {
     return orders.some((orderItem) => orderItem.Title === itemTitle);
   };
 
-  // ✅ UPDATED: Prevent adding to cart if size is missing
   const handleAddToBag = (item, index) => {
     if (!selectedSizes[index] && !item.size) {
       toast.error("Please select or specify a size before adding to your bag!");
@@ -190,8 +189,12 @@ function Wishlist() {
                       £ {item.Price}
                     </p>
 
+                    {/* ✅ FIXED HERE */}
                     <Link
-                      onClick={() => !alreadyInBag && handleAddToBag(item, i)}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        if (!alreadyInBag) handleAddToBag(item, i);
+                      }}
                       className={`px-5 py-2 rounded-full text-sm tracking-wide transition padwish
                         ${alreadyInBag
                           ? "bg-gray-400 cursor-not-allowed text-white"
