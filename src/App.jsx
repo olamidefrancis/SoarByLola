@@ -9,6 +9,7 @@ import OrdersPage from './Components/OrdersPage/OrdersPage'
 import Wishlist from './Components/Wishlist/Wishlist'
 import { createBrowserRouter, RouterProvider } from "react-router"
 import Checkout from './Components/Checkout/Checkout'
+import Login from './Components/Login/Login'
 import { Toaster } from "react-hot-toast";
 
 const router = createBrowserRouter([
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
                 <Cloths/>
                 <Carousel/> 
                 <Footer/>
+                <Login/>
            </div>,
   errorElement: <div>404 Page not found</div>
  },
