@@ -13,6 +13,7 @@
     "@tailwindcss/vite": "^4.1.16",
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
+    "framer-motion": "^12.23.26",
     "link-react": "^3.0.0",
     "lucide-react": "^0.546.0",
     "react": "^19.1.1",
