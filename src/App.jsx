@@ -21,7 +21,7 @@ const router = createBrowserRouter([
                 <Cloths/>
                 <Carousel/> 
                 <Footer/>
-                <Login/>
+                {/* <Login/> */}
            </div>,
   errorElement: <div>404 Page not found</div>
  },
