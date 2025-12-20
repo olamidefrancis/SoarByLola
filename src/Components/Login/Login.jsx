@@ -83,7 +83,7 @@ function Login() {
           {/* SIGN IN BUTTON */}
           <button
             onClick={handleSignIn}
-            className="border border-[#141414] px-10 py-3 uppercase tracking-widest text-[#141414] hover:bg-[#141414] hover:text-[#f2e6c8] transition md:w-fit w-full flex items-center justify-center h-[24px]"
+            className="border border-[#141414] px-10 py-3 uppercase tracking-widest text-[#141414] hover:bg-[#141414] hover:text-[#f2e6c8] transition md:w-fit w-full flex items-center justify-center h-[24px] pad"
           >
             Sign In →
           </button>
