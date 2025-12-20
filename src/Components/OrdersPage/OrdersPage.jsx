@@ -6,7 +6,7 @@ import { Link } from "react-router";
 function OrdersPage() {
   const { orders, setOrders } = useContext(StoreContext);
 
-  // ✅ INCREASE QUANTITY
+  //  INCREASE QUANTITY
   const handleQuantityAdd = (index) => {
     setOrders(prevOrders =>
       prevOrders.map((item, i) =>
@@ -154,7 +154,7 @@ function OrdersPage() {
 
             {/* CHECKOUT BUTTON */}
             <Link
-              to="/Checkout"
+              to="/Login"
               className="block w-full text-center bg-[#141414] text-[#f2e6c8] py-3 rounded-xl text-lg tracking-wide hover:opacity-90 transition"
             >
               CHECKOUT

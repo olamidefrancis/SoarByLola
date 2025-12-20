@@ -1,1 +1,19 @@
 @import'tailwindcss';
+
+
+.padleft{
+    padding-left: 0.7rem;
+
+}
+
+.padright{
+    padding-right: 0.7rem;
+
+}
+
+.pad{
+    padding:0.3rem;
+}
+.padword{
+    padding:0.2rem;
+}

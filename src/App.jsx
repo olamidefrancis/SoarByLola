@@ -21,7 +21,7 @@ const router = createBrowserRouter([
                 <Cloths/>
                 <Carousel/> 
                 <Footer/>
-                {/* <Login/> */}
+              
            </div>,
   errorElement: <div>404 Page not found</div>
  },
@@ -58,6 +58,15 @@ const router = createBrowserRouter([
   element: <div>
                 <Navbar/>
                 <Checkout/>
+           </div>,
+  errorElement: <div>404 Page not found</div>
+ },
+
+ {
+  path:'/Login',
+  element: <div>
+                <Navbar/>
+                 <Login/> 
            </div>,
   errorElement: <div>404 Page not found</div>
  }
