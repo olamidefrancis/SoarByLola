@@ -1,18 +1,39 @@
-import './Login.css'
+import "./Login.css";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
+  const navigate = useNavigate();
+
+  //  MOCK STORED CREDENTIALS (for now)
+  const storedEmail = "olamidefrancis97@gmail.com";
+  const storedPassword = "Francis97$";
+
+  //  USER INPUT STATE
+  const [enteredEmail, setEnteredEmail] = useState("");
+  const [enteredPassword, setEnteredPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
+  //  LOGIN CHECK
+  const handleSignIn = () => {
+    if (
+      enteredEmail === storedEmail &&
+      enteredPassword === storedPassword
+    ) {
+      navigate("/Checkout");
+    } else {
+      alert("Invalid email or password");
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-[#f2e6c8] flex items-center justify-center align-center px-4">
+    <div className="min-h-screen bg-[#f2e6c8] flex items-center justify-center px-4">
       <div className="w-full flex flex-col md:flex-row md:justify-center justify-between md:gap-y-0 gap-y-16 gap-x-2 md:gap-x-2">
 
         {/* LEFT – LOGIN */}
-        <div className="flex align-center flex-col justify-center md:w-[40vw] gap-y-4  p-6 padright">
-          
-          <h1 className="text-3xl md:text-4xl tracking-widest text-[#141414] mb-10 flex   justify-center md:justify-start">
+        <div className="flex align-center flex-col justify-center md:w-[40vw] gap-y-4 p-6 padright">
+
+          <h1 className="text-3xl md:text-4xl tracking-widest text-[#141414] mb-10 flex justify-center md:justify-start">
             WELCOME BACK!
           </h1>
 
@@ -23,6 +44,8 @@ function Login() {
             </label>
             <input
               type="email"
+              value={enteredEmail}
+              onChange={(e) => setEnteredEmail(e.target.value)}
               className="w-full border border-[#141414]/20 px-4 py-3 rounded-md bg-white focus:outline-none focus:border-[#141414] h-[34px] text-xl padword"
             />
           </div>
@@ -35,6 +58,8 @@ function Login() {
             <div className="relative">
               <input
                 type={showPassword ? "text" : "password"}
+                value={enteredPassword}
+                onChange={(e) => setEnteredPassword(e.target.value)}
                 className="w-full border border-[#141414]/20 px-4 py-3 rounded-md bg-white focus:outline-none focus:border-[#141414] h-[34px] text-xl padword"
               />
               <button
@@ -50,21 +75,24 @@ function Login() {
           {/* FORGOT PASSWORD */}
           <Link
             to="/forgot-password"
-            className="text-xl underline text-[#141414] mb-8 md:w-fit w-full flex item-center justify-center"
+            className="text-xl underline text-[#141414] mb-8 md:w-fit w-full flex items-center justify-center"
           >
             Forgot Your Password?
           </Link>
 
           {/* SIGN IN BUTTON */}
-          <button className="border border-[#141414] px-10 py-3 uppercase tracking-widest text-[#141414] hover:bg-[#141414] hover:text-[#f2e6c8] transitionmd:w-fit w-full flex item-center justify-center h-[24px]">
+          <button
+            onClick={handleSignIn}
+            className="border border-[#141414] px-10 py-3 uppercase tracking-widest text-[#141414] hover:bg-[#141414] hover:text-[#f2e6c8] transition md:w-fit w-full flex items-center justify-center h-[24px]"
+          >
             Sign In →
           </button>
         </div>
 
         {/* RIGHT – CREATE ACCOUNT */}
-        <div className="flex flex-col justify-center items-center border-t md:border-t-0 md:border-l border-[#141414]/20 pt-12 md:pt-0 gap-y-3 padleft ">
+        <div className="flex flex-col justify-center items-center border-t md:border-t-0 md:border-l border-[#141414]/20 pt-12 md:pt-0 gap-y-3 padleft">
 
-          <h2 className="text-2xl md:text-3xl tracking-widest text-[#141414] mb-10 ">
+          <h2 className="text-2xl md:text-3xl tracking-widest text-[#141414] mb-10">
             DON'T HAVE AN ACCOUNT?
           </h2>
 
@@ -81,5 +109,3 @@ function Login() {
 }
 
 export default Login;
-
-

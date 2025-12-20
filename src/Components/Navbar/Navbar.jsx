@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { StoreContext } from "../../context/StoreContext";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import "./Navbar.css";
 import logo from "../../assets/Images/logo1.jpeg";
 import { FiUser, FiHeart, FiShoppingBag } from "react-icons/fi";
