@@ -31,7 +31,7 @@ const Footer = () => {
         </figure>
 
         <div className='flex justify-center w-full gap-4 hover:text-gray-800'>
-          <Link to="/Men" className="text-[13px] font-normal text-gray-500 hover:text-gray-800">About Us</Link>
+          <Link to="/About" className="text-[13px] font-normal text-gray-500 hover:text-gray-800">About Us</Link>
           
           <ul className="flex  list-none gap-4 p-0 ">
                     <li><a href="https://www.instagram.com/shopsoar.co?igsh=N2ZnenMzNW51N3Zw&utm_source=qr" className="text-[13px] font-normal text-gray-500 hover:text-gray-800">Instagram</a></li>
@@ -65,7 +65,7 @@ const Footer = () => {
                     About Us
                   </h2>
                   <ul className="flex flex-col list-none gap-3 p-0 w-full">
-                    <li><a href="/about" className="text-[13px] font-normal text-gray-500 hover:text-gray-800">About Us</a></li>
+                    <li><Link to="/About"  className="text-[13px] font-normal text-gray-500 hover:text-gray-800">About Us</Link></li>
                   </ul>
                 </div>
               </section>
