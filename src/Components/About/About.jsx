@@ -1,19 +1,20 @@
 import { motion } from "framer-motion";
 import logo from "../../assets/Images/logo1.jpeg";
+import  './About.css'
 
 function About() {
   return (
-    <div className="bg-[#f2e6c8] text-[#141414] overflow-hidden">
+    <div className=" flex flex-col items-center  bg-[#f2e6c8] text-[#141414] overflow-hidden  gap-y-10 ptop pbo">
 
       {/* HERO */}
-      <section className="min-h-screen flex flex-col justify-center items-center text-center px-6">
+      <section className="h-fit  flex flex-col justify-center items-center text-center px-6 gap-y-4 ptop">
         <motion.img
           src={logo}
           alt="Soar by Lola Logo"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1 }}
-          className="w-40 md:w-52 mb-10"
+          className="w-30 md:w-42 mb-10 rounded-full"
         />
 
         <motion.h1
@@ -37,7 +38,7 @@ function About() {
       </section>
 
       {/* STORY */}
-      <section className="py-24 px-6 max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+      <section className="py-24 px-6 max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center padleftright">
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -63,9 +64,9 @@ function About() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="border border-[#141414]/20 p-10"
+          className="border border-[#141414]/20 p-10 flex justify-center align-center"
         >
-          <p className="text-xl italic tracking-wide">
+          <p className="text-xl italic tracking-wide ">
             “Soar is not just about how you look —
             <br />
             it’s about how high you’re willing to rise.”
@@ -75,12 +76,12 @@ function About() {
 
       {/* VALUES */}
       <section className="py-24 bg-[#141414] text-[#f2e6c8] px-6">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto padleftright pad">
           <h2 className="text-3xl md:text-4xl tracking-widest uppercase mb-16 text-center">
             Our Values
           </h2>
 
-          <div className="grid md:grid-cols-3 gap-12">
+          <div className="grid md:grid-cols-3 gap-12 ">
             {[
               { title: "Confidence", text: "We design pieces that empower and elevate." },
               { title: "Elegance", text: "Luxury is intentional, timeless, and refined." },
@@ -92,7 +93,7 @@ function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.2 }}
-                className="border border-[#f2e6c8]/30 p-8"
+                className="border border-[#f2e6c8]/30 p-8 padleftright"
               >
                 <h3 className="text-xl tracking-widest uppercase mb-4">
                   {item.title}
@@ -141,13 +142,6 @@ function About() {
           Rise With Us
         </motion.h2>
 
-        <motion.a
-          href="/shop"
-          whileHover={{ scale: 1.05 }}
-          className="inline-block border border-[#141414] px-12 py-4 uppercase tracking-widest hover:bg-[#141414] hover:text-[#f2e6c8] transition"
-        >
-          Shop the Collection →
-        </motion.a>
       </section>
     </div>
   );
