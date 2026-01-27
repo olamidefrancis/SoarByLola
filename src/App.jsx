@@ -11,6 +11,7 @@ import { createBrowserRouter, RouterProvider } from "react-router"
 import Checkout from './Components/Checkout/Checkout'
 import Login from './Components/Login/Login'
 import About from './Components/About/About'
+import History from './Components/History/History'
 import { Toaster } from "react-hot-toast";
 
 const router = createBrowserRouter([
@@ -79,7 +80,17 @@ const router = createBrowserRouter([
                  <About/> 
            </div>,
   errorElement: <div>404 Page not found</div>
+ },
+
+   {
+  path:'/History',
+  element: <div>
+                <Navbar/>
+                 <History/> 
+           </div>,
+  errorElement: <div>404 Page not found</div>
  }
+
 
 
  

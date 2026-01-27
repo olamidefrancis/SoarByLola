@@ -5,11 +5,12 @@ export const StoreContext = createContext();
 export function StoreProvider({ children }) {
   const [orders, setOrders] = useState([]);
   const [likes, setLikes] = useState([]);
+    const [history, setHistory] = useState([]);
   const [selectedSizes, setSelectedSizes] = useState({});
   const [measurements, setMeasurements] = useState({});
 
   return (
-    <StoreContext.Provider value={{ orders, setOrders, likes, setLikes,selectedSizes, setSelectedSizes,measurements, setMeasurements }}>
+    <StoreContext.Provider value={{ orders, setOrders, likes, setLikes,selectedSizes, setSelectedSizes,measurements, setMeasurements, history, setHistory }}>
       {children}
     </StoreContext.Provider>
   );

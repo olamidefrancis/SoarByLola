@@ -1,13 +1,31 @@
-import React, { useContext } from "react";
+import React, { useContext, useState  } from "react";
 import { StoreContext } from "../../context/StoreContext";
 import "./Checkout.css";
 
 function Checkout() {
-  const { orders } = useContext(StoreContext);
+  const { orders,setOrders, setHistory } = useContext(StoreContext);
 
   const subtotal = orders.reduce((total, item) => {
     return total + item.Price * item.quantity;
   }, 0);
+
+
+
+const handleSethistory = () => {
+  if (orders.length === 0) return;
+
+  setHistory(prev => [
+    ...prev,
+    {
+      id: Date.now(),
+      date: new Date().toLocaleString(),
+      items: [...orders],
+      total: subtotal
+    }
+  ]);
+
+  setOrders([]);
+};
 
   return (
    
@@ -70,7 +88,9 @@ function Checkout() {
         <div className="  flex flex-col gap-2 rounded-xl shadow-xl paddycheck flex-1 bg-white">
           <div className="flex flex-col gap-10 ">
 
-              <h2 className="text-3xl font-semibold tracking-wide mb-8 text-[#141414]">
+              <h2 className="text-3xl font-semibold tracking-wide mb-8 text-[#141414]"
+              
+              >
                 Checkout
               </h2>
 
@@ -137,9 +157,19 @@ function Checkout() {
           </div>
             <div className="flex w-full justify-center align-center  paddycheck margincheck">
 
-                <button className=" mt-10  max-w-sm bg-[#141414] text-[#f2e6c8] py-4 rounded-xl tracking-widest text-lg uppercase hover:opacity-90 transition paddycheck w-[70%]">
+              <button
+                disabled={orders.length === 0}
+                onClick={handleSethistory}
+                className={`mt-10 w-[70%] py-4 rounded-xl tracking-widest text-lg uppercase transition
+                  ${
+                    orders.length === 0
+                      ? "bg-gray-400 cursor-not-allowed"
+                      : "bg-[#141414] text-[#f2e6c8] hover:opacity-90"
+                  }`}
+                >
                 Place Order
-                </button>
+             </button>
+
             </div>
          
         </div>
