@@ -160,7 +160,7 @@ const handleSethistory = () => {
               <button
                 disabled={orders.length === 0}
                 onClick={handleSethistory}
-                className={`mt-10 w-[70%] py-4 rounded-xl tracking-widest text-lg uppercase transition
+                className={`relative z-10 mt-10 w-[70%] py-4 rounded-xl tracking-widest text-lg uppercase transition
                   ${
                     orders.length === 0
                       ? "bg-gray-400 cursor-not-allowed"
