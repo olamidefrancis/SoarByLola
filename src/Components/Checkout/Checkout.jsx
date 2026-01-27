@@ -1,5 +1,6 @@
 import React, { useContext, useState  } from "react";
 import { StoreContext } from "../../context/StoreContext";
+import { useNavigate } from "react-router-dom";
 import "./Checkout.css";
 
 function Checkout() {
@@ -8,6 +9,8 @@ function Checkout() {
   const subtotal = orders.reduce((total, item) => {
     return total + item.Price * item.quantity;
   }, 0);
+
+  const navigate = useNavigate();
 
 
 
@@ -25,6 +28,7 @@ const handleSethistory = () => {
   ]);
 
   setOrders([]);
+  navigate("/History");
 };
 
   return (
