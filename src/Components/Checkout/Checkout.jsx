@@ -28,7 +28,9 @@ const handleSethistory = () => {
   ]);
 
   setOrders([]);
-  navigate("/history");
+   setTimeout(() => {
+    navigate("/history");
+  }, 50);
 };
 
   return (
