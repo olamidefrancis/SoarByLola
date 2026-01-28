@@ -51,13 +51,13 @@ function Cloths() {
 
           <div className=" text-xl tracking-widest hover:text-white transition-all duration-300 flex gap-3 justify-start clothpadt">
             <Link
-          to="/Men"
+          to="/men"
           className="text-xl tracking-[2px] font-medium text-[#141414] hover:text-[#d62828] transition"
         >
           WOMEN
         </Link>
         <Link
-          to="/Men"
+          to="/men"
           className="text-xl tracking-[2px] font-medium text-[#141414] hover:text-[#d62828] transition "
         >
           MEN
@@ -85,16 +85,7 @@ function Cloths() {
             />
           </div>
 
-          {/* Floating Image Reveal */}
-          {/* <div className={`absolute bottom-[-40px] right-[-5px] hidden md:block
-            transition-all duration-[1400ms] delay-500
-            ${show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-            <img 
-              src={two} 
-              alt="Detail Look" 
-              className="w-[200px] h-[400px] object-cover border border-white shadow-xl"
-            />
-          </div> */}
+         
 
         </div>
 

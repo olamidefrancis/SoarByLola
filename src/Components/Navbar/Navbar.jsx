@@ -185,6 +185,7 @@ const Navbar = () => {
           <div className="mt-6 border-t border-white/30 pt-4 flex flex-col gap-4">
             <Link to="/Men" className="text-lg text-white">WOMEN</Link>
             <Link to="/Men" className="text-lg text-white">MEN</Link>
+            <Link to="/history" className="text-lg text-white">ORDER HISTORY</Link>
           </div>
         </div>
       </div>

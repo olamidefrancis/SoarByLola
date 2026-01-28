@@ -28,7 +28,7 @@ const handleSethistory = () => {
   ]);
 
   setOrders([]);
-  navigate("/History");
+  navigate("/history");
 };
 
   return (
