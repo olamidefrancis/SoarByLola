@@ -2,10 +2,12 @@ import "./Men.css";
 import one from "../../assets/Images/md1.jpeg";
 import two from "../../assets/Images/md2.jpeg";
 
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { StoreContext } from "../../context/StoreContext";
 import { FiHeart } from "react-icons/fi";
 import toast from "react-hot-toast";
+
+import useEmblaCarousel from "embla-carousel-react";
 
 const products = [
   {
@@ -37,6 +39,19 @@ function Men() {
       liked: false,
     }))
   );
+
+  // 🔹 Detect <400px
+  const [isMobileCarousel, setIsMobileCarousel] = useState(
+    window.innerWidth < 600
+  );
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobileCarousel(window.innerWidth < 600);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const handleSizeChange = (index, size) => {
     const updated = [...productData];
@@ -79,7 +94,6 @@ function Men() {
   const handleAddToBag = (index, item) => {
     const data = productData[index];
 
-    // ✅ NEW: Block if size not selected
     if (!data.size) {
       toast.error("Please select a size before adding to bag 👕", {
         duration: 1800,
@@ -113,36 +127,79 @@ function Men() {
           (orderItem) => orderItem.Title === item.Title
         );
 
+        // 🔹 Embla per product
+        const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+
+        const scrollPrev = () => emblaApi && emblaApi.scrollPrev();
+        const scrollNext = () => emblaApi && emblaApi.scrollNext();
+
         return (
           <div key={i} className="flex flex-col gap-8">
             {/* IMAGE STRIP */}
             <div className="relative w-full overflow-hidden">
-              <div className="grid grid-cols-4 w-full">
-                {item.Picture.map((img, index) => (
-                  <div
-                    key={index}
-                    className="w-full h-[350px] sm:h-[350px] md:h-[400px] lg:h-[450px]"
-                  >
-                    <img
-                      src={img}
-                      alt={item.Title}
-                      className="w-full h-full object-cover shadow-xl"
-                    />
+
+              {isMobileCarousel ? (
+                <div className="relative w-full overflow-hidden">
+                  <div className="overflow-hidden" ref={emblaRef}>
+                    <div className="flex w-full">
+                      {item.Picture.map((img, index) => (
+                        <div
+                          key={index}
+                          className="relative flex-[0_0_100%] bg-[#fdfaf5]"
+                        >
+                          <img
+                            src={img}
+                            alt={item.Title}
+                            className="w-full h-[300px] object-cover"
+                          />
+                          <div className="absolute inset-0 bg-black/10"></div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                ))}
-              </div>
+
+                  {/* CAROUSEL NAV */}
+                  <div className="absolute top-1/2 left-0 right-0 flex justify-between -translate-y-1/2 px-4 pointer-events-none">
+                    <button
+                      onClick={scrollPrev}
+                      className="pointer-events-auto w-10 h-10 rounded-full bg-white/90 shadow-lg flex items-center justify-center text-lg"
+                    >
+                      ❮
+                    </button>
+                    <button
+                      onClick={scrollNext}
+                      className="pointer-events-auto w-10 h-10 rounded-full bg-white/90 shadow-lg flex items-center justify-center text-lg"
+                    >
+                      ❯
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <div className="flex justify-center align-center w-full">
+                  {item.Picture.map((img, index) => (
+                    <div
+                      key={index}
+                      className="w-full h-[350px] sm:h-[350px] md:h-[400px] lg:h-[450px] relative"
+                    >
+                      <img
+                        src={img}
+                        alt={item.Title}
+                        className="w-full h-full object-cover shadow-lg bg-[#fdfaf5]"
+                      />
+                      <div className="absolute inset-0 bg-black/10"></div>
+                    </div>
+                  ))}
+                </div>
+              )}
 
               {/* GLASS PANEL */}
               <div className="flex flex-col w-full bg-black/60 backdrop-blur-md text-white space-y-5 paddycon">
-                {/* TITLE + PRICE + LIKE */}
                 <div className="flex justify-between items-start">
                   <div>
                     <h2 className="text-sm font-semibold tracking-widest uppercase">
                       {item.Title}
                     </h2>
-                    <p className="text-xl font-semibold mt-1">
-                      £{item.Price}
-                    </p>
+                    <p className="text-xl font-semibold mt-1">£{item.Price}</p>
                   </div>
 
                   <FiHeart
@@ -155,9 +212,7 @@ function Men() {
                   />
                 </div>
 
-                {/* CONTROLS */}
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 md:gap-10">
-                  {/* SIZE SELECTION */}
                   <div className="flex flex-wrap gap-3">
                     {sizes.map((size) => (
                       <button
@@ -175,7 +230,6 @@ function Men() {
                     ))}
                   </div>
 
-                  {/* MEASUREMENTS */}
                   <div className="w-full md:w-[40%]">
                     <input
                       type="text"
@@ -186,7 +240,6 @@ function Men() {
                     />
                   </div>
 
-                  {/* ADD TO BAG BUTTON */}
                   <button
                     onClick={() => handleAddToBag(i, item)}
                     disabled={isInBag}
