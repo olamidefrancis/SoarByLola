@@ -40,7 +40,7 @@ function Men() {
     }))
   );
 
-  // 🔹 Detect <400px
+  // 🔹 Detect <600px
   const [isMobileCarousel, setIsMobileCarousel] = useState(
     window.innerWidth < 600
   );
@@ -127,7 +127,6 @@ function Men() {
           (orderItem) => orderItem.Title === item.Title
         );
 
-        // 🔹 Embla per product
         const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
 
         const scrollPrev = () => emblaApi && emblaApi.scrollPrev();
@@ -137,7 +136,6 @@ function Men() {
           <div key={i} className="flex flex-col gap-8">
             {/* IMAGE STRIP */}
             <div className="relative w-full overflow-hidden">
-
               {isMobileCarousel ? (
                 <div className="relative w-full overflow-hidden">
                   <div className="overflow-hidden" ref={emblaRef}>
@@ -145,14 +143,14 @@ function Men() {
                       {item.Picture.map((img, index) => (
                         <div
                           key={index}
-                          className="relative flex-[0_0_100%] bg-[#fdfaf5]"
+                          className="relative flex-[0_0_100%] bg-[#fdfaf5] aspect-[3/4] flex items-center justify-center"
                         >
                           <img
                             src={img}
                             alt={item.Title}
-                            className="w-full h-[300px] object-cover"
+                            className="w-full h-full object-contain"
                           />
-                          <div className="absolute inset-0 bg-black/10"></div>
+                          <div className="absolute inset-0 bg-black/5"></div>
                         </div>
                       ))}
                     </div>
