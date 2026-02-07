@@ -27,3 +27,21 @@
         padding:0.5rem
     }
 }
+
+@keyframes glassShine {
+  0% {
+    transform: translateY(-40%);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(120%);
+    opacity: 0;
+  }
+}
+
+.animate-glassShine {
+  animation: glassShine 6s ease-in-out infinite;
+}

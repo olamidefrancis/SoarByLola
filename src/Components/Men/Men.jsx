@@ -40,7 +40,6 @@ function Men() {
     }))
   );
 
-  // 🔹 Detect <600px
   const [isMobileCarousel, setIsMobileCarousel] = useState(
     window.innerWidth < 600
   );
@@ -76,45 +75,29 @@ function Men() {
     }
 
     const updated = [...productData];
-    const isLiked = !updated[index].liked;
-    updated[index].liked = isLiked;
+    updated[index].liked = !updated[index].liked;
     setProductData(updated);
 
-    setLikes((prev) => {
-      if (isLiked) {
-        toast.success("Added to wishlist 💖", { duration: 1500 });
-        return [...prev, item];
-      } else {
-        toast("Removed from wishlist ❌", { duration: 1500 });
-        return prev.filter((like) => like.Title !== item.Title);
-      }
-    });
+    setLikes((prev) =>
+      updated[index].liked
+        ? [...prev, item]
+        : prev.filter((like) => like.Title !== item.Title)
+    );
   };
 
   const handleAddToBag = (index, item) => {
     const data = productData[index];
 
     if (!data.size) {
-      toast.error("Please select a size before adding to bag 👕", {
-        duration: 1800,
-      });
+      toast.error("Please select a size before adding to bag 👕");
       return;
     }
 
-    const alreadyInBag = orders.some(
-      (orderItem) => orderItem.Title === item.Title
-    );
-
-    if (alreadyInBag) return;
+    if (orders.some((o) => o.Title === item.Title)) return;
 
     setOrders((prev) => [
       ...prev,
-      {
-        ...item,
-        size: data.size,
-        measurement: data.measurement,
-        quantity: 1,
-      },
+      { ...item, size: data.size, measurement: data.measurement, quantity: 1 },
     ]);
 
     toast.success("Item added to your bag 🛍️");
@@ -123,129 +106,118 @@ function Men() {
   return (
     <div className="bg-[#faf8f3] min-h-screen px-3 md:px-16 py-16 space-y-24">
       {products.map((item, i) => {
-        const isInBag = orders.some(
-          (orderItem) => orderItem.Title === item.Title
-        );
-
+        const isInBag = orders.some((o) => o.Title === item.Title);
         const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
-
-        const scrollPrev = () => emblaApi && emblaApi.scrollPrev();
-        const scrollNext = () => emblaApi && emblaApi.scrollNext();
 
         return (
           <div key={i} className="flex flex-col gap-8">
-            {/* IMAGE STRIP */}
             <div className="relative w-full overflow-hidden">
               {isMobileCarousel ? (
-                <div className="relative w-full overflow-hidden">
-                  <div className="overflow-hidden" ref={emblaRef}>
-                    <div className="flex w-full">
-                      {item.Picture.map((img, index) => (
-                        <div
-                          key={index}
-                          className="relative flex-[0_0_100%] bg-[#fdfaf5] aspect-[3/4] flex items-center justify-center"
-                        >
-                          <img
-                            src={img}
-                            alt={item.Title}
-                            className="w-full h-full object-contain"
-                          />
-                          <div className="absolute inset-0 bg-black/5"></div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* CAROUSEL NAV */}
-                  <div className="absolute top-1/2 left-0 right-0 flex justify-between -translate-y-1/2 px-4 pointer-events-none">
-                    <button
-                      onClick={scrollPrev}
-                      className="pointer-events-auto w-10 h-10 rounded-full bg-white/90 shadow-lg flex items-center justify-center text-lg"
-                    >
-                      ❮
-                    </button>
-                    <button
-                      onClick={scrollNext}
-                      className="pointer-events-auto w-10 h-10 rounded-full bg-white/90 shadow-lg flex items-center justify-center text-lg"
-                    >
-                      ❯
-                    </button>
+                <div className="overflow-hidden" ref={emblaRef}>
+                  <div className="flex">
+                    {item.Picture.map((img, index) => (
+                      <div
+                        key={index}
+                        className="flex-[0_0_100%] aspect-[3/4] bg-[#fdfaf5] flex items-center justify-center"
+                      >
+                        <img
+                          src={img}
+                          alt={item.Title}
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                    ))}
                   </div>
                 </div>
               ) : (
-                <div className="flex justify-center align-center w-full">
+                <div className="flex w-full">
                   {item.Picture.map((img, index) => (
-                    <div
-                      key={index}
-                      className="w-full h-[350px] sm:h-[350px] md:h-[400px] lg:h-[450px] relative"
-                    >
+                    <div key={index} className="w-full h-[450px] relative">
                       <img
                         src={img}
                         alt={item.Title}
-                        className="w-full h-full object-cover shadow-lg bg-[#fdfaf5]"
+                        className="w-full h-full object-cover"
                       />
-                      <div className="absolute inset-0 bg-black/10"></div>
                     </div>
                   ))}
                 </div>
               )}
 
-              {/* GLASS PANEL */}
-              <div className="flex flex-col w-full bg-black/60 backdrop-blur-md text-white space-y-5 paddycon">
+              {/* 🔥 PREMIUM GLASS PANEL (REDESIGNED) */}
+              <div
+                className="
+                  flex flex-col w-full space-y-5 paddycon
+                  backdrop-blur-xl
+                  bg-gradient-to-br
+                  from-[#f3dfd5]/90
+                  via-[#e7cbbd]/85
+                  to-[#d6b4a4]/80
+                  border border-white/40
+                  shadow-[0_20px_60px_rgba(120,80,60,0.25)]
+                  text-[#2b1e1a]
+                "
+              >
                 <div className="flex justify-between items-start">
                   <div>
                     <h2 className="text-sm font-semibold tracking-widest uppercase">
                       {item.Title}
                     </h2>
-                    <p className="text-xl font-semibold mt-1">£{item.Price}</p>
+                    <p className="text-xl font-semibold mt-1">
+                      £{item.Price}
+                    </p>
                   </div>
 
                   <FiHeart
                     onClick={() => handleLike(i, item)}
                     className={`text-3xl cursor-pointer transition ${
                       productData[i].liked
-                        ? "text-red-500 fill-red-500 scale-110"
-                        : "text-white"
+                        ? "text-rose-500 fill-rose-500 scale-110"
+                        : "text-[#3a2a24]"
                     }`}
                   />
                 </div>
 
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 md:gap-10">
-                  <div className="flex flex-wrap gap-3">
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                  <div className="flex gap-3 flex-wrap">
                     {sizes.map((size) => (
                       <button
                         key={size}
                         onClick={() => handleSizeChange(i, size)}
-                        className={`w-9 h-9 text-xs border rounded-full tracking-wide transition
+                        className={`  flex justify-center align-center w-10 h-10 rounded-full border text-m paddy transition
                           ${
                             productData[i].size === size
-                              ? "bg-white text-black"
-                              : "border-white/40 text-white hover:bg-white hover:text-black"
+                              ? "bg-[#3a2a24] text-white"
+                              : "border-[#3a2a24]/30 text-[#3a2a24] hover:bg-[#3a2a24] hover:text-white"
                           }`}
                       >
-                        {size}
+                       <p> {size}</p>
                       </button>
                     ))}
                   </div>
 
-                  <div className="w-full md:w-[40%]">
-                    <input
-                      type="text"
-                      placeholder="Enter measurement (optional)…"
-                      value={productData[i].measurement}
-                      onChange={(e) => handleMeasurement(i, e.target.value)}
-                      className="w-full bg-black/35 border border-white/30 p-3 rounded-md text-md md:text-lg placeholder-white/60 focus:outline-none focus:border-white h-[50px] paddy"
-                    />
-                  </div>
+                  <input
+                    type="text"
+                    placeholder="Enter measurement (optional)…"
+                    value={productData[i].measurement}
+                    onChange={(e) =>
+                      handleMeasurement(i, e.target.value)
+                    }
+                    className="
+                      w-full md:w-[40%] h-[50px] rounded-md px-3
+                      bg-white/60 border border-[#3a2a24]/20
+                      placeholder-[#5a4036]/60 text-xl paddy
+                      focus:outline-none focus:border-[#3a2a24]
+                    "
+                  />
 
                   <button
                     onClick={() => handleAddToBag(i, item)}
                     disabled={isInBag}
-                    className={`px-7 py-3 text-sm uppercase tracking-widest border rounded-md transition paddy
+                    className={`px-7 py-3 text-m uppercase tracking-widest rounded-md transition paddy
                       ${
                         isInBag
-                          ? "border-white/20 text-white/50 cursor-not-allowed bg-black/40"
-                          : "border-white/40 hover:bg-white hover:text-black text-white"
+                          ? "bg-white/40 text-[#3a2a24]/40 cursor-not-allowed"
+                          : "border border-[#3a2a24]/40 text-[#3a2a24] hover:bg-[#3a2a24] hover:text-white"
                       }`}
                   >
                     {isInBag ? "Already in Bag" : "Add to Bag"}
